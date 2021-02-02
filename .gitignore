@@ -37,3 +37,10 @@ vignettes/*.pdf
 
 # R Environment Variables
 .Renviron
+
+# Editors
+*~
+
+# Private, local files and folders
+.*
+
