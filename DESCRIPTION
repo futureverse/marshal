@@ -1,5 +1,5 @@
 Package: marshal
-Title: Marshal Objects to be Used in Another R Processes
+Title: Framework to Marshal Objects to be Used in Another R Processes
 Depends:
     R (>= 4.0.0)
 Imports:
