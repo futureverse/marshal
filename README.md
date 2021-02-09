@@ -21,3 +21,8 @@ If you are a student and interested in working on this project, please consider 
 2. Higher-level reference hook functions to orchestrate multiple low-level hook functions, e.g. scan until one of matches
 
 3. API for users and package's to register low-level reference hook functions
+
+
+## Contributions
+
+We abide to the [Code of Conduct](https://www.contributor-covenant.org/version/2/0/code_of_conduct/) of Contributor Covenant.
