@@ -16,11 +16,9 @@ If you are a student and interested in working on this project, please consider 
 
 ## Roadmap
 
-1. Add low-level reference hook functions for serializing and unserializing reference objects created by base R
+1. Add `marshal()` and `unmarshal()` S3 methods for objects created by base R such that they can be serialized
 
-2. Higher-level reference hook functions to orchestrate multiple low-level hook functions, e.g. scan until one of matches
-
-3. API for users and package's to register low-level reference hook functions
+2. Investigate `marshal()` and `unmarshal()` S3 methods for non-exportable objects from popular CRAN packages, cf. <https://cran.r-project.org/web/packages/future/vignettes/future-4-non-exportable-objects.html>
 
 
 ## Contributions
