@@ -41,6 +41,9 @@ vignettes/*.pdf
 # Editors
 *~
 
+# Misc
+docs/
+pkgdown/
+
 # Private, local files and folders
 .*
-
