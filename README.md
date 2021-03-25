@@ -10,17 +10,15 @@ _WARNING: This package is currently just a skeleton.  Please stay tuned._
 
 ## Google Summer of Code (GSoC) 2021
 
-If you are a student and interested in working on this project, please consider applying to work on it via GSoC 2021.  Google Summer of Code is an initiative to support students to learn about and contribute to open-source software projects, while getting payed.  The R community has been mentoring many GSoC projects over the years.  For more details, please see the GSoC 2021 proposal ['marshal: Saving and Loading Objects that Otherwise Cannot be Saved or Exported to Parallel Workers'](https://github.com/rstats-gsoc/gsoc2021/wiki/marshal%3A-Saving-and-Loading-Objects-that-Otherwise-Cannot-be-Saved-or-Exported-to-Parallel-Workers).  **The deadline for student applications is on [April 13, 2021](https://github.com/rstats-gsoc/gsoc2021/wiki) with a soft deadline the week before.**
+If you are a student and interested in working on this project, please consider applying to work on it via GSoC 2021.  Google Summer of Code is an initiative to support students to learn about and contribute to open-source software projects, while getting payed.  The R community has been mentoring many GSoC projects over the years.  For more details, please see the GSoC 2021 proposal ['marshal: Saving and Loading Objects that Otherwise Cannot be Saved or Exported to Parallel Workers'](https://github.com/rstats-gsoc/gsoc2021/wiki/marshal).  **The deadline for student applications is on [April 13, 2021](https://github.com/rstats-gsoc/gsoc2021/wiki) with a soft deadline the week before.**
 
 
 
 ## Roadmap
 
-1. Add low-level reference hook functions for serializing and unserializing reference objects created by base R
+1. Add `marshal()` and `unmarshal()` S3 methods for objects created by base R such that they can be serialized
 
-2. Higher-level reference hook functions to orchestrate multiple low-level hook functions, e.g. scan until one of matches
-
-3. API for users and package's to register low-level reference hook functions
+2. Investigate `marshal()` and `unmarshal()` S3 methods for non-exportable objects from popular CRAN packages, cf. <https://cran.r-project.org/web/packages/future/vignettes/future-4-non-exportable-objects.html>
 
 
 ## Contributions
