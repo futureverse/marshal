@@ -8,12 +8,6 @@ Some types of R objects can be used only in the R session they were created.  If
 _WARNING: This package is currently just a skeleton.  Please stay tuned._
 
 
-## Google Summer of Code (GSoC) 2021
-
-If you are a student and interested in working on this project, please consider applying to work on it via GSoC 2021.  Google Summer of Code is an initiative to support students to learn about and contribute to open-source software projects, while getting payed.  The R community has been mentoring many GSoC projects over the years.  For more details, please see the GSoC 2021 proposal ['marshal: Saving and Loading Objects that Otherwise Cannot be Saved or Exported to Parallel Workers'](https://github.com/rstats-gsoc/gsoc2021/wiki/marshal).  **The deadline for student applications is on [April 13, 2021](https://github.com/rstats-gsoc/gsoc2021/wiki) with a soft deadline the week before.**
-
-
-
 ## Roadmap
 
 1. Add `marshal()` and `unmarshal()` S3 methods for objects created by base R such that they can be serialized
