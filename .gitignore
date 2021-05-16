@@ -43,7 +43,6 @@ vignettes/*.pdf
 
 # Misc
 docs/
-pkgdown/
 
 # Private, local files and folders
 .*
