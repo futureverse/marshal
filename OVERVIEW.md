@@ -32,7 +32,7 @@ _WARNING: This package is currently just a skeleton.  Please stay tuned._
 
 3. Phase "Marshalling"
 
-   * Add S3 generic `marshal()` to re-deconstruct non-exportable objects of certain classes so that they can be re-constructed using `unmarshal()` afterward, e.g.
+   * [ ] Add S3 generic `marshal()` to re-deconstruct non-exportable objects of certain classes so that they can be re-constructed using `unmarshal()` afterward, e.g.
    
       - [ ] 'XMLAbstractDocument' of **XML**, cf. `XML::xmlSerializeHook()` and `XML::xmlDeserializeHook()`
 
@@ -40,6 +40,7 @@ _WARNING: This package is currently just a skeleton.  Please stay tuned._
 
       - [ ] Identify packages whose non-exportable objects may be marshalled similarly, e.g. **ShortRead** and **ncdf4**
 
-  * Implement efficient, recursive `marshal()` for sets such as lists and environments
+  * [ ] Implement efficient, recursive `marshal()` for sets such as lists and environments
   
-  * After marshalling an object, or, say, a list of objects, investigate if we can leverage R's serialization framework to automatically unmarshal objects via `base::serialize(..., refhook = unmarshal)`.  We might be able to do this by having `marshal()` appending a "trigger" reference to the marshalled object
+  * [ ] After marshalling an object, or, say, a list of objects, investigate if we can leverage R's serialization framework to automatically unmarshal objects via `base::serialize(..., refhook = unmarshal)`.  We might be able to do this by having `marshal()` appending a "trigger" reference to the marshalled object
+  
