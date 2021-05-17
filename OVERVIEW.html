@@ -236,15 +236,15 @@
 </ol>
 <ul>
 <li>
-<p>Add S3 generic <code><a href="reference/marshal-package.html">marshal()</a></code> to re-deconstruct non-exportable objects of certain classes so that they can be re-constructed using <code>unmarshal()</code> afterward, e.g.</p>
+<p>[ ] Add S3 generic <code><a href="reference/marshal-package.html">marshal()</a></code> to re-deconstruct non-exportable objects of certain classes so that they can be re-constructed using <code>unmarshal()</code> afterward, e.g.</p>
 <ul>
 <li><p>[ ] ‘XMLAbstractDocument’ of <strong>XML</strong>, cf. <code><a href="https://rdrr.io/pkg/XML/man/xmlSerializeHook.html">XML::xmlSerializeHook()</a></code> and <code><a href="https://rdrr.io/pkg/XML/man/xmlSerializeHook.html">XML::xmlDeserializeHook()</a></code></p></li>
 <li><p>[ ] base R URL and read-only file connections</p></li>
 <li><p>[ ] Identify packages whose non-exportable objects may be marshalled similarly, e.g. <strong>ShortRead</strong> and <strong>ncdf4</strong></p></li>
 </ul>
 </li>
-<li><p>Implement efficient, recursive <code><a href="reference/marshal-package.html">marshal()</a></code> for sets such as lists and environments</p></li>
-<li><p>After marshalling an object, or, say, a list of objects, investigate if we can leverage R’s serialization framework to automatically unmarshal objects via <code><a href="https://rdrr.io/r/base/serialize.html">base::serialize(..., refhook = unmarshal)</a></code>. We might be able to do this by having <code><a href="reference/marshal-package.html">marshal()</a></code> appending a “trigger” reference to the marshalled object</p></li>
+<li><p>[ ] Implement efficient, recursive <code><a href="reference/marshal-package.html">marshal()</a></code> for sets such as lists and environments</p></li>
+<li><p>[ ] After marshalling an object, or, say, a list of objects, investigate if we can leverage R’s serialization framework to automatically unmarshal objects via <code><a href="https://rdrr.io/r/base/serialize.html">base::serialize(..., refhook = unmarshal)</a></code>. We might be able to do this by having <code><a href="reference/marshal-package.html">marshal()</a></code> appending a “trigger” reference to the marshalled object</p></li>
 </ul>
 </div>
 

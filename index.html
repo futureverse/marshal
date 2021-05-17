@@ -187,22 +187,23 @@
 </ol>
 <ul>
 <li>
-<p>Add S3 generic <code><a href="reference/marshal-package.html">marshal()</a></code> to re-deconstruct non-exportable objects of certain classes so that they can be re-constructed using <code>unmarshal()</code> afterward, e.g.</p>
+<p>[ ] Add S3 generic <code><a href="reference/marshal-package.html">marshal()</a></code> to re-deconstruct non-exportable objects of certain classes so that they can be re-constructed using <code>unmarshal()</code> afterward, e.g.</p>
 <ul>
 <li><p>[ ] ‘XMLAbstractDocument’ of <strong>XML</strong>, cf. <code><a href="https://rdrr.io/pkg/XML/man/xmlSerializeHook.html">XML::xmlSerializeHook()</a></code> and <code><a href="https://rdrr.io/pkg/XML/man/xmlSerializeHook.html">XML::xmlDeserializeHook()</a></code></p></li>
 <li><p>[ ] base R URL and read-only file connections</p></li>
 <li><p>[ ] Identify packages whose non-exportable objects may be marshalled similarly, e.g. <strong>ShortRead</strong> and <strong>ncdf4</strong></p></li>
 </ul>
 </li>
-<li><p>Implement efficient, recursive <code><a href="reference/marshal-package.html">marshal()</a></code> for sets such as lists and environments</p></li>
-<li>
-<p>After marshalling an object, or, say, a list of objects, investigate if we can leverage R’s serialization framework to automatically unmarshal objects via <code><a href="https://rdrr.io/r/base/serialize.html">base::serialize(..., refhook = unmarshal)</a></code>. We might be able to do this by having <code><a href="reference/marshal-package.html">marshal()</a></code> appending a “trigger” reference to the marshalled object</p>
-<h2 id="installation">Installation</h2>
+<li><p>[ ] Implement efficient, recursive <code><a href="reference/marshal-package.html">marshal()</a></code> for sets such as lists and environments</p></li>
+<li><p>[ ] After marshalling an object, or, say, a list of objects, investigate if we can leverage R’s serialization framework to automatically unmarshal objects via <code><a href="https://rdrr.io/r/base/serialize.html">base::serialize(..., refhook = unmarshal)</a></code>. We might be able to do this by having <code><a href="reference/marshal-package.html">marshal()</a></code> appending a “trigger” reference to the marshalled object</p></li>
+</ul>
+</div>
+<div id="installation" class="section level2">
+<h2 class="hasAnchor">
+<a href="#installation" class="anchor"></a>Installation</h2>
 <p>R package marshal is only available via <a href="https://github.com/HenrikBengtsson/marshal">GitHub</a> and can be installed in R as:</p>
 <div class="sourceCode"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"HenrikBengtsson/marshal"</span>, ref<span class="op">=</span><span class="st">"master"</span><span class="op">)</span></code></pre></div>
-</li>
-</ul>
 <div id="pre-release-version" class="section level3">
 <h3 class="hasAnchor">
 <a href="#pre-release-version" class="anchor"></a>Pre-release version</h3>
