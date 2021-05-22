@@ -208,6 +208,26 @@
 
 <p>Some types of R objects can be used only in the R session they were created. If used as-is in another R process, such objects often result in an immediate error or in obscure and hard-to-troubleshoot outcomes. Because of this, they cannot be saved to file and re-used at a later time. They can also not be exported to a worker in parallel processing. These objects are sometimes referred to as non-exportable or non-serializable objects. One solution to this problem is to use “marshalling” to encode the R object into an exportable representation that then can be used to re-create a copy of that object in another R process. This package provides a framework for marshalling and unmarshalling R objects such that they can be transferred using functions such as <code><a href="https://rdrr.io/r/base/serialize.html">serialize()</a></code> and <code><a href="https://rdrr.io/r/base/serialize.html">unserialize()</a></code> of base R.</p>
 <p><em>WARNING: This package is currently just a skeleton. Please stay tuned.</em></p>
+<div id="outcome" class="section level2">
+<h2 class="hasAnchor">
+<a href="#outcome" class="anchor"></a>Outcome</h2>
+<p>When <code><a href="reference/marshal-package.html">marshal()</a></code> and <code>unmarshal()</code> methods have been implemented for some of the “non-exportable” object types, it will be possible to use also these objects in a later or another R session and in parallel R workers. Here are some example of functions that will be able to take advantage of marshalling:</p>
+<ul>
+<li>
+<code>raw &lt;- serialize(x, connection = NULL)</code> and <code>y &lt;- unserialize(raw)</code> - serialize object <code>x</code> to a raw byte sequence, from which then the original object can be reconstructed</li>
+<li>
+<code><a href="https://rdrr.io/r/base/save.html">save(x, y, file = "xy.RData")</a></code> and <code><a href="https://rdrr.io/r/base/load.html">load("xy.RData")</a></code> - save and reload R objects to a binary file by their names</li>
+<li>
+<code><a href="https://rdrr.io/r/base/readRDS.html">saveRDS(x, "x.rds")</a></code> and <code>y &lt;- readRDS("x.rds")</code> - save and reload an R object to a binary file</li>
+<li>
+<code><a href="https://rdrr.io/r/base/save.html">save.image()</a></code>: saves the global environment to an ‘.RData’ file. Next time R is launched, this the global environment is recreated. This function is called by for instance <code><a href="https://rdrr.io/r/base/quit.html">quit(save = "yes")</a></code>
+</li>
+<li>
+<code><a href="https://rdrr.io/r/parallel/clusterApply.html">parallel::clusterExport(cl, varlist = c("x", "y"))</a></code> - export variables <code>x</code> and <code>y</code> to a parallel workers</li>
+<li>
+<code>f &lt;- future::future(x * y)</code> - export variables <code>x</code> and <code>y</code> to a parallel workers and evaluate the expression</li>
+</ul>
+</div>
 <div id="roadmap" class="section level2">
 <h2 class="hasAnchor">
 <a href="#roadmap" class="anchor"></a>Roadmap</h2>
@@ -216,7 +236,7 @@
 </ol>
 <ul>
 <li><p>[ ] Start on a rudimentary “marshalling” protection framework based on the internal <strong>future</strong> functions <code>assert_no_references()</code>, <code>find_references()</code> and <code>reference_filters()</code></p></li>
-<li><p>[ ] Document common cases of packages with non-exportable objects as one or more vignettes. The <a href="https://cran.r-project.org/web/packages/future/vignettes/future-4-non-exportable-objects.html">A Future for R: Non-Exportable Objects</a> vignette is a good start. For each package give at least one example that show the mistake, how to detect it with above protection functions, and when possible give workaround examples. Illustrate with both sequential use cases (e.g. <code><a href="https://rdrr.io/r/base/readRDS.html">saveRDS()</a></code> and <code><a href="https://rdrr.io/r/base/readRDS.html">readRDS()</a></code>) and with parallelization (e.g. <code><a href="https://rdrr.io/r/parallel/clusterApply.html">parallel::clusterEvalQ()</a></code>, <code>foreach::foreach() %dopar% { ... }</code>, and <code><a href="https://future.futureverse.org/reference/future.html">future::future()</a></code></p></li>
+<li><p>[ ] Document common cases of packages with non-exportable objects as one or more vignettes. The <a href="https://cran.r-project.org/web/packages/future/vignettes/future-4-non-exportable-objects.html">A Future for R: Non-Exportable Objects</a> vignette is a good start. For each package give at least one example that show the mistake, how to detect it with above protection functions, and when possible give workaround examples. Illustrate with both sequential use cases (e.g. <code><a href="https://rdrr.io/r/base/readRDS.html">saveRDS()</a></code> and <code><a href="https://rdrr.io/r/base/readRDS.html">readRDS()</a></code>) and with parallelization (e.g. <code><a href="https://rdrr.io/r/parallel/clusterApply.html">parallel::clusterEvalQ()</a></code>, <code>foreach::foreach() %dopar% { ... }</code>, and <code><a href="https://rdrr.io/pkg/future/man/future.html">future::future()</a></code></p></li>
 <li><p>[ ] Invite R community to report on more cases to build up a knowledge base and make the <strong>marshal</strong> documentation a go-to reference for explaining the problem</p></li>
 </ul>
 <ol>
