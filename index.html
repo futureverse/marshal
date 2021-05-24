@@ -218,7 +218,7 @@
 </ul>
 </li>
 <li><p>[ ] Implement efficient, recursive <code><a href="reference/marshal-package.html">marshal()</a></code> for sets such as lists and environments</p></li>
-<li><p>[ ] After marshalling an object, or, say, a list of objects, investigate if we can leverage R’s serialization framework to automatically unmarshal objects via <code><a href="https://rdrr.io/r/base/serialize.html">base::serialize(..., refhook = unmarshal)</a></code>. We might be able to do this by having <code><a href="reference/marshal-package.html">marshal()</a></code> appending a “trigger” reference to the marshalled object</p></li>
+<li><p>[ ] After marshalling an object, or, say, a list of objects, investigate if we can leverage R’s serialization framework to automatically unmarshal objects via <code><a href="https://rdrr.io/r/base/serialize.html">base::unserialize(..., refhook = unmarshal)</a></code>. We might be able to do this by having <code><a href="reference/marshal-package.html">marshal()</a></code> appending a “trigger” reference to the marshalled object</p></li>
 </ul>
 </div>
 <div id="installation" class="section level2">
