@@ -54,6 +54,6 @@ When `marshal()` and `unmarshal()` methods have been implemented for some of the
 
   * [ ] Implement efficient, recursive `marshal()` for sets such as lists and environments
   
-  * [ ] After marshalling an object, or, say, a list of objects, investigate if we can leverage R's serialization framework to automatically unmarshal objects via `base::serialize(..., refhook = unmarshal)`.  We might be able to do this by having `marshal()` appending a "trigger" reference to the marshalled object
+  * [ ] After marshalling an object, or, say, a list of objects, investigate if we can leverage R's serialization framework to automatically unmarshal objects via `base::unserialize(..., refhook = unmarshal)`.  We might be able to do this by having `marshal()` appending a "trigger" reference to the marshalled object
 
 
