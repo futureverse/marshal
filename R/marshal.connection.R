@@ -1,4 +1,5 @@
-#' @example incl/marshal.connection.R
+#' @example incl/marshal.file.R
+#' @example incl/marshal.url.R
 #'
 #' @param con A \link[base:connection]{connection}.
 #'
