@@ -1,3 +1,8 @@
+#' @example incl/marshal.connection.R
+#'
+#' @param con A \link[base:connection]{connection}.
+#'
+#' @rdname marshal
 #' @export
 marshal.connection <- function(con, ...) {
   ## Special cases (stdin, stdout, stderr)
