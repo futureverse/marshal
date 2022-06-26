@@ -68,5 +68,8 @@ unmarshal.connection_marshalled <- function(con, ...) {
       seek(con2, where = pos, start = "origin", rw = "read")
     }
   }
+
+  stopifnot(identical(class(con2), marshal_unclass(con)))
+  
   con2
 }

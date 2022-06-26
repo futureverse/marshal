@@ -24,5 +24,8 @@ unmarshal.XMLAbstractNode_marshalled <- function(node, ...) {
   res <- readRDS(con, refhook = XML::xmlDeserializeHook)
   close(con)
   con <- NULL
+
+  stopifnot(identical(class(res), marshal_unclass(node)))
+
   res
 }
