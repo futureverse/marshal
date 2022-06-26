@@ -1,8 +1,8 @@
-pandoc: 1.19.2.4
-pkgdown: 1.6.1
+pandoc: '2.18'
+pkgdown: 2.0.5
 pkgdown_sha: ~
 articles: {}
-last_built: 2021-05-24T03:20Z
+last_built: 2022-06-26T19:59Z
 urls:
   reference: https://marshal.futureverse.org/reference
   article: https://marshal.futureverse.org/articles

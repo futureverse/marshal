@@ -1,9 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://marshal.futureverse.org/404.html</loc>
+  </url>
+  <url>
+    <loc>https://marshal.futureverse.org/CONTRIBUTING.html</loc>
+  </url>
+  <url>
+    <loc>https://marshal.futureverse.org/LICENSE-text.html</loc>
+  </url>
+  <url>
+    <loc>https://marshal.futureverse.org/LICENSE.html</loc>
+  </url>
+  <url>
+    <loc>https://marshal.futureverse.org/OVERVIEW.html</loc>
+  </url>
+  <url>
+    <loc>https://marshal.futureverse.org/authors.html</loc>
+  </url>
+  <url>
     <loc>https://marshal.futureverse.org/index.html</loc>
   </url>
   <url>
+    <loc>https://marshal.futureverse.org/news/index.html</loc>
+  </url>
+  <url>
+    <loc>https://marshal.futureverse.org/reference/find_references.html</loc>
+  </url>
+  <url>
+    <loc>https://marshal.futureverse.org/reference/index.html</loc>
+  </url>
+  <url>
     <loc>https://marshal.futureverse.org/reference/marshal-package.html</loc>
+  </url>
+  <url>
+    <loc>https://marshal.futureverse.org/reference/marshal.html</loc>
   </url>
 </urlset>

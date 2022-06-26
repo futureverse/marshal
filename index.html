@@ -33,6 +33,8 @@
 </script>
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -45,18 +47,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">marshal</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0-9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0-9008</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="reference/index.html">Reference</a>
 </li>
@@ -66,56 +62,56 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://www.futureverse.org/">
+  <a href="https://www.futureverse.org/" class="external-link">
     <span class="fas fa-fast-backward"></span>
      
   </a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Packages
      
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="https://BiocParallel.FutureParam.futureverse.org">BiocParallel.FutureParam</a>
+      <a href="https://BiocParallel.FutureParam.futureverse.org" class="external-link">BiocParallel.FutureParam</a>
     </li>
     <li>
-      <a href="https://doFuture.futureverse.org">doFuture</a>
+      <a href="https://doFuture.futureverse.org" class="external-link">doFuture</a>
     </li>
     <li>
-      <a href="https://furrr.futureverse.org">furrr</a>
+      <a href="https://furrr.futureverse.org" class="external-link">furrr</a>
     </li>
     <li>
-      <a href="https://future.futureverse.org">future</a>
+      <a href="https://future.futureverse.org" class="external-link">future</a>
     </li>
     <li>
-      <a href="https://future.apply.futureverse.org">future.apply</a>
+      <a href="https://future.apply.futureverse.org" class="external-link">future.apply</a>
     </li>
     <li>
-      <a href="https://future.batchtools.futureverse.org">future.batchtools</a>
+      <a href="https://future.batchtools.futureverse.org" class="external-link">future.batchtools</a>
     </li>
     <li>
-      <a href="https://future.callr.futureverse.org">future.callr</a>
+      <a href="https://future.callr.futureverse.org" class="external-link">future.callr</a>
     </li>
     <li>
-      <a href="https://future.tests.futureverse.org">future.tests</a>
+      <a href="https://future.tests.futureverse.org" class="external-link">future.tests</a>
     </li>
     <li>
-      <a href="https://globals.futureverse.org">globals</a>
+      <a href="https://globals.futureverse.org" class="external-link">globals</a>
     </li>
     <li>
-      <a href="https://listenv.futureverse.org">listenv</a>
+      <a href="https://listenv.futureverse.org" class="external-link">listenv</a>
     </li>
     <li>
-      <a href="https://parallelly.futureverse.org">parallelly</a>
+      <a href="https://parallelly.futureverse.org" class="external-link">parallelly</a>
     </li>
     <li>
-      <a href="https://progressr.futureverse.org">progressr</a>
+      <a href="https://progressr.futureverse.org" class="external-link">progressr</a>
     </li>
     <li>
-      <a href="https://future.mapreduce.futureverse.org">future.mapreduce (experimental)</a>
+      <a href="https://future.mapreduce.futureverse.org" class="external-link">future.mapreduce (experimental)</a>
     </li>
     <li>
       <a href="https://marshal.futureverse.org">marshal (experimental)</a>
@@ -123,13 +119,13 @@
   </ul>
 </li>
 <li>
-  <a href="https://cloud.r-project.org/package=marshal">
+  <a href="https://cloud.r-project.org/package=marshal" class="external-link">
     <span class="fab fa-r-project"></span>
      
   </a>
 </li>
 <li>
-  <a href="https://github.com/HenrikBengtsson/marshal/">
+  <a href="https://github.com/HenrikBengtsson/marshal/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -154,85 +150,104 @@
   <div class="contents col-md-9">
 
 
-<div id="marshal-framework-to-marshal-objects-to-be-used-in-another-r-process" class="section level1">
-<div class="page-header"><h1 class="hasAnchor">
-<a href="#marshal-framework-to-marshal-objects-to-be-used-in-another-r-process" class="anchor"></a>marshal: Framework to Marshal Objects to be Used in Another R Process</h1></div>
-<p>Some types of R objects can be used only in the R session they were created. If used as-is in another R process, such objects often result in an immediate error or in obscure and hard-to-troubleshoot outcomes. Because of this, they cannot be saved to file and re-used at a later time. They can also not be exported to a worker in parallel processing. These objects are sometimes referred to as non-exportable or non-serializable objects. One solution to this problem is to use “marshalling” to encode the R object into an exportable representation that then can be used to re-create a copy of that object in another R process. This package provides a framework for marshalling and unmarshalling R objects such that they can be transferred using functions such as <code><a href="https://rdrr.io/r/base/serialize.html">serialize()</a></code> and <code><a href="https://rdrr.io/r/base/serialize.html">unserialize()</a></code> of base R.</p>
+<div class="section level1">
+<div class="page-header"><h1 id="marshal-framework-to-marshal-objects-to-be-used-in-another-r-process">marshal: Framework to Marshal Objects to be Used in Another R Process<a class="anchor" aria-label="anchor" href="#marshal-framework-to-marshal-objects-to-be-used-in-another-r-process"></a>
+</h1></div>
+<p>Some types of R objects can be used only in the R session they were created. If used as-is in another R process, such objects often result in an immediate error or in obscure and hard-to-troubleshoot outcomes. Because of this, they cannot be saved to file and re-used at a later time. They can also not be exported to a worker in parallel processing. These objects are sometimes referred to as non-exportable or non-serializable objects. One solution to this problem is to use “marshalling” to encode the R object into an exportable representation that then can be used to re-create a copy of that object in another R process. This package provides a framework for marshalling and unmarshalling R objects such that they can be transferred using functions such as <code><a href="https://rdrr.io/r/base/serialize.html" class="external-link">serialize()</a></code> and <code><a href="https://rdrr.io/r/base/serialize.html" class="external-link">unserialize()</a></code> of base R.</p>
 <p><em>WARNING: This package is currently just a skeleton. Please stay tuned.</em></p>
-<div id="outcome" class="section level2">
-<h2 class="hasAnchor">
-<a href="#outcome" class="anchor"></a>Outcome</h2>
-<p>When <code><a href="reference/marshal-package.html">marshal()</a></code> and <code>unmarshal()</code> methods have been implemented for some of the “non-exportable” object types, it will be possible to use also these objects in a later or another R session and in parallel R workers. Here are some example of functions that will be able to take advantage of marshalling:</p>
+<div class="section level2">
+<h2 id="outcome">Outcome<a class="anchor" aria-label="anchor" href="#outcome"></a>
+</h2>
+<p>When <code><a href="reference/marshal.html">marshal()</a></code> and <code><a href="reference/marshal.html">unmarshal()</a></code> methods have been implemented for some of the “non-exportable” object types, it will be possible to use also these objects in a later or another R session and in parallel R workers. Here are some example of functions that will be able to take advantage of marshalling:</p>
 <ul>
 <li>
 <code>raw &lt;- serialize(x, connection = NULL)</code> and <code>y &lt;- unserialize(raw)</code> - serialize object <code>x</code> to a raw byte sequence, from which then the original object can be reconstructed</li>
 <li>
-<code><a href="https://rdrr.io/r/base/save.html">save(x, y, file = "xy.RData")</a></code> and <code><a href="https://rdrr.io/r/base/load.html">load("xy.RData")</a></code> - save and reload R objects to a binary file by their names</li>
+<code>save(x, y, file = "xy.RData")</code> and <code>load("xy.RData")</code> - save and reload R objects to a binary file by their names</li>
 <li>
-<code><a href="https://rdrr.io/r/base/readRDS.html">saveRDS(x, "x.rds")</a></code> and <code>y &lt;- readRDS("x.rds")</code> - save and reload an R object to a binary file</li>
+<code>saveRDS(x, "x.rds")</code> and <code>y &lt;- readRDS("x.rds")</code> - save and reload an R object to a binary file</li>
 <li>
-<code><a href="https://rdrr.io/r/base/save.html">save.image()</a></code>: saves the global environment to an ‘.RData’ file. Next time R is launched, this the global environment is recreated. This function is called by for instance <code><a href="https://rdrr.io/r/base/quit.html">quit(save = "yes")</a></code>
+<code><a href="https://rdrr.io/r/base/save.html" class="external-link">save.image()</a></code>: saves the global environment to an ‘.RData’ file. Next time R is launched, this the global environment is recreated. This function is called by for instance <code>quit(save = "yes")</code>
 </li>
 <li>
-<code><a href="https://rdrr.io/r/parallel/clusterApply.html">parallel::clusterExport(cl, varlist = c("x", "y"))</a></code> - export variables <code>x</code> and <code>y</code> to a parallel workers</li>
+<code>parallel::clusterExport(cl, varlist = c("x", "y"))</code> - export variables <code>x</code> and <code>y</code> to a parallel workers</li>
 <li>
 <code>f &lt;- future::future(x * y)</code> - export variables <code>x</code> and <code>y</code> to a parallel workers and evaluate the expression</li>
 </ul>
 </div>
-<div id="roadmap" class="section level2">
-<h2 class="hasAnchor">
-<a href="#roadmap" class="anchor"></a>Roadmap</h2>
-<ol>
-<li>Phase “Getting Started”</li>
-</ol>
-<ul>
-<li><p>[ ] Start on a rudimentary “marshalling” protection framework based on the internal <strong>future</strong> functions <code>assert_no_references()</code>, <code>find_references()</code> and <code>reference_filters()</code></p></li>
-<li><p>[ ] Document common cases of packages with non-exportable objects as one or more vignettes. The <a href="https://cran.r-project.org/web/packages/future/vignettes/future-4-non-exportable-objects.html">A Future for R: Non-Exportable Objects</a> vignette is a good start. For each package give at least one example that show the mistake, how to detect it with above protection functions, and when possible give workaround examples. Illustrate with both sequential use cases (e.g. <code><a href="https://rdrr.io/r/base/readRDS.html">saveRDS()</a></code> and <code><a href="https://rdrr.io/r/base/readRDS.html">readRDS()</a></code>) and with parallelization (e.g. <code><a href="https://rdrr.io/r/parallel/clusterApply.html">parallel::clusterEvalQ()</a></code>, <code>foreach::foreach() %dopar% { ... }</code>, and <code><a href="https://rdrr.io/pkg/future/man/future.html">future::future()</a></code></p></li>
-<li><p>[ ] Invite R community to report on more cases to build up a knowledge base and make the <strong>marshal</strong> documentation a go-to reference for explaining the problem</p></li>
-</ul>
-<ol>
-<li>Phase “Detect &amp; Protection”</li>
-</ol>
-<ul>
+<div class="section level2">
+<h2 id="roadmap">Roadmap<a class="anchor" aria-label="anchor" href="#roadmap"></a>
+</h2>
+<ol style="list-style-type: decimal">
 <li>
-<p>[ ] Detect and report on non-exportable objects via the condition system</p>
-<ul>
-<li><p>[ ] objects with external pointers</p></li>
-<li><p>[ ] connection objects</p></li>
-<li><p>[ ] …</p></li>
+<p>Phase “Getting Started”</p>
+<ul class="task-list">
+<li><p><input type="checkbox" disabled>
+Start on a rudimentary “marshalling” protection framework based on the internal <strong>future</strong> functions <code><a href="reference/find_references.html">assert_no_references()</a></code>, <code><a href="reference/find_references.html">find_references()</a></code> and <code>reference_filters()</code></p></li>
+<li><p><input type="checkbox" disabled>
+Document common cases of packages with non-exportable objects as one or more vignettes. The <a href="https://cran.r-project.org/package=future/vignettes/future-4-non-exportable-objects.html" class="external-link">A Future for R: Non-Exportable Objects</a> vignette is a good start. For each package give at least one example that show the mistake, how to detect it with above protection functions, and when possible give workaround examples. Illustrate with both sequential use cases (e.g. <code><a href="https://rdrr.io/r/base/readRDS.html" class="external-link">saveRDS()</a></code> and <code><a href="https://rdrr.io/r/base/readRDS.html" class="external-link">readRDS()</a></code>) and with parallelization (e.g. <code><a href="https://rdrr.io/r/parallel/clusterApply.html" class="external-link">parallel::clusterEvalQ()</a></code>, <code>foreach::foreach() %dopar% { ... }</code>, and <code><a href="https://future.futureverse.org/reference/future.html" class="external-link">future::future()</a></code></p></li>
+<li><p><input type="checkbox" disabled>
+Invite R community to report on more cases to build up a knowledge base and make the <strong>marshal</strong> documentation a go-to reference for explaining the problem</p></li>
 </ul>
 </li>
-<li><p>[ ] Develop set of acceptance filters to handle false positives, e.g. <code><a href="https://Rdatatable.gitlab.io/data.table/reference/data.table.html">data.table::data.table</a></code> objects</p></li>
-<li><p>[ ] Develop set of reject filters to handle true positives with specific, more informative error messages, e.g. connection objects</p></li>
-</ul>
-<ol>
-<li>Phase “Marshalling”</li>
-</ol>
-<ul>
 <li>
-<p>[ ] Add S3 generic <code><a href="reference/marshal-package.html">marshal()</a></code> to re-deconstruct non-exportable objects of certain classes so that they can be re-constructed using <code>unmarshal()</code> afterward, e.g.</p>
-<ul>
-<li><p>[ ] ‘XMLAbstractDocument’ of <strong>XML</strong>, cf. <code><a href="https://rdrr.io/pkg/XML/man/xmlSerializeHook.html">XML::xmlSerializeHook()</a></code> and <code><a href="https://rdrr.io/pkg/XML/man/xmlSerializeHook.html">XML::xmlDeserializeHook()</a></code></p></li>
-<li><p>[ ] base R URL and read-only file connections</p></li>
-<li><p>[ ] Identify packages whose non-exportable objects may be marshalled similarly, e.g. <strong>ShortRead</strong> and <strong>ncdf4</strong></p></li>
+<p>Phase “Detect &amp; Protection”</p>
+<ul class="task-list">
+<li>
+<p><input type="checkbox" disabled>
+Detect and report on non-exportable objects via the condition system</p>
+<ul class="task-list">
+<li><p><input type="checkbox" disabled>
+objects with external pointers</p></li>
+<li><p><input type="checkbox" disabled>
+connection objects</p></li>
+<li><p><input type="checkbox" disabled>
+…</p></li>
 </ul>
 </li>
-<li><p>[ ] Implement efficient, recursive <code><a href="reference/marshal-package.html">marshal()</a></code> for sets such as lists and environments</p></li>
-<li><p>[ ] After marshalling an object, or, say, a list of objects, investigate if we can leverage R’s serialization framework to automatically unmarshal objects via <code><a href="https://rdrr.io/r/base/serialize.html">base::unserialize(..., refhook = unmarshal)</a></code>. We might be able to do this by having <code><a href="reference/marshal-package.html">marshal()</a></code> appending a “trigger” reference to the marshalled object</p></li>
+<li><p><input type="checkbox" disabled>
+Develop set of acceptance filters to handle false positives, e.g. <code><a href="https://Rdatatable.gitlab.io/data.table/reference/data.table.html" class="external-link">data.table::data.table</a></code> objects</p></li>
+<li><p><input type="checkbox" disabled>
+Develop set of reject filters to handle true positives with specific, more informative error messages, e.g. connection objects</p></li>
+</ul>
+</li>
+<li>
+<p>Phase “Marshalling”</p>
+<ul class="task-list">
+<li>
+<p><input type="checkbox" disabled>
+Add S3 generic <code><a href="reference/marshal.html">marshal()</a></code> to re-deconstruct non-exportable objects of certain classes so that they can be re-constructed using <code><a href="reference/marshal.html">unmarshal()</a></code> afterward, e.g.</p>
+<ul class="task-list">
+<li><p><input type="checkbox" disabled>
+‘XMLAbstractDocument’ of <strong>XML</strong>, cf. <code><a href="https://rdrr.io/pkg/XML/man/xmlSerializeHook.html" class="external-link">XML::xmlSerializeHook()</a></code> and <code><a href="https://rdrr.io/pkg/XML/man/xmlSerializeHook.html" class="external-link">XML::xmlDeserializeHook()</a></code></p></li>
+<li><p><input type="checkbox" disabled>
+base R URL and read-only file connections</p></li>
+<li><p><input type="checkbox" disabled>
+Identify packages whose non-exportable objects may be marshalled similarly, e.g. <strong>ShortRead</strong> and <strong>ncdf4</strong></p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<ul class="task-list">
+<li><p><input type="checkbox" disabled>
+Implement efficient, recursive <code><a href="reference/marshal.html">marshal()</a></code> for sets such as lists and environments</p></li>
+<li><p><input type="checkbox" disabled>
+After marshalling an object, or, say, a list of objects, investigate if we can leverage R’s serialization framework to automatically unmarshal objects via <code>base::unserialize(..., refhook = unmarshal)</code>. We might be able to do this by having <code><a href="reference/marshal.html">marshal()</a></code> appending a “trigger” reference to the marshalled object</p></li>
 </ul>
 </div>
-<div id="installation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#installation" class="anchor"></a>Installation</h2>
-<p>R package marshal is only available via <a href="https://github.com/HenrikBengtsson/marshal">GitHub</a> and can be installed in R as:</p>
-<div class="sourceCode"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"HenrikBengtsson/marshal"</span>, ref<span class="op">=</span><span class="st">"master"</span><span class="op">)</span></code></pre></div>
-<div id="pre-release-version" class="section level3">
-<h3 class="hasAnchor">
-<a href="#pre-release-version" class="anchor"></a>Pre-release version</h3>
+<div class="section level2">
+<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h2>
+<p>R package marshal is only available via <a href="https://github.com/HenrikBengtsson/marshal" class="external-link">GitHub</a> and can be installed in R as:</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"HenrikBengtsson/marshal"</span>, ref<span class="op">=</span><span class="st">"master"</span><span class="op">)</span></span></code></pre></div>
+<div class="section level3">
+<h3 id="pre-release-version">Pre-release version<a class="anchor" aria-label="anchor" href="#pre-release-version"></a>
+</h3>
 <p>To install the pre-release version that is available in Git branch <code>develop</code> on GitHub, use:</p>
-<div class="sourceCode"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"HenrikBengtsson/marshal"</span>, ref<span class="op">=</span><span class="st">"develop"</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"HenrikBengtsson/marshal"</span>, ref<span class="op">=</span><span class="st">"develop"</span><span class="op">)</span></span></code></pre></div>
 <p>This will install the package from source.</p>
 </div>
 </div>
@@ -242,57 +257,65 @@
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <div class="links">
-<h2>Links</h2>
+<h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
-<li>Browse source code at <br><a href="https://github.com/HenrikBengtsson/marshal/">https://​github.com/​HenrikBengtsson/​marshal/​</a>
-</li>
-<li>Report a bug at <br><a href="https://github.com/HenrikBengtsson/marshal/issues">https://​github.com/​HenrikBengtsson/​marshal/​issues</a>
-</li>
-<li>Roadmap/Milestones at <br><a href="https://github.com/HenrikBengtsson/marshal/milestones">https://​github.com/​HenrikBengtsson/​marshal/​milestones</a>
-</li>
-<li>The Futureverse Project at <br><a href="https://www.futureverse.org/">https://​www.futureverse.org/​</a>
-</li>
-<li>Futureverse User Forum (new!) at <br><a href="https://github.com/HenrikBengtsson/future/discussions">https://​github.com/​HenrikBengtsson/​future/​discussions</a>
-</li>
+<li><a href="https://github.com/HenrikBengtsson/marshal/" class="external-link">Browse source code</a></li>
+<li><a href="https://github.com/HenrikBengtsson/marshal/issues" class="external-link">Report a bug</a></li>
+<li><a href="https://github.com/HenrikBengtsson/marshal/milestones" class="external-link">Roadmap/Milestones</a></li>
+<li><a href="https://www.futureverse.org/" class="external-link">The Futureverse Project</a></li>
+<li><a href="https://github.com/HenrikBengtsson/future/discussions" class="external-link">Futureverse User Forum (new!)</a></li>
 </ul>
 </div>
+
 <div class="license">
-<h2>License</h2>
+<h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
 <li><a href="LICENSE.html">Full license</a></li>
-<li><small><a href="https://opensource.org/licenses/mit-license.php">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a></small></li>
+<li><small><a href="https://opensource.org/licenses/mit-license.php" class="external-link">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a></small></li>
 </ul>
 </div>
+
 <div class="community">
-<h2>Community</h2>
+<h2 data-toc-skip>Community</h2>
 <ul class="list-unstyled">
 <li><a href="CONTRIBUTING.html">Contributing guide</a></li>
 </ul>
 </div>
+
+<div class="citation">
+<h2 data-toc-skip>Citation</h2>
+<ul class="list-unstyled">
+<li><a href="authors.html#citation">Citing marshal</a></li>
+</ul>
+</div>
+
 <div class="developers">
-<h2>Developers</h2>
+<h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
 <li>Henrik Bengtsson <br><small class="roles"> Author, maintainer, copyright holder </small>  </li>
 </ul>
 </div>
 
-  <div class="dev-status">
-<h2>Dev status</h2>
+<div class="dev-status">
+<h2 data-toc-skip>Dev status</h2>
 <ul class="list-unstyled">
-<li><a href="https://github.com/HenrikBengtsson/marshal/actions?query=workflow%3AR-CMD-check"><img border="0" src="https://github.com/HenrikBengtsson/marshal/workflows/R-CMD-check/badge.svg?branch=develop" alt="Build status"></a></li>
-<li><a href="https://lifecycle.r-lib.org/articles/stages.html"><img border="0" src="reference/figures/lifecycle-skeleton-orange.svg" alt="Life cycle: skeleton"></a></li>
+<li><a href="https://github.com/HenrikBengtsson/marshal/actions?query=workflow%3AR-CMD-check" class="external-link"><img border="0" src="https://github.com/HenrikBengtsson/marshal/workflows/R-CMD-check/badge.svg?branch=develop" alt="Build status"></a></li>
+<li><a href="https://lifecycle.r-lib.org/articles/stages.html" class="external-link"><img border="0" src="reference/figures/lifecycle-skeleton-orange.svg" alt="Life cycle: skeleton"></a></li>
 </ul>
 </div>
-</div>
+
+  </div>
 </div>
 
 
       <footer><div class="copyright">
-  <p>Developed by Henrik Bengtsson.</p>
+  <p></p>
+<p>Developed by Henrik Bengtsson.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1 and <a href="https://github.com/HenrikBengtsson/pkgdown.extras/">pkgdown.extras</a> 0.0.0.9002.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5</p> and <a href="https://github.com/HenrikBengtsson/pkgdown.extras/">pkgdown.extras</a> 0.0.0.9004.</p>
 </div>
 
       </footer>
