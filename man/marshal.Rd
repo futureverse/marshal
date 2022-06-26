@@ -12,7 +12,7 @@ marshal(...)
 
 unmarshal(...)
 
-\method{marshal}{XMLAbstractNode}(node, ...)
+\method{marshal}{XMLAbstractNode}(xml, ...)
 
 \method{marshal}{connection}(con, ...)
 }
@@ -20,7 +20,8 @@ unmarshal(...)
 \item{\dots}{The objects to be marshalled, or unmarshalled,
 followed by additional arguments passed to the S3 method.}
 
-\item{node}{An \link[XML:XMLAbstractNode-class]{XML::XMLAbstractNode} object.}
+\item{xml}{An \link[XML:XMLAbstractNode-class]{XML::XMLAbstractNode} or
+\link[XML:XMLAbstractDocument-class]{XML::XMLAbstractDocument}.}
 
 \item{con}{A \link[base:connection]{connection}.}
 }
@@ -43,6 +44,16 @@ node2 <- unmarshal(node_)
 print(node2)
 
 stopifnot(all.equal(node2, node))
+
+
+doc <- XML::xmlParse(system.file("exampleData", "tides.xml", package = "XML"))
+
+## Marshal XMLAbstractDocument object
+doc_ <- marshal(doc)
+## Unmarshal XMLAbstractDocument object
+doc2 <- unmarshal(doc_)
+
+stopifnot(all.equal(doc2, doc))
 tf <- tempfile()
 cat(file = tf, letters, sep = "")
 

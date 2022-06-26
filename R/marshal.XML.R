@@ -1,31 +1,40 @@
-#' @param node An \link[XML:XMLAbstractNode-class]{XML::XMLAbstractNode} object.
+#' @param xml
+#' An \link[XML:XMLAbstractNode-class]{XML::XMLAbstractNode} or
+#' \link[XML:XMLAbstractDocument-class]{XML::XMLAbstractDocument}.
 #'
 #' @example incl/marshal.XML.R
 #'
 #' @rdname marshal
 #' @export
-marshal.XMLAbstractNode <- function(node, ...) {
-  ## Marshal to a raw array
-  con <- rawConnection(raw(), open = "wb")
-  on.exit(if (!is.null(con)) close(con))
-  saveRDS(node, file = con, refhook = XML::xmlSerializeHook)
-  res <- rawConnectionValue(con)
-  close(con)
-  con <- NULL
-  class(res) <- marshal_class(node)
-  res
+marshal.XMLAbstractNode <- function(xml, ...) {
+  marshal_XML(xml, ...)
 }
 
 #' @export
-unmarshal.XMLAbstractNode_marshalled <- function(node, ...) {
-  ## Marshal to a raw array
-  con <- rawConnection(node, open = "rb")
-  on.exit(if (!is.null(con)) close(con))
-  res <- readRDS(con, refhook = XML::xmlDeserializeHook)
-  close(con)
-  con <- NULL
+unmarshal.XMLAbstractNode_marshalled <- function(xml, ...) {
+  unmarshal_XML(xml, ...)
+}
 
-  stopifnot(identical(class(res), marshal_unclass(node)))
 
+#' @export
+marshal.XMLAbstractDocument <- function(xml, ...) {
+  marshal_XML(xml, ...)
+}
+
+#' @export
+unmarshal.XMLAbstractDocument_marshalled <- function(xml, ...) {
+  unmarshal_XML(xml, ...)
+}
+
+
+marshal_XML <- function(xml, ...) {
+  res <- XML::xmlSerializeHook(xml)
+  class(res) <- marshal_class(xml)
+  res
+}
+
+unmarshal_XML <- function(xml, ...) {
+  res <- XML::xmlDeserializeHook(xml)
+  stopifnot(identical(class(res), marshal_unclass(xml)))
   res
 }
