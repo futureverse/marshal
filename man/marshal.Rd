@@ -33,16 +33,16 @@ An unmarshaled version of the original object.
 Marshal and Unmarshal R Objects
 }
 \examples{
-xml <- XML::xmlParseString("<a><b>c</b></a>")
-print(xml)
+node <- XML::xmlParseString("<a><b>c</b></a>")
+print(node)
 
 ## Marshal XMLAbstractNode object
-xml_ <- marshal(xml)
+node_ <- marshal(node)
 ## Unmarshal XMLAbstractNode object
-xml2 <- unmarshal(xml_)
-print(xml2)
+node2 <- unmarshal(node_)
+print(node2)
 
-stopifnot(all.equal(xml2, xml))
+stopifnot(all.equal(node2, node))
 tf <- tempfile()
 cat(file = tf, letters, sep = "")
 
