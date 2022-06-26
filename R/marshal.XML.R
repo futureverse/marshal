@@ -9,11 +9,11 @@ marshal.XMLAbstractNode <- function(node, ...) {
   con <- rawConnection(raw(), open = "wb")
   on.exit(if (!is.null(con)) close(con))
   saveRDS(node, file = con, refhook = XML::xmlSerializeHook)
-  raw <- rawConnectionValue(con)
+  res <- rawConnectionValue(con)
   close(con)
   con <- NULL
-  class(raw) <- c(paste(class(node), "_marshalled", sep = ""), "marshalled")
-  raw
+  class(res) <- marshal_class(node)
+  res
 }
 
 #' @export

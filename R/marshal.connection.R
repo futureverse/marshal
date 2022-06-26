@@ -11,7 +11,6 @@ marshal.connection <- function(con, ...) {
     if (con == 0L) {
       stop("Cannot marshal the standard input connection")
     }
-    class(con) <- c(class(con), "marshalled")
   } else {
     state <- summary(con)
     
@@ -32,16 +31,14 @@ marshal.connection <- function(con, ...) {
     ## Invalidate connection (prevent misuse)
     con[1] <- -1L
     attr(con, "state") <- state
-    class(con) <- c(class(con), "marshalled")
   }
+  class(con) <- marshal_class(con)
   con
 }
 
 
 #' @export
-unmarshal.connection <- function(con, ...) {
-  stopifnot(inherits(con, "marshalled"))
-  
+unmarshal.connection_marshalled <- function(con, ...) {
   ## Special cases (stdin, stdout, stderr)
   if (0 <= con && con <= 2L) {
     con2 <- con

@@ -3,6 +3,6 @@
 S3method(marshal,XMLAbstractNode)
 S3method(marshal,connection)
 S3method(unmarshal,XMLAbstractNode_marshalled)
-S3method(unmarshal,connection)
+S3method(unmarshal,connection_marshalled)
 export(marshal)
 export(unmarshal)
