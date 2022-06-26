@@ -17,3 +17,10 @@ marshal <- function(...) { UseMethod("marshal") }
 unmarshal <- function(...) {
   UseMethod("unmarshal")
 }
+
+#' @export
+unmarshal.marshalled <- function(object, ...) {
+  stopifnot(is.function(object[["unmarshal"]]))
+  object[["unmarshal"]](object, ...)
+}
+

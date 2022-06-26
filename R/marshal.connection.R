@@ -47,14 +47,13 @@ marshal.connection <- function(con, ...) {
   ## of the unmarshal() environment
   rm(list = c("con", names(list(...))))
 
-  res[["unmarshal"]] <- unmarshal.connection_marshalled
+  res[["unmarshal"]] <- unmarshal_connection
   assert_no_references(res)
   res
 }
 
 
-#' @export
-unmarshal.connection_marshalled <- function(con, ...) {
+unmarshal_connection <- function(con, ...) {
   con <- con[["marshalled"]]
   
   ## Special cases (stdin, stdout, stderr)

@@ -15,18 +15,12 @@ marshal.SpatVector <- function(terra, ...) {
   ## of the unmarshal() environment
   rm(list = c("terra", names(list(...))))
   
-  res[["unmarshal"]] <- function(x) {
-    object <- x[["marshalled"]]
-    res <- terra::vect(object)
-    stopifnot(all.equal(class(res), marshal_unclass(x), check.attributes = FALSE))
-    res
-  }
+  res[["unmarshal"]] <- unmarshal_SpatVector
   assert_no_references(res)
   res
 }
 
-#' @export
-unmarshal.SpatVector_marshalled <- function(terra, ...) {
+unmarshal_SpatVector <- function(terra, ...) {
   object <- terra[["marshalled"]]
   res <- terra::vect(object, ...)
   stopifnot(all.equal(class(res), marshal_unclass(terra), check.attributes = FALSE))

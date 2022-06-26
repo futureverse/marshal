@@ -11,21 +11,9 @@ marshal.XMLAbstractNode <- function(xml, ...) {
 }
 
 #' @export
-unmarshal.XMLAbstractNode_marshalled <- function(xml, ...) {
-  unmarshal_XML(xml, ...)
-}
-
-
-#' @export
 marshal.XMLAbstractDocument <- function(xml, ...) {
   marshal_XML(xml, ...)
 }
-
-#' @export
-unmarshal.XMLAbstractDocument_marshalled <- function(xml, ...) {
-  unmarshal_XML(xml, ...)
-}
-
 
 marshal_XML <- function(xml, ...) {
   res <- list(
@@ -37,12 +25,7 @@ marshal_XML <- function(xml, ...) {
   ## of the unmarshal() environment
   rm(list = c("xml", names(list(...))))
   
-  res[["unmarshal"]] <- function(x) {
-    object <- xml[["marshalled"]]
-    res <- XML::xmlDeserializeHook(object)
-    stopifnot(identical(class(res), marshal_unclass(object)))
-    res
-  }
+  res[["unmarshal"]] <- unmarshal_XML
   
   assert_no_references(res)
   res
