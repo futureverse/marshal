@@ -6,7 +6,7 @@ Suggests:
     parallel,
     terra,
     XML
-Version: 0.0.0-9005
+Version: 0.0.0-9006
 Authors@R: 
     person(given = "Henrik", family = "Bengtsson",
            role = c("aut", "cre", "cph"),

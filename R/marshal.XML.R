@@ -28,13 +28,22 @@ unmarshal.XMLAbstractDocument_marshalled <- function(xml, ...) {
 
 
 marshal_XML <- function(xml, ...) {
-  res <- XML::xmlSerializeHook(xml)
+  res <- list(
+    marshalled = XML::xmlSerializeHook(xml),
+    unmarshal = function(x) {
+      object <- xml[["marshalled"]]
+      res <- XML::xmlDeserializeHook(object)
+      stopifnot(identical(class(res), marshal_unclass(object)))
+      res
+    }
+  )
   class(res) <- marshal_class(xml)
   res
 }
 
 unmarshal_XML <- function(xml, ...) {
-  res <- XML::xmlDeserializeHook(xml)
+  object <- xml[["marshalled"]]
+  res <- XML::xmlDeserializeHook(object)
   stopifnot(identical(class(res), marshal_unclass(xml)))
   res
 }

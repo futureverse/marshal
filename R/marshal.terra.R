@@ -7,7 +7,13 @@
 #' @export
 marshal.SpatVector <- function(terra, ...) {
   res <- list(
-    marshalled = terra::wrap(terra, ...)
+    marshalled = terra::wrap(terra, ...),
+    unmarshal = function(x) {
+      object <- x[["marshalled"]]
+      res <- terra::vect(object, ...)
+      stopifnot(all.equal(class(res), marshal_unclass(x), check.attributes = FALSE))
+      res
+    }
   )
   class(res) <- marshal_class(terra)
   res
