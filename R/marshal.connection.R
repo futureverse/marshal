@@ -6,13 +6,15 @@
 #' @rdname marshal
 #' @export
 marshal.connection <- function(con, ...) {
+  con_ <- con
+  
   ## Special cases (stdin, stdout, stderr)
-  if (con <= 2L) {
-    if (con == 0L) {
+  if (con_ <= 2L) {
+    if (con_ == 0L) {
       stop("Cannot marshal the standard input connection")
     }
   } else {
-    state <- summary(con)
+    state <- summary(con_)
     
     ## Can only marshal read-only connections
     if (! state[["mode"]] %in% c("r", "rt", "rb")) {
@@ -21,23 +23,32 @@ marshal.connection <- function(con, ...) {
 
     ## Can only marshal unopened or seekable connections
     if (state[["opened"]] == "opened") {
-      if (!isSeekable(con)) {
+      if (!isSeekable(con_)) {
         stop("Can not marshal a non-seekable open connection")
       }
       ## Record current position
-      state[["position"]] <- seek(con, where = NA, origin = "start", rw = "read")
+      state[["position"]] <- seek(con_, where = NA, origin = "start", rw = "read")
     }
 
     ## Invalidate connection (prevent misuse)
-    con[1] <- -1L
-    attr(con, "state") <- state
+    con_[1] <- -1L
+    attr(con_, "state") <- state
   }
 
+  ## Drop external pointer reference
+  attr(con_, "conn_id") <- NULL
+
   res <- list(
-    marshalled = con,
-    unmarshal = unmarshal.connection_marshalled
+    marshalled = con_
   )
   class(res) <- marshal_class(con)
+
+  ## IMPORTANT: We don't any of the input arguments to be part
+  ## of the unmarshal() environment
+  rm(list = c("con", names(list(...))))
+
+  res[["unmarshal"]] <- unmarshal.connection_marshalled
+  assert_no_references(res)
   res
 }
 
