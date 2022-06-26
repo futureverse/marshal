@@ -32,13 +32,20 @@ marshal.connection <- function(con, ...) {
     con[1] <- -1L
     attr(con, "state") <- state
   }
-  class(con) <- marshal_class(con)
-  con
+
+  res <- list(
+    marshalled = con,
+    unmarshal = unmarshal.connection_marshalled
+  )
+  class(res) <- marshal_class(con)
+  res
 }
 
 
 #' @export
 unmarshal.connection_marshalled <- function(con, ...) {
+  con <- con[["marshalled"]]
+  
   ## Special cases (stdin, stdout, stderr)
   if (0 <= con && con <= 2L) {
     con2 <- con
