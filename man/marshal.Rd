@@ -39,26 +39,28 @@ An unmarshaled version of the original object.
 Marshal and Unmarshal R Objects
 }
 \examples{
-node <- XML::xmlParseString("<a><b>c</b></a>")
-print(node)
-
-## Marshal XMLAbstractNode object
-node_ <- marshal(node)
-## Unmarshal XMLAbstractNode object
-node2 <- unmarshal(node_)
-print(node2)
-
-stopifnot(all.equal(node2, node))
-
-
-doc <- XML::xmlParse(system.file("exampleData", "tides.xml", package = "XML"))
-
-## Marshal XMLAbstractDocument object
-doc_ <- marshal(doc)
-## Unmarshal XMLAbstractDocument object
-doc2 <- unmarshal(doc_)
-
-stopifnot(all.equal(doc2, doc))
+if (requireNamespace("XML", quietly = TRUE)) {
+  node <- XML::xmlParseString("<a><b>c</b></a>")
+  print(node)
+  
+  ## Marshal XMLAbstractNode object
+  node_ <- marshal(node)
+  ## Unmarshal XMLAbstractNode object
+  node2 <- unmarshal(node_)
+  print(node2)
+  
+  stopifnot(all.equal(node2, node))
+  
+  
+  doc <- XML::xmlParse(system.file("exampleData", "tides.xml", package = "XML"))
+  
+  ## Marshal XMLAbstractDocument object
+  doc_ <- marshal(doc)
+  ## Unmarshal XMLAbstractDocument object
+  doc2 <- unmarshal(doc_)
+  
+  stopifnot(all.equal(doc2, doc))
+}
 tf <- tempfile()
 cat(file = tf, letters, sep = "")
 
@@ -111,17 +113,17 @@ stopifnot(identical(bfr2, bfr))
 close(con)
 close(con2)
 
-library(terra)
-
-file <- system.file("ex/lux.shp", package = "terra")
-v <- vect(file)
-
-## Marshal SpatVector object
-v_ <- marshal(v)
-
-## Unmarshal SpatVector object
-v2 <- unmarshal(v_)
-
-stopifnot(all.equal(v2, v, check.attributes = FALSE))
+if (requireNamespace("terra", quietly = TRUE)) {
+  file <- system.file("ex/lux.shp", package = "terra")
+  v <- terra::vect(file)
+  
+  ## Marshal SpatVector object
+  v_ <- marshal(v)
+  
+  ## Unmarshal SpatVector object
+  v2 <- unmarshal(v_)
+  
+  stopifnot(all.equal(v2, v, check.attributes = FALSE))
+}
 
 }
