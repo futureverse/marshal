@@ -22,6 +22,12 @@ A \code{marshalled} object as described in \code{\link[=marshal]{marshal()}}.
 \description{
 Marshal and Unmarshal an 'XML' object
 }
+\details{
+\code{\link[XML:xmlSerializeHook]{XML::xmlSerializeHook()}} is used to produce a marshalled version
+of the original object.
+\code{\link[XML:xmlSerializeHook]{XML::xmlDeserializeHook()}} is used to reconstruct a version of the
+original object from the marshalled object.
+}
 \examples{
 if (requireNamespace("XML", quietly = TRUE)) {
   node <- XML::xmlParseString("<a><b>c</b></a>")

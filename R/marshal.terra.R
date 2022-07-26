@@ -8,6 +8,12 @@
 #' @return
 #' A `marshalled` object as described in [marshal()].
 #'
+#' @details
+#' [terra::wrap()] is used to produce a marshalled version
+#' of the original object.
+#' [terra::vect()] is used to reconstruct a version of the
+#' original object from the marshalled object.
+#'
 #' @example incl/marshal.terra.R
 #'
 #' @rdname marshal.terra

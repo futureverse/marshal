@@ -9,6 +9,12 @@
 #' @return
 #' A `marshalled` object as described in [marshal()].
 #'
+#' @details
+#' [XML::xmlSerializeHook()] is used to produce a marshalled version
+#' of the original object.
+#' [XML::xmlDeserializeHook()] is used to reconstruct a version of the
+#' original object from the marshalled object.
+#'
 #' @example incl/marshal.XML.R
 #'
 #' @rdname marshal.XML

@@ -18,6 +18,12 @@ A \code{marshalled} object as described in \code{\link[=marshal]{marshal()}}.
 \description{
 Marshal and Unmarshal an 'terra' object
 }
+\details{
+\code{\link[terra:wrap]{terra::wrap()}} is used to produce a marshalled version
+of the original object.
+\code{\link[terra:vect]{terra::vect()}} is used to reconstruct a version of the
+original object from the marshalled object.
+}
 \examples{
 if (requireNamespace("terra", quietly = TRUE)) {
   file <- system.file("ex/lux.shp", package = "terra")
