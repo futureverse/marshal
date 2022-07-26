@@ -7,6 +7,13 @@
 #' @return
 #' A `marshalled` object as described in [marshal()].
 #'
+#' @section Limitations:
+#' Not all connections can be marshalled, specifically we:
+#'
+#'  * cannot marshal connections stdin (0), stdout (1), and stderr (2)
+#'  * can only marshal _read-only_ connections
+#'  * can only marshal _unopened_ or _seekable_ connections
+#'
 #' @example incl/marshal.file.R
 #' @example incl/marshal.url.R
 #'

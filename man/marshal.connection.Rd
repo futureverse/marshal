@@ -17,6 +17,16 @@ A \code{marshalled} object as described in \code{\link[=marshal]{marshal()}}.
 \description{
 Marshal and Unmarshal an R Connection
 }
+\section{Limitations}{
+
+Not all connections can be marshalled, specifically we:
+\itemize{
+\item cannot marshal connections stdin (0), stdout (1), and stderr (2)
+\item can only marshal \emph{read-only} connections
+\item can only marshal \emph{unopened} or \emph{seekable} connections
+}
+}
+
 \examples{
 tf <- tempfile()
 cat(file = tf, letters, sep = "")
