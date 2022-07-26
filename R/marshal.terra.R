@@ -1,4 +1,4 @@
-#' Marshal and Unmarshal an 'terra' object
+#' Marshal and Unmarshal a 'terra' object
 #'
 #' @param terra
 #' An \link[terra:SpatVector-class]{terra::SpatVector}.
