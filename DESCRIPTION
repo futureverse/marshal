@@ -3,7 +3,6 @@ Title: Framework to Marshal Objects to be Used in Another R Process
 Depends:
     R (>= 4.0.0)
 Suggests:
-    parallel,
     terra,
     XML
 Version: 0.0.0-9009
