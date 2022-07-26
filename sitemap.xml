@@ -43,6 +43,12 @@
     <loc>https://marshal.futureverse.org/reference/marshal.html</loc>
   </url>
   <url>
+    <loc>https://marshal.futureverse.org/reference/marshal.inline.html</loc>
+  </url>
+  <url>
     <loc>https://marshal.futureverse.org/reference/marshal.terra.html</loc>
+  </url>
+  <url>
+    <loc>https://marshal.futureverse.org/reference/marshal.xml2.html</loc>
   </url>
 </urlset>
