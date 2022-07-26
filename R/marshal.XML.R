@@ -21,8 +21,8 @@ marshal_XML <- function(xml, ...) {
   )
   class(res) <- marshal_class(xml)
 
-  ## IMPORTANT: We don't any of the input arguments to be part
-  ## of the unmarshal() environment
+  ## IMPORTANT: We don't want any of the input arguments
+  ## to be part of the unmarshal() environment
   rm(list = c("xml", names(list(...))))
   
   res[["unmarshal"]] <- unmarshal_XML

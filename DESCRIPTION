@@ -6,7 +6,7 @@ Suggests:
     parallel,
     terra,
     XML
-Version: 0.0.0-9008
+Version: 0.0.0-9009
 Authors@R: 
     person(given = "Henrik", family = "Bengtsson",
            role = c("aut", "cre", "cph"),
@@ -19,4 +19,4 @@ ByteCompile: TRUE
 URL: https://marshal.futureverse.org, https://github.com/HenrikBengtsson/marshal
 BugReports: https://github.com/HenrikBengtsson/marshal/issues
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.0
+RoxygenNote: 7.2.1

@@ -43,8 +43,8 @@ marshal.connection <- function(con, ...) {
   )
   class(res) <- marshal_class(con)
 
-  ## IMPORTANT: We don't any of the input arguments to be part
-  ## of the unmarshal() environment
+  ## IMPORTANT: We don't want any of the input arguments
+  ## to be part of the unmarshal() environment
   rm(list = c("con", names(list(...))))
 
   res[["unmarshal"]] <- unmarshal_connection

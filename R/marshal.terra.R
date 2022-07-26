@@ -1,8 +1,6 @@
 #' @param terra
 #' An \link[terra:SpatVector-class]{terra::SpatVector}.
 #'
-#' @example incl/marshal.terra.R
-#'
 #' @rdname marshal
 #' @export
 marshal.SpatVector <- function(terra, ...) {
@@ -11,8 +9,8 @@ marshal.SpatVector <- function(terra, ...) {
   )
   class(res) <- marshal_class(terra)
   
-  ## IMPORTANT: We don't any of the input arguments to be part
-  ## of the unmarshal() environment
+  ## IMPORTANT: We don't want any of the input arguments
+  ## to be part of the unmarshal() environment
   rm(list = c("terra", names(list(...))))
   
   res[["unmarshal"]] <- unmarshal_SpatVector
