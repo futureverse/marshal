@@ -1,9 +1,17 @@
-#' @example incl/marshal.file.R
-#' @example incl/marshal.url.R
+#' Marshal and Unmarshal an R Connection
 #'
 #' @param con A \link[base:connection]{connection}.
 #'
-#' @rdname marshal
+#' @param \dots Not used.
+#'
+#' @return
+#' A `marshalled` object as described in [marshal()].
+#'
+#' @example incl/marshal.file.R
+#' @example incl/marshal.url.R
+#'
+#' @rdname marshal.connection
+#' @aliases marshal.connection
 #' @export
 marshal.connection <- function(con, ...) {
   con_ <- con

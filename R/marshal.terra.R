@@ -1,11 +1,21 @@
+#' Marshal and Unmarshal an 'terra' object
+#'
 #' @param terra
 #' An \link[terra:SpatVector-class]{terra::SpatVector}.
 #'
-#' @rdname marshal
+#' @param \dots Not used.
+#'
+#' @return
+#' A `marshalled` object as described in [marshal()].
+#'
+#' @example incl/marshal.terra.R
+#'
+#' @rdname marshal.terra
+#' @aliases marshal.terra
 #' @export
 marshal.SpatVector <- function(terra, ...) {
   res <- list(
-    marshalled = terra::wrap(terra, ...)
+    marshalled = terra::wrap(terra)
   )
   class(res) <- marshal_class(terra)
   

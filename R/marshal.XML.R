@@ -1,15 +1,24 @@
+#' Marshal and Unmarshal an 'XML' object
+#'
 #' @param xml
 #' An \link[XML:XMLAbstractNode-class]{XML::XMLAbstractNode} or
 #' \link[XML:XMLAbstractDocument-class]{XML::XMLAbstractDocument}.
 #'
+#' @param \dots Not used.
+#'
+#' @return
+#' A `marshalled` object as described in [marshal()].
+#'
 #' @example incl/marshal.XML.R
 #'
-#' @rdname marshal
+#' @rdname marshal.XML
+#' @aliases marshal.XML
 #' @export
 marshal.XMLAbstractNode <- function(xml, ...) {
   marshal_XML(xml, ...)
 }
 
+#' @rdname marshal.XML
 #' @export
 marshal.XMLAbstractDocument <- function(xml, ...) {
   marshal_XML(xml, ...)
