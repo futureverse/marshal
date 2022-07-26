@@ -16,12 +16,12 @@
 A \code{marshalled} object as described in \code{\link[=marshal]{marshal()}}.
 }
 \description{
-\emph{WARNING: This is very limited proof-of-concept!}
+\emph{WARNING: This is very limited proof of concept!}
 }
 \details{
 Currently, it is only possible to marshal a function:
 \itemize{
-\item of class \code{CFunc} that was created without "includes" or "otherdefs"
+\item of class \code{CFunc} that was created \emph{without} "includes" or "otherdefs"
 }
 }
 \examples{
