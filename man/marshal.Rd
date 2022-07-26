@@ -20,8 +20,8 @@ unmarshal(...)
 \method{marshal}{SpatVector}(terra, ...)
 }
 \arguments{
-\item{\dots}{The objects to be marshalled, or unmarshalled,
-followed by additional arguments passed to the S3 method.}
+\item{\dots}{The object to be marshalled, or unmarshalled,
+followed by additional arguments passed to the specific S3 method.}
 
 \item{xml}{An \link[XML:XMLAbstractNode-class]{XML::XMLAbstractNode} or
 \link[XML:XMLAbstractDocument-class]{XML::XMLAbstractDocument}.}
@@ -31,9 +31,15 @@ followed by additional arguments passed to the S3 method.}
 \item{terra}{An \link[terra:SpatVector-class]{terra::SpatVector}.}
 }
 \value{
-A marshaled version of the original object.
+\code{marshal()} returns a \code{marshalled} object, which is a list with
+components:
+\itemize{
+\item \code{marshalled}: marshalled version of the original object
+\item \code{unmarshal}: function that takes the \code{marshalled} object as
+input and returns an unmarshalled version of the original object.
+}
 
-An unmarshaled version of the original object.
+\code{unmarshal()} returns an unmarshaled version of the original object.
 }
 \description{
 Marshal and Unmarshal R Objects

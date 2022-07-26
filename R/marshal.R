@@ -1,16 +1,20 @@
 #' Marshal and Unmarshal R Objects
 #'
-#' @param \dots The objects to be marshalled, or unmarshalled,
-#' followed by additional arguments passed to the S3 method.
+#' @param \dots The object to be marshalled, or unmarshalled,
+#' followed by additional arguments passed to the specific S3 method.
 #'
 #' @return
-#' A marshaled version of the original object.
+#' `marshal()` returns a `marshalled` object, which is a list with
+#' components:
+#'   * `marshalled`: marshalled version of the original object
+#'   * `unmarshal`: function that takes the `marshalled` object as
+#'     input and returns an unmarshalled version of the original object.
 #'
 #' @export
 marshal <- function(...) { UseMethod("marshal") }
 
 #' @return
-#' An unmarshaled version of the original object.
+#' `unmarshal()` returns an unmarshaled version of the original object.
 #'
 #' @rdname marshal
 #' @export
