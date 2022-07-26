@@ -23,7 +23,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">marshal</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0-9008</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0-9010</span>
       </span>
     </div>
 
@@ -116,7 +116,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Marshal and Unmarshal R Objects</h1>
-    <small class="dont-index">Source: <a href="https://github.com/HenrikBengtsson/marshal/blob/HEAD/R/marshal.R" class="external-link"><code>R/marshal.R</code></a>, <a href="https://github.com/HenrikBengtsson/marshal/blob/HEAD/R/marshal.XML.R" class="external-link"><code>R/marshal.XML.R</code></a>, <a href="https://github.com/HenrikBengtsson/marshal/blob/HEAD/R/marshal.connection.R" class="external-link"><code>R/marshal.connection.R</code></a>, and 1 more</small>
+    <small class="dont-index">Source: <a href="https://github.com/HenrikBengtsson/marshal/blob/HEAD/R/marshal.R" class="external-link"><code>R/marshal.R</code></a></small>
     <div class="hidden name"><code>marshal.Rd</code></div>
     </div>
 
@@ -127,167 +127,27 @@
     <div id="ref-usage">
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">marshal</span><span class="op">(</span><span class="va">...</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu">unmarshal</span><span class="op">(</span><span class="va">...</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># S3 method for XMLAbstractNode</span></span>
-<span><span class="fu">marshal</span><span class="op">(</span><span class="va">xml</span>, <span class="va">...</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># S3 method for connection</span></span>
-<span><span class="fu">marshal</span><span class="op">(</span><span class="va">con</span>, <span class="va">...</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># S3 method for SpatVector</span></span>
-<span><span class="fu">marshal</span><span class="op">(</span><span class="va">terra</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">unmarshal</span><span class="op">(</span><span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>...</dt>
-<dd><p>The objects to be marshalled, or unmarshalled,
-followed by additional arguments passed to the S3 method.</p></dd>
-
-
-<dt>xml</dt>
-<dd><p>An <a href="https://rdrr.io/pkg/XML/man/XMLNode-class.html" class="external-link">XML::XMLAbstractNode</a> or
-<a href="https://rdrr.io/pkg/XML/man/XMLInternalDocument.html" class="external-link">XML::XMLAbstractDocument</a>.</p></dd>
-
-
-<dt>con</dt>
-<dd><p>A <a href="https://rdrr.io/r/base/connections.html" class="external-link">connection</a>.</p></dd>
-
-
-<dt>terra</dt>
-<dd><p>An <a href="https://rdrr.io/pkg/terra/man/SpatVector-class.html" class="external-link">terra::SpatVector</a>.</p></dd>
+<dd><p>The object to be marshalled, or unmarshalled,
+followed by additional arguments passed to the specific S3 method.</p></dd>
 
 </dl></div>
     <div id="value">
     <h2>Value</h2>
     
 
-<p>A marshaled version of the original object.</p>
-
-
-<p>An unmarshaled version of the original object.</p>
+<p><code>marshal()</code> returns a <code>marshalled</code> object, which is a list with
+components:</p><ul><li><p><code>marshalled</code>: marshalled version of the original object</p></li>
+<li><p><code>unmarshal</code>: function that takes the <code>marshalled</code> object as
+input and returns an unmarshalled version of the original object.</p></li>
+</ul><p><code>unmarshal()</code> returns an unmarshaled version of the original object.</p>
     </div>
 
-    <div id="ref-examples">
-    <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span><span class="st">"XML"</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
-<span class="r-in"><span>  <span class="va">node</span> <span class="op">&lt;-</span> <span class="fu">XML</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/XML/man/isXMLString.html" class="external-link">xmlParseString</a></span><span class="op">(</span><span class="st">"&lt;a&gt;&lt;b&gt;c&lt;/b&gt;&lt;/a&gt;"</span><span class="op">)</span></span></span>
-<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">node</span><span class="op">)</span></span></span>
-<span class="r-in"><span>  </span></span>
-<span class="r-in"><span>  <span class="co">## Marshal XMLAbstractNode object</span></span></span>
-<span class="r-in"><span>  <span class="va">node_</span> <span class="op">&lt;-</span> <span class="fu">marshal</span><span class="op">(</span><span class="va">node</span><span class="op">)</span></span></span>
-<span class="r-in"><span>  <span class="co">## Unmarshal XMLAbstractNode object</span></span></span>
-<span class="r-in"><span>  <span class="va">node2</span> <span class="op">&lt;-</span> <span class="fu">unmarshal</span><span class="op">(</span><span class="va">node_</span><span class="op">)</span></span></span>
-<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">node2</span><span class="op">)</span></span></span>
-<span class="r-in"><span>  </span></span>
-<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html" class="external-link">stopifnot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/all.equal.html" class="external-link">all.equal</a></span><span class="op">(</span><span class="va">node2</span>, <span class="va">node</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-in"><span>  </span></span>
-<span class="r-in"><span>  </span></span>
-<span class="r-in"><span>  <span class="va">doc</span> <span class="op">&lt;-</span> <span class="fu">XML</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/XML/man/xmlTreeParse.html" class="external-link">xmlParse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"exampleData"</span>, <span class="st">"tides.xml"</span>, package <span class="op">=</span> <span class="st">"XML"</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-in"><span>  </span></span>
-<span class="r-in"><span>  <span class="co">## Marshal XMLAbstractDocument object</span></span></span>
-<span class="r-in"><span>  <span class="va">doc_</span> <span class="op">&lt;-</span> <span class="fu">marshal</span><span class="op">(</span><span class="va">doc</span><span class="op">)</span></span></span>
-<span class="r-in"><span>  <span class="co">## Unmarshal XMLAbstractDocument object</span></span></span>
-<span class="r-in"><span>  <span class="va">doc2</span> <span class="op">&lt;-</span> <span class="fu">unmarshal</span><span class="op">(</span><span class="va">doc_</span><span class="op">)</span></span></span>
-<span class="r-in"><span>  </span></span>
-<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html" class="external-link">stopifnot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/all.equal.html" class="external-link">all.equal</a></span><span class="op">(</span><span class="va">doc2</span>, <span class="va">doc</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;a&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   &lt;b&gt;c&lt;/b&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/a&gt; </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;a&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   &lt;b&gt;c&lt;/b&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/a&gt; </span>
-<span class="r-in"><span><span class="va">tf</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempfile</a></span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span>file <span class="op">=</span> <span class="va">tf</span>, <span class="va">letters</span>, sep <span class="op">=</span> <span class="st">""</span><span class="op">)</span></span></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co">## Read-only connection</span></span></span>
-<span class="r-in"><span><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/connections.html" class="external-link">file</a></span><span class="op">(</span><span class="va">tf</span>, open <span class="op">=</span> <span class="st">"rb"</span><span class="op">)</span></span></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">bfr</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/readChar.html" class="external-link">readChar</a></span><span class="op">(</span><span class="va">con</span>, nchars <span class="op">=</span> <span class="fl">4L</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">bfr</span><span class="op">)</span>  <span class="co">## "abcd"</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "abcd"</span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co">## Marshal read-only connection, which records the</span></span></span>
-<span class="r-in"><span><span class="co">## current state, including the current file position.</span></span></span>
-<span class="r-in"><span><span class="va">con_</span> <span class="op">&lt;-</span> <span class="fu">marshal</span><span class="op">(</span><span class="va">con</span><span class="op">)</span></span></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co">## Unmarshal connection, which restores the state</span></span></span>
-<span class="r-in"><span><span class="co">## of the original connection</span></span></span>
-<span class="r-in"><span><span class="va">con2</span> <span class="op">&lt;-</span> <span class="fu">unmarshal</span><span class="op">(</span><span class="va">con_</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html" class="external-link">stopifnot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/all.equal.html" class="external-link">all.equal</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">con2</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">bfr</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/readChar.html" class="external-link">readChar</a></span><span class="op">(</span><span class="va">con</span>, nchars <span class="op">=</span> <span class="fl">4L</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">bfr</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "efgh"</span>
-<span class="r-in"><span><span class="va">bfr2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/readChar.html" class="external-link">readChar</a></span><span class="op">(</span><span class="va">con2</span>, nchars <span class="op">=</span> <span class="fl">4L</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">bfr2</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "efgh"</span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html" class="external-link">stopifnot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/identical.html" class="external-link">identical</a></span><span class="op">(</span><span class="va">bfr2</span>, <span class="va">bfr</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co">## Cleanup</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/connections.html" class="external-link">close</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/connections.html" class="external-link">close</a></span><span class="op">(</span><span class="va">con2</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/files.html" class="external-link">file.remove</a></span><span class="op">(</span><span class="va">tf</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] TRUE</span>
-<span class="r-in"><span><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/connections.html" class="external-link">url</a></span><span class="op">(</span><span class="st">"https://www.r-project.org"</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> A connection with                                       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> description "https://www.r-project.org"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> class       "url-libcurl"              </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> mode        "r"                        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> text        "text"                     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> opened      "closed"                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> can read    "yes"                      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> can write   "no"                       </span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co">## Marshal read-only connection, which records the</span></span></span>
-<span class="r-in"><span><span class="co">## current state, including the current file position.</span></span></span>
-<span class="r-in"><span><span class="va">con_</span> <span class="op">&lt;-</span> <span class="fu">marshal</span><span class="op">(</span><span class="va">con</span><span class="op">)</span></span></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co">## Unmarshal connection, which restores the state</span></span></span>
-<span class="r-in"><span><span class="co">## of the original connection</span></span></span>
-<span class="r-in"><span><span class="va">con2</span> <span class="op">&lt;-</span> <span class="fu">unmarshal</span><span class="op">(</span><span class="va">con_</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">con2</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> A connection with                                       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> description "https://www.r-project.org"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> class       "url-libcurl"              </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> mode        "r"                        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> text        "text"                     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> opened      "closed"                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> can read    "yes"                      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> can write   "no"                       </span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html" class="external-link">stopifnot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/all.equal.html" class="external-link">all.equal</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">con2</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">bfr</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/readChar.html" class="external-link">readChar</a></span><span class="op">(</span><span class="va">con</span>, nchars <span class="op">=</span> <span class="fl">100L</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">bfr</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "&lt;!DOCTYPE html&gt;\n&lt;html lang=\"en\"&gt;\n  &lt;head&gt;\n    &lt;meta charset=\"utf-8\"&gt;\n    &lt;meta http-equiv=\"X-UA-Comp"</span>
-<span class="r-in"><span><span class="va">bfr2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/readChar.html" class="external-link">readChar</a></span><span class="op">(</span><span class="va">con2</span>, nchars <span class="op">=</span> <span class="fl">100L</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">bfr2</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "&lt;!DOCTYPE html&gt;\n&lt;html lang=\"en\"&gt;\n  &lt;head&gt;\n    &lt;meta charset=\"utf-8\"&gt;\n    &lt;meta http-equiv=\"X-UA-Comp"</span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html" class="external-link">stopifnot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/identical.html" class="external-link">identical</a></span><span class="op">(</span><span class="va">bfr2</span>, <span class="va">bfr</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co">## Cleanup</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/connections.html" class="external-link">close</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/connections.html" class="external-link">close</a></span><span class="op">(</span><span class="va">con2</span><span class="op">)</span></span></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span><span class="st">"terra"</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
-<span class="r-in"><span>  <span class="va">file</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"ex/lux.shp"</span>, package <span class="op">=</span> <span class="st">"terra"</span><span class="op">)</span></span></span>
-<span class="r-in"><span>  <span class="va">v</span> <span class="op">&lt;-</span> <span class="fu">terra</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/terra/man/vect.html" class="external-link">vect</a></span><span class="op">(</span><span class="va">file</span><span class="op">)</span></span></span>
-<span class="r-in"><span>  </span></span>
-<span class="r-in"><span>  <span class="co">## Marshal SpatVector object</span></span></span>
-<span class="r-in"><span>  <span class="va">v_</span> <span class="op">&lt;-</span> <span class="fu">marshal</span><span class="op">(</span><span class="va">v</span><span class="op">)</span></span></span>
-<span class="r-in"><span>  </span></span>
-<span class="r-in"><span>  <span class="co">## Unmarshal SpatVector object</span></span></span>
-<span class="r-in"><span>  <span class="va">v2</span> <span class="op">&lt;-</span> <span class="fu">unmarshal</span><span class="op">(</span><span class="va">v_</span><span class="op">)</span></span></span>
-<span class="r-in"><span>  </span></span>
-<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html" class="external-link">stopifnot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/all.equal.html" class="external-link">all.equal</a></span><span class="op">(</span><span class="va">v2</span>, <span class="va">v</span>, check.attributes <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-in"><span></span></span>
-</code></pre></div>
-    </div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top"><h2 data-toc-skip>Contents</h2>
@@ -300,7 +160,7 @@ followed by additional arguments passed to the S3 method.</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5</p> and <a href="https://github.com/HenrikBengtsson/pkgdown.extras/">pkgdown.extras</a> 0.0.0.9004.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6</p> and <a href="https://github.com/HenrikBengtsson/pkgdown.extras/">pkgdown.extras</a> 0.0.0.9004.</p>
 </div>
 
       </footer></div>
