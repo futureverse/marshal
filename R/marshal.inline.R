@@ -3,7 +3,7 @@
 #' _WARNING: This is very limited proof of concept!_
 #'
 #' @param inline
-#' An \link[inline:cfunction]{CFunc}.
+#' A \link[inline:cfunction]{CFunc} function.
 #'
 #' @param \dots Not used.
 #'

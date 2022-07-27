@@ -8,7 +8,7 @@
 \method{marshal}{CFunc}(inline, ...)
 }
 \arguments{
-\item{inline}{An \link[inline:cfunction]{CFunc}.}
+\item{inline}{A \link[inline:cfunction]{CFunc} function.}
 
 \item{\dots}{Not used.}
 }
