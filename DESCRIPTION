@@ -1,7 +1,5 @@
 Package: marshal
 Title: Framework to Marshal Objects to be Used in Another R Process
-Depends:
-    R (>= 4.0.0)
 Suggests:
     inline,
     terra,
