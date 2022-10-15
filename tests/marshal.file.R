@@ -16,7 +16,10 @@ con_ <- marshal(con)
 ## Unmarshal connection, which restores the state
 ## of the original connection
 con2 <- unmarshal(con_)
-stopifnot(all.equal(summary(con2), summary(con)))
+stopifnot(
+  all.equal(summary(con2), summary(con)),
+  identical(seek(con2), seek(con))
+)
 
 bfr <- readChar(con, nchars = 4L)
 print(bfr)
