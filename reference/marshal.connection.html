@@ -23,7 +23,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">marshal</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0-9011</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0-9012</span>
       </span>
     </div>
 
@@ -171,9 +171,13 @@
 <span class="r-in"><span><span class="va">con_</span> <span class="op">&lt;-</span> <span class="fu"><a href="marshal.html">marshal</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## Unmarshal connection, which restores the state</span></span></span>
-<span class="r-in"><span><span class="co">## of the original connection</span></span></span>
+<span class="r-in"><span><span class="co">## of the original connection, including the current</span></span></span>
+<span class="r-in"><span><span class="co">## file position</span></span></span>
 <span class="r-in"><span><span class="va">con2</span> <span class="op">&lt;-</span> <span class="fu"><a href="marshal.html">unmarshal</a></span><span class="op">(</span><span class="va">con_</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html" class="external-link">stopifnot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/all.equal.html" class="external-link">all.equal</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">con2</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html" class="external-link">stopifnot</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/base/all.equal.html" class="external-link">all.equal</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">con2</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/base/identical.html" class="external-link">identical</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seek.html" class="external-link">seek</a></span><span class="op">(</span><span class="va">con2</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/seek.html" class="external-link">seek</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">bfr</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/readChar.html" class="external-link">readChar</a></span><span class="op">(</span><span class="va">con</span>, nchars <span class="op">=</span> <span class="fl">4L</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">bfr</span><span class="op">)</span></span></span>
