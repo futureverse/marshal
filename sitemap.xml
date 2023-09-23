@@ -13,9 +13,6 @@
     <loc>https://marshal.futureverse.org/LICENSE.html</loc>
   </url>
   <url>
-    <loc>https://marshal.futureverse.org/OVERVIEW.html</loc>
-  </url>
-  <url>
     <loc>https://marshal.futureverse.org/authors.html</loc>
   </url>
   <url>
@@ -47,6 +44,12 @@
   </url>
   <url>
     <loc>https://marshal.futureverse.org/reference/marshal.terra.html</loc>
+  </url>
+  <url>
+    <loc>https://marshal.futureverse.org/reference/marshal.train.html</loc>
+  </url>
+  <url>
+    <loc>https://marshal.futureverse.org/reference/marshal.xgb.DMatrix.html</loc>
   </url>
   <url>
     <loc>https://marshal.futureverse.org/reference/marshal.xml2.html</loc>

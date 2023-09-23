@@ -47,7 +47,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">marshal</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0-9012</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0-9015</span>
       </span>
     </div>
 
@@ -188,43 +188,44 @@
 <li>
 <p>Phase “Getting Started”</p>
 <ul class="task-list">
-<li><p><input type="checkbox">Start on a rudimentary “marshalling” protection framework based on the internal <strong>future</strong> functions <code><a href="reference/find_references.html">assert_no_references()</a></code>, <code><a href="reference/find_references.html">find_references()</a></code> and <code>reference_filters()</code></p></li>
-<li><p><input type="checkbox">Document common cases of packages with non-exportable objects as one or more vignettes. The <a href="https://cran.r-project.org/package=future/vignettes/future-4-non-exportable-objects.html" class="external-link">A Future for R: Non-Exportable Objects</a> vignette is a good start. For each package give at least one example that show the mistake, how to detect it with above protection functions, and when possible give workaround examples. Illustrate with both sequential use cases (e.g. <code><a href="https://rdrr.io/r/base/readRDS.html" class="external-link">saveRDS()</a></code> and <code><a href="https://rdrr.io/r/base/readRDS.html" class="external-link">readRDS()</a></code>) and with parallelization (e.g. <code><a href="https://rdrr.io/r/parallel/clusterApply.html" class="external-link">parallel::clusterEvalQ()</a></code>, <code>foreach::foreach() %dopar% { ... }</code>, and <code><a href="https://future.futureverse.org/reference/future.html" class="external-link">future::future()</a></code></p></li>
-<li><p><input type="checkbox">Invite R community to report on more cases to build up a knowledge base and make the <strong>marshal</strong> documentation a go-to reference for explaining the problem</p></li>
+<li><p><label><input type="checkbox">Start on a rudimentary “marshalling” protection framework based on the internal <strong>future</strong> functions <code><a href="reference/find_references.html">assert_no_references()</a></code>, <code><a href="reference/find_references.html">find_references()</a></code> and <code>reference_filters()</code></label></p></li>
+<li><p><label><input type="checkbox">Document common cases of packages with non-exportable objects as one or more vignettes. The <a href="https://cran.r-project.org/package=future/vignettes/future-4-non-exportable-objects.html" class="external-link">A Future for R: Non-Exportable Objects</a> vignette is a good start. For each package give at least one example that show the mistake, how to detect it with above protection functions, and when possible give workaround examples. Illustrate with both sequential use cases (e.g. <code><a href="https://rdrr.io/r/base/readRDS.html" class="external-link">saveRDS()</a></code> and <code><a href="https://rdrr.io/r/base/readRDS.html" class="external-link">readRDS()</a></code>) and with parallelization (e.g. <code><a href="https://rdrr.io/r/parallel/clusterApply.html" class="external-link">parallel::clusterEvalQ()</a></code>, <code>foreach::foreach() %dopar% { ... }</code>, and <code><a href="https://future.futureverse.org/reference/future.html" class="external-link">future::future()</a></code></label></p></li>
+<li><p><label><input type="checkbox">Invite R community to report on more cases to build up a knowledge base and make the <strong>marshal</strong> documentation a go-to reference for explaining the problem</label></p></li>
 </ul>
 </li>
 <li>
 <p>Phase “Detect &amp; Protection”</p>
 <ul class="task-list">
 <li>
-<p><input type="checkbox">Detect and report on non-exportable objects via the condition system</p>
+<p><label><input type="checkbox">Detect and report on non-exportable objects via the condition system</label></p>
 <ul class="task-list">
-<li><p><input type="checkbox">objects with external pointers</p></li>
-<li><p><input type="checkbox">connection objects</p></li>
-<li><p><input type="checkbox">…</p></li>
+<li><p><label><input type="checkbox">objects with external pointers</label></p></li>
+<li><p><label><input type="checkbox">connection objects</label></p></li>
+<li><p><label><input type="checkbox">…</label></p></li>
 </ul>
 </li>
-<li><p><input type="checkbox">Develop set of acceptance filters to handle false positives, e.g. <code><a href="https://Rdatatable.gitlab.io/data.table/reference/data.table.html" class="external-link">data.table::data.table</a></code> objects</p></li>
-<li><p><input type="checkbox">Develop set of reject filters to handle true positives with specific, more informative error messages, e.g. connection objects</p></li>
+<li><p><label><input type="checkbox">Develop set of acceptance filters to handle false positives, e.g. <code><a href="https://Rdatatable.gitlab.io/data.table/reference/data.table.html" class="external-link">data.table::data.table</a></code> objects</label></p></li>
+<li><p><label><input type="checkbox">Develop set of reject filters to handle true positives with specific, more informative error messages, e.g. connection objects</label></p></li>
 </ul>
 </li>
 <li>
 <p>Phase “Marshalling”</p>
 <ul class="task-list">
 <li>
-<p><input type="checkbox">Add S3 generic <code><a href="reference/marshal.html">marshal()</a></code> to re-deconstruct non-exportable objects of certain classes so that they can be re-constructed using <code><a href="reference/marshal.html">unmarshal()</a></code> afterward, e.g.</p>
+<p><label><input type="checkbox">Add S3 generic <code><a href="reference/marshal.html">marshal()</a></code> to re-deconstruct non-exportable objects of certain classes so that they can be re-constructed using <code><a href="reference/marshal.html">unmarshal()</a></code> afterward, e.g.</label></p>
 <ul class="task-list">
-<li><p><input type="checkbox">‘XMLAbstractDocument’ of <strong>XML</strong>, cf. <code><a href="https://rdrr.io/pkg/XML/man/xmlSerializeHook.html" class="external-link">XML::xmlSerializeHook()</a></code> and <code><a href="https://rdrr.io/pkg/XML/man/xmlSerializeHook.html" class="external-link">XML::xmlDeserializeHook()</a></code></p></li>
-<li><p><input type="checkbox">base R URL and read-only file connections</p></li>
-<li><p><input type="checkbox">Identify packages whose non-exportable objects may be marshalled similarly, e.g. <strong>ShortRead</strong> and <strong>ncdf4</strong></p></li>
+<li><p><label><input type="checkbox">‘XMLAbstractDocument’ of <strong>XML</strong>, cf. <code><a href="https://rdrr.io/pkg/XML/man/xmlSerializeHook.html" class="external-link">XML::xmlSerializeHook()</a></code> and <code><a href="https://rdrr.io/pkg/XML/man/xmlSerializeHook.html" class="external-link">XML::xmlDeserializeHook()</a></code></label></p></li>
+<li><p><label><input type="checkbox">base R URL and read-only file connections</label></p></li>
+<li><p><label><input type="checkbox">Identify packages whose non-exportable objects may be marshalled similarly, e.g. <strong>ShortRead</strong> and <strong>ncdf4</strong></label></p></li>
 </ul>
 </li>
 </ul>
 </li>
 </ol>
 <ul class="task-list">
-<li><p><input type="checkbox">Implement efficient, recursive <code><a href="reference/marshal.html">marshal()</a></code> for sets such as lists and environments</p></li>
-<li><p><input type="checkbox">After marshalling an object, or, say, a list of objects, investigate if we can leverage R’s serialization framework to automatically unmarshal objects via <code>base::unserialize(..., refhook = unmarshal)</code>. We might be able to do this by having <code><a href="reference/marshal.html">marshal()</a></code> appending a “trigger” reference to the marshalled object</p></li>
+<li><p><label><input type="checkbox">Implement efficient, recursive <code><a href="reference/marshal.html">marshal()</a></code> for sets such as lists and environments</label></p></li>
+<li><p><label><input type="checkbox">After marshalling an object, or, say, a list of objects, investigate if we can leverage R’s serialization framework to automatically unmarshal objects via <code>base::unserialize(..., refhook = unmarshal)</code>. We might be able to do this by having <code><a href="reference/marshal.html">marshal()</a></code> appending a “trigger” reference to the marshalled object</label></p></li>
+<li><p><label><input type="checkbox">Support for marshalling directly to a connection. This may avoid a large memory footprint</label></p></li>
 </ul>
 </div>
 <div class="section level2">
@@ -290,8 +291,7 @@
 <div class="dev-status">
 <h2 data-toc-skip>Dev status</h2>
 <ul class="list-unstyled">
-<li><a href="https://github.com/HenrikBengtsson/marshal/actions?query=workflow%3AR-CMD-check" class="external-link"><img border="0" src="https://github.com/HenrikBengtsson/marshal/workflows/R-CMD-check/badge.svg?branch=develop" alt="Build status"></a></li>
-<li><a href="https://lifecycle.r-lib.org/articles/stages.html" class="external-link"><img border="0" src="reference/figures/lifecycle-skeleton-orange.svg" alt="Life cycle: skeleton"></a></li>
+<li><a href="https://github.com/HenrikBengtsson/marshal/actions?query=workflow%3AR-CMD-check" class="external-link"><img border="0" src="https://github.com/HenrikBengtsson/marshal/actions/workflows/R-CMD-check.yaml/badge.svg?branch=develop" alt="R CMD check status"></a></li>
 </ul>
 </div>
 
