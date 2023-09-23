@@ -3,12 +3,14 @@ Title: Framework to Marshal Objects to be Used in Another R Process
 Suggests:
     bundle,
     caret,
+    DBI,
+      RSQLite,
     inline,
     terra,
     xgboost,
     XML,
     xml2
-Version: 0.0.0-9015
+Version: 0.0.0-9016
 Authors@R: 
     person(given = "Henrik", family = "Bengtsson",
            role = c("aut", "cre", "cph"),
