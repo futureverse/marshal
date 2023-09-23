@@ -1,6 +1,6 @@
 library(marshal)
 
-if (requireNamespace("keras", quietly = TRUE)) {
+if (requireNamespace("tensorflow", quietly = TRUE) && tensorflow::tf_config()$available && requireNamespace("keras", quietly = TRUE)) {
   library(keras)
 
   ## WORKAROUND: {keras}, or {reticulate}, or both, creates temporary
