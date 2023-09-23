@@ -34,6 +34,9 @@
     <loc>https://marshal.futureverse.org/reference/marshal.DBIConnection.html</loc>
   </url>
   <url>
+    <loc>https://marshal.futureverse.org/reference/marshal.RasterLayer.html</loc>
+  </url>
+  <url>
     <loc>https://marshal.futureverse.org/reference/marshal.XML.html</loc>
   </url>
   <url>
@@ -47,6 +50,9 @@
   </url>
   <url>
     <loc>https://marshal.futureverse.org/reference/marshal.keras.engine.base_layer.Layer.html</loc>
+  </url>
+  <url>
+    <loc>https://marshal.futureverse.org/reference/marshal.magick-image.html</loc>
   </url>
   <url>
     <loc>https://marshal.futureverse.org/reference/marshal.terra.html</loc>
