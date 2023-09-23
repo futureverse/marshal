@@ -7,12 +7,13 @@ Suggests:
       RSQLite,
     inline,
     keras,
+    magick,
     stats,
     terra,
     xgboost,
     XML,
     xml2
-Version: 0.0.0-9017
+Version: 0.0.0-9018
 Authors@R: 
     person(given = "Henrik", family = "Bengtsson",
            role = c("aut", "cre", "cph"),
