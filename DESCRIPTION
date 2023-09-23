@@ -5,9 +5,10 @@ Suggests:
     caret,
     inline,
     terra,
+    xgboost,
     XML,
     xml2
-Version: 0.0.0-9013
+Version: 0.0.0-9014
 Authors@R: 
     person(given = "Henrik", family = "Bengtsson",
            role = c("aut", "cre", "cph"),
