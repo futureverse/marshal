@@ -7,4 +7,5 @@ if (requireNamespace("raster", quietly = TRUE)) {
 
   ## Unmarshal
   r2 <- unmarshal(r_)
+  print(r2)
 }

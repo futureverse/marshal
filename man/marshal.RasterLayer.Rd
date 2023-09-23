@@ -23,8 +23,8 @@ of the original object.
 \code{\link[raster:raster]{raster::raster()}} is used to reconstruct a version of the
 original object from the marshalled object.
 }
-\section{WARNING}{
- Numerical identical results cannot be guaranteed:
+\section{WARNING - Numerical identical results cannot be guaranteed}{
+
 Marshalling of \code{RasterLayer} objects is \emph{leaky}.  More precisely,
 the method \emph{cannot} guarantee that multiple rounds of marshalling
 and unmarshalling produce numerically identical objects.
@@ -40,5 +40,6 @@ if (requireNamespace("raster", quietly = TRUE)) {
 
   ## Unmarshal
   r2 <- unmarshal(r_)
+  print(r2)
 }
 }
