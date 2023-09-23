@@ -1,7 +1,7 @@
 
 
 <div id="badges"><!-- pkgdown markup -->
- <a href="https://github.com/HenrikBengtsson/marshal/actions?query=workflow%3AR-CMD-check"><img border="0" src="https://github.com/HenrikBengtsson/marshal/workflows/R-CMD-check/badge.svg?branch=develop" alt="Build status"/></a>    <a href="https://lifecycle.r-lib.org/articles/stages.html"><img border="0" src="man/figures/lifecycle-skeleton-orange.svg" alt="Life cycle: skeleton"/></a>
+ <a href="https://github.com/HenrikBengtsson/marshal/actions?query=workflow%3AR-CMD-check"><img border="0" src="https://github.com/HenrikBengtsson/marshal/actions/workflows/R-CMD-check.yaml/badge.svg?branch=develop" alt="R CMD check status"/></a>      
 </div>
 
 # marshal: Framework to Marshal Objects to be Used in Another R Process 
@@ -30,7 +30,7 @@ When `marshal()` and `unmarshal()` methods have been implemented for some of the
 
    * [ ] Start on a rudimentary "marshalling" protection framework based on the internal **future** functions `assert_no_references()`, `find_references()` and `reference_filters()`
    
-   * [ ] Document common cases of packages with non-exportable objects as one or more vignettes.  The [A Future for R: Non-Exportable Objects](https://cran.r-project.org/package=future/vignettes/future-4-non-exportable-objects.html) vignette is a good start.  For each package give at least one example that show the mistake, how to detect it with above protection functions, and when possible give workaround examples.  Illustrate with both sequential use cases (e.g. `saveRDS()` and `readRDS()`) and with parallelization (e.g. `parallel::clusterEvalQ()`, `foreach::foreach() %dopar% { ... }`, and `future::future()`
+   * [ ] Document common cases of packages with non-exportable objects as one or more vignettes.  The [A Future for R: Non-Exportable Objects](https://cran.r-project.org/web/packages/future/vignettes/future-4-non-exportable-objects.html) vignette is a good start.  For each package give at least one example that show the mistake, how to detect it with above protection functions, and when possible give workaround examples.  Illustrate with both sequential use cases (e.g. `saveRDS()` and `readRDS()`) and with parallelization (e.g. `parallel::clusterEvalQ()`, `foreach::foreach() %dopar% { ... }`, and `future::future()`
 
    * [ ] Invite R community to report on more cases to build up a knowledge base and make the **marshal** documentation a go-to reference for explaining the problem
 
@@ -64,6 +64,7 @@ When `marshal()` and `unmarshal()` methods have been implemented for some of the
   
   * [ ] After marshalling an object, or, say, a list of objects, investigate if we can leverage R's serialization framework to automatically unmarshal objects via `base::unserialize(..., refhook = unmarshal)`.  We might be able to do this by having `marshal()` appending a "trigger" reference to the marshalled object
 
+  * [ ] Support for marshalling directly to a connection. This may avoid a large memory footprint
 
 
 ## Installation

@@ -56,4 +56,5 @@ When `marshal()` and `unmarshal()` methods have been implemented for some of the
   
   * [ ] After marshalling an object, or, say, a list of objects, investigate if we can leverage R's serialization framework to automatically unmarshal objects via `base::unserialize(..., refhook = unmarshal)`.  We might be able to do this by having `marshal()` appending a "trigger" reference to the marshalled object
 
+  * [ ] Support for marshalling directly to a connection. This may avoid a large memory footprint
 
