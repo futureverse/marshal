@@ -5,15 +5,17 @@ Suggests:
     caret,
     DBI,
       RSQLite,
+    digest,
     inline,
     keras,
     magick,
+    raster,
     stats,
     terra,
     xgboost,
     XML,
     xml2
-Version: 0.0.0-9018
+Version: 0.0.0-9019
 Authors@R: 
     person(given = "Henrik", family = "Bengtsson",
            role = c("aut", "cre", "cph"),

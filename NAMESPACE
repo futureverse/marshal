@@ -3,6 +3,7 @@
 S3method(marshal,"magick-image")
 S3method(marshal,CFunc)
 S3method(marshal,DBIConnection)
+S3method(marshal,RasterLayer)
 S3method(marshal,SpatVector)
 S3method(marshal,XMLAbstractDocument)
 S3method(marshal,XMLAbstractNode)
