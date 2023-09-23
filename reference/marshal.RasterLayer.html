@@ -158,10 +158,11 @@ of the original object.
 <code><a href="https://rdrr.io/pkg/raster/man/raster.html" class="external-link">raster::raster()</a></code> is used to reconstruct a version of the
 original object from the marshalled object.</p>
     </div>
-    <div id="warning">
-    <h2>WARNING</h2>
-    <p>Numerical identical results cannot be guaranteed:
-Marshalling of <code>RasterLayer</code> objects is <em>leaky</em>.  More precisely,
+    <div id="warning-numerical-identical-results-cannot-be-guaranteed">
+    <h2>WARNING - Numerical identical results cannot be guaranteed</h2>
+    
+
+<p>Marshalling of <code>RasterLayer</code> objects is <em>leaky</em>.  More precisely,
 the method <em>cannot</em> guarantee that multiple rounds of marshalling
 and unmarshalling produce numerically identical objects.</p>
     </div>
@@ -177,6 +178,7 @@ and unmarshalling produce numerically identical objects.</p>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span>  <span class="co">## Unmarshal</span></span></span>
 <span class="r-in"><span>  <span class="va">r2</span> <span class="op">&lt;-</span> <span class="fu"><a href="marshal.html">unmarshal</a></span><span class="op">(</span><span class="va">r_</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">r2</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> The legacy packages maptools, rgdal, and rgeos, underpinning the sp package,</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> which was just loaded, will retire in October 2023.</span>
@@ -194,6 +196,15 @@ and unmarshalling produce numerically identical objects.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> source     : test.grd </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> names      : test </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> values     : 138.7071, 1736.058  (min, max)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> class      : RasterLayer </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> dimensions : 115, 80, 9200  (nrow, ncol, ncell)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> resolution : 40, 40  (x, y)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> extent     : 178400, 181600, 329400, 334000  (xmin, xmax, ymin, ymax)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> crs        : +proj=sterea +lat_0=52.1561605555556 +lon_0=5.38763888888889 +k=0.9999079 +x_0=155000 +y_0=463000 +datum=WGS84 +units=m +no_defs </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> source     : file7de867d5de5de.grd </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> names      : test </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> values     : 139, 1736  (min, max)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 </code></pre></div>
     </div>
