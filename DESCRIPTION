@@ -6,11 +6,13 @@ Suggests:
     DBI,
       RSQLite,
     inline,
+    keras,
+    stats,
     terra,
     xgboost,
     XML,
     xml2
-Version: 0.0.0-9016
+Version: 0.0.0-9017
 Authors@R: 
     person(given = "Henrik", family = "Bengtsson",
            role = c("aut", "cre", "cph"),
