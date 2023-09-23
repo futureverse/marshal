@@ -1,6 +1,6 @@
 library(marshal)
 
-if (requireNamespace("keras", quietly = TRUE)) local({
+if (requireNamespace("keras", quietly = TRUE)) {
   library(keras)
 
   ## WORKAROUND: {keras}, or {reticulate}, or both, creates temporary
@@ -8,9 +8,6 @@ if (requireNamespace("keras", quietly = TRUE)) local({
   ## R CMD check --as-cran will complain about.
   otd <- Sys.getenv("TMPDIR", NA_character_)
   Sys.setenv(TMPDIR = tempdir())
-  on.exit({
-    if (is.na(otd)) Sys.unsetenv("TMPDIR") else Sys.setenv(TMPDIR = otd)
-  })
 
   ## Create a keras model (adopted from {keras} vignette)
   inputs <- layer_input(shape = shape(32))
@@ -56,4 +53,7 @@ if (requireNamespace("keras", quietly = TRUE)) local({
     identical(summary(model2), summary(model)),
     identical(stats::predict(model2, test_input), stats::predict(model, test_input))
   )
-})
+
+  if (is.na(otd)) Sys.unsetenv("TMPDIR") else Sys.setenv(TMPDIR = otd)
+}
+
