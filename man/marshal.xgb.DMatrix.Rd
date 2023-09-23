@@ -2,7 +2,7 @@
 % Please edit documentation in R/marshal.xgb.DMatrix.R
 \name{marshal.xgb.DMatrix}
 \alias{marshal.xgb.DMatrix}
-\title{Marshal and Unmarshal an 'xgboost::xgb.DMatrix' object}
+\title{Marshal and Unmarshal an 'xgboost:xgb.DMatrix' object}
 \usage{
 \method{marshal}{xgb.DMatrix}(x, ...)
 }
@@ -15,7 +15,7 @@
 A \code{marshalled} object as described in \code{\link[=marshal]{marshal()}}.
 }
 \description{
-Marshal and Unmarshal an 'xgboost::xgb.DMatrix' object
+Marshal and Unmarshal an 'xgboost:xgb.DMatrix' object
 }
 \details{
 \code{\link[xgboost:xgb.DMatrix.save]{xgboost::xgb.DMatrix.save()}} is used to produce a marshalled version
