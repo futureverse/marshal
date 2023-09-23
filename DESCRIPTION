@@ -1,11 +1,13 @@
 Package: marshal
 Title: Framework to Marshal Objects to be Used in Another R Process
 Suggests:
+    bundle,
+    caret,
     inline,
     terra,
     XML,
     xml2
-Version: 0.0.0-9012
+Version: 0.0.0-9013
 Authors@R: 
     person(given = "Henrik", family = "Bengtsson",
            role = c("aut", "cre", "cph"),
@@ -18,4 +20,4 @@ ByteCompile: TRUE
 URL: https://marshal.futureverse.org, https://github.com/HenrikBengtsson/marshal
 BugReports: https://github.com/HenrikBengtsson/marshal/issues
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.1
+RoxygenNote: 7.2.3
