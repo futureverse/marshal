@@ -14,6 +14,11 @@
 #' [raster::raster()] is used to reconstruct a version of the
 #' original object from the marshalled object.
 #'
+#' @section WARNING: Numerical identical results cannot be guaranteed:
+#' Marshalling of `RasterLayer` objects is _leaky_.  More precisely,
+#' the method _cannot_ guarantee that multiple rounds of marshalling
+#' and unmarshalling produce numerically identical objects.
+#'
 #' @example incl/marshal.raster.R
 #'
 #' @rdname marshal.RasterLayer
