@@ -8,7 +8,7 @@ Suggests:
     xgboost,
     XML,
     xml2
-Version: 0.0.0-9014
+Version: 0.0.0-9015
 Authors@R: 
     person(given = "Henrik", family = "Bengtsson",
            role = c("aut", "cre", "cph"),

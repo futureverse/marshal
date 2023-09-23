@@ -12,7 +12,7 @@
 #' [bundle::bundle()] is used to produce a marshalled version
 #' of the original object.
 #' [bundle::unbundle()] is used to reconstruct a version of the
-#' original object from the marshalled trainect.
+#' original object from the marshalled object.
 #'
 # @example incl/marshal.train.R
 #'

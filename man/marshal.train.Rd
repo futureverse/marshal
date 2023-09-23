@@ -21,5 +21,5 @@ Marshal and Unmarshal a 'train' object
 \code{\link[bundle:bundle]{bundle::bundle()}} is used to produce a marshalled version
 of the original object.
 \code{\link[bundle:bundle]{bundle::unbundle()}} is used to reconstruct a version of the
-original object from the marshalled trainect.
+original object from the marshalled object.
 }
