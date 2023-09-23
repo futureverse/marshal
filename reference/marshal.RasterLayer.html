@@ -23,7 +23,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">marshal</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0-9019</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0-9021</span>
       </span>
     </div>
 
@@ -157,6 +157,13 @@
 of the original object.
 <code><a href="https://rdrr.io/pkg/raster/man/raster.html" class="external-link">raster::raster()</a></code> is used to reconstruct a version of the
 original object from the marshalled object.</p>
+    </div>
+    <div id="warning">
+    <h2>WARNING</h2>
+    <p>Numerical identical results cannot be guaranteed:
+Marshalling of <code>RasterLayer</code> objects is <em>leaky</em>.  More precisely,
+the method <em>cannot</em> guarantee that multiple rounds of marshalling
+and unmarshalling produce numerically identical objects.</p>
     </div>
 
     <div id="ref-examples">
