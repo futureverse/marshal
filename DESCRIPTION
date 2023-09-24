@@ -11,6 +11,7 @@ Suggests:
       tensorflow,
     magick,
     ncdf4,
+    parsnip,
     raster,
     stats,
     terra,
@@ -18,7 +19,7 @@ Suggests:
     xgboost,
     XML,
     xml2
-Version: 0.0.0-9022
+Version: 0.0.0-9023
 Authors@R: 
     person(given = "Henrik", family = "Bengtsson",
            role = c("aut", "cre", "cph"),
