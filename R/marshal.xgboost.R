@@ -56,9 +56,9 @@ from_raw.xgb.DMatrix <- function(raw) {
   tf <- tempfile()
   on.exit(file.remove(tf))
   writeBin(raw, con = tf, endian = "little")
-
+  
   ## Muffle stray output
-  sink(tf)
+  sink(nullfile())
   on.exit(sink(NULL), add = TRUE)
   
   xgboost::xgb.DMatrix(tf)

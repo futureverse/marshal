@@ -14,6 +14,7 @@ Suggests:
     raster,
     stats,
     terra,
+    tools,
     xgboost,
     XML,
     xml2

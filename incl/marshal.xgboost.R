@@ -1,6 +1,8 @@
 if (requireNamespace("xgboost", quietly = TRUE)) {
+  library(xgboost)
+  
   data(agaricus.train, package = "xgboost")
-  data <- xgboost::xgb.DMatrix(agaricus.train$data, label = agaricus.train$label)
+  data <- xgb.DMatrix(agaricus.train$data, label = agaricus.train$label)
 
   ## Marshal 'xgb.DMatrix' object
   data_ <- marshal(data)
@@ -17,9 +19,9 @@ if (requireNamespace("xgboost", quietly = TRUE)) {
 
   ## Assert identical objects by exporting to file and byte compare
   tf <- tempfile()
-  xgboost::xgb.DMatrix.save(data, fname = tf)
+  xgb.DMatrix.save(data, fname = tf)
   md5 <- tools::md5sum(tf)
-  xgboost::xgb.DMatrix.save(data2, fname = tf)
+  xgb.DMatrix.save(data2, fname = tf)
   md52 <- tools::md5sum(tf)
   file.remove(tf)
   stopifnot(
