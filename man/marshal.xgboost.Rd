@@ -2,12 +2,15 @@
 % Please edit documentation in R/marshal.xgboost.R
 \name{marshal.xgb.DMatrix}
 \alias{marshal.xgb.DMatrix}
+\alias{marshal.xgb.Booster}
 \title{Marshal and Unmarshal an 'xgboost' object}
 \usage{
 \method{marshal}{xgb.DMatrix}(x, ...)
+
+\method{marshal}{xgb.Booster}(x, ...)
 }
 \arguments{
-\item{x}{An \link[xgboost:xgb.DMatrix]{xgboost::xgb.DMatrix} object.}
+\item{x}{An \link[xgboost:xgb.DMatrix]{xgboost::xgb.DMatrix} or an \code{xgboost:xgb.Booster} object.}
 
 \item{\dots}{Not used.}
 }

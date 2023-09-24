@@ -30,4 +30,3 @@ if (requireNamespace("xgboost", quietly = TRUE)) {
     identical(md5, md52)
   )
 }
-
