@@ -64,7 +64,13 @@
     <loc>https://marshal.futureverse.org/reference/marshal.ncdf4.html</loc>
   </url>
   <url>
+    <loc>https://marshal.futureverse.org/reference/marshal.parallel.html</loc>
+  </url>
+  <url>
     <loc>https://marshal.futureverse.org/reference/marshal.parsnip.html</loc>
+  </url>
+  <url>
+    <loc>https://marshal.futureverse.org/reference/marshal.stanfit.html</loc>
   </url>
   <url>
     <loc>https://marshal.futureverse.org/reference/marshal.terra.html</loc>
