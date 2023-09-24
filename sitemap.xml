@@ -31,7 +31,7 @@
     <loc>https://marshal.futureverse.org/reference/marshal-package.html</loc>
   </url>
   <url>
-    <loc>https://marshal.futureverse.org/reference/marshal.DBIConnection.html</loc>
+    <loc>https://marshal.futureverse.org/reference/marshal.DBI.html</loc>
   </url>
   <url>
     <loc>https://marshal.futureverse.org/reference/marshal.RasterLayer.html</loc>
@@ -40,7 +40,13 @@
     <loc>https://marshal.futureverse.org/reference/marshal.XML.html</loc>
   </url>
   <url>
+    <loc>https://marshal.futureverse.org/reference/marshal.caret.html</loc>
+  </url>
+  <url>
     <loc>https://marshal.futureverse.org/reference/marshal.connection.html</loc>
+  </url>
+  <url>
+    <loc>https://marshal.futureverse.org/reference/marshal.data.table.html</loc>
   </url>
   <url>
     <loc>https://marshal.futureverse.org/reference/marshal.html</loc>
@@ -58,13 +64,13 @@
     <loc>https://marshal.futureverse.org/reference/marshal.ncdf4.html</loc>
   </url>
   <url>
+    <loc>https://marshal.futureverse.org/reference/marshal.parsnip.html</loc>
+  </url>
+  <url>
     <loc>https://marshal.futureverse.org/reference/marshal.terra.html</loc>
   </url>
   <url>
-    <loc>https://marshal.futureverse.org/reference/marshal.train.html</loc>
-  </url>
-  <url>
-    <loc>https://marshal.futureverse.org/reference/marshal.xgb.DMatrix.html</loc>
+    <loc>https://marshal.futureverse.org/reference/marshal.xgboost.html</loc>
   </url>
   <url>
     <loc>https://marshal.futureverse.org/reference/marshal.xml2.html</loc>
