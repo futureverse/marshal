@@ -1,4 +1,4 @@
-#' Marshal and Unmarshal an 'xgboost:xgb.DMatrix' object
+#' Marshal and Unmarshal an 'xgboost' object
 #'
 #' @param x
 #' An [xgboost::xgb.DMatrix] object.
@@ -16,7 +16,7 @@
 #'
 # @example incl/marshal.xgb.DMatrix.R
 #'
-#' @rdname marshal.xgb.DMatrix
+#' @rdname marshal.xgboost
 #' @aliases marshal.xgb.DMatrix
 #' @export
 marshal.xgb.DMatrix <- function(x, ...) {
