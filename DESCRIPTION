@@ -15,13 +15,14 @@ Suggests:
     parsnip,
     raster,
     rstan,
+      BH,
     stats,
     terra,
     tools,
     xgboost,
     XML,
     xml2
-Version: 0.0.0-9027
+Version: 0.0.0-9028
 Authors@R: 
     person(given = "Henrik", family = "Bengtsson",
            role = c("aut", "cre", "cph"),
