@@ -16,7 +16,7 @@
 #'
 # @example incl/marshal.train.R
 #'
-#' @rdname marshal.train
+#' @rdname marshal.caret
 #' @aliases marshal.train
 #' @export
 marshal.train <- function(train, ...) {

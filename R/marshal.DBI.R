@@ -10,7 +10,7 @@
 #' @return
 #' A `marshalled` object as described in [marshal()].
 #'
-#' @rdname marshal.DBIConnection
+#' @rdname marshal.DBI
 #' @aliases marshal.DBIConnection
 #' @export
 marshal.DBIConnection <- function(x, ...) {
