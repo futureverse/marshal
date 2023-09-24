@@ -15,7 +15,7 @@ Suggests:
     parsnip,
     raster,
     rstan,
-      BH,
+      BH, RcppEigen,
     stats,
     terra,
     tools,
