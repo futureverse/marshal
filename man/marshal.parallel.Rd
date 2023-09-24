@@ -7,6 +7,10 @@
 \title{Marshal and Unmarshal a 'parallel' cluster object (not supported)}
 \usage{
 \method{marshal}{SOCKcluster}(x, ...)
+
+\method{marshal}{SOCKnode}(x, ...)
+
+\method{marshal}{SOCK0node}(x, ...)
 }
 \arguments{
 \item{x}{A \link[magick:magick]{magick:magick-image} object.}
