@@ -1,4 +1,4 @@
-#' Marshal and Unmarshal a 'DBI:DBIConnection' object (not supported)
+#' Marshalling of 'DBI:DBIConnection' objects (not supported)
 #'
 #' _Warning: Objects of this class are not possible to marshal.
 #'  If attempted, an error is produced._

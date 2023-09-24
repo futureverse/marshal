@@ -3,7 +3,7 @@
 \name{marshal.CFunc}
 \alias{marshal.CFunc}
 \alias{marshal.inline}
-\title{Marshal and Unmarshal an 'inline' object}
+\title{Marshalling of 'inline' objects}
 \usage{
 \method{marshal}{CFunc}(inline, ...)
 }

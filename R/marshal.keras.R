@@ -1,4 +1,4 @@
-#' Marshal and Unmarshal a 'keras' object
+#' Marshalling of 'keras' objects
 #'
 #' @param model
 #' A \link[keras:keras_model]{keras:keras.engine.base_layer.Layer} object.

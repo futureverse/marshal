@@ -2,7 +2,7 @@
 % Please edit documentation in R/marshal.caret.R
 \name{marshal.train}
 \alias{marshal.train}
-\title{Marshal and Unmarshal a 'caret:train' object}
+\title{Marshalling of 'caret:train' objects}
 \usage{
 \method{marshal}{train}(train, ...)
 }
@@ -15,7 +15,7 @@
 A \code{marshalled} object as described in \code{\link[=marshal]{marshal()}}.
 }
 \description{
-Marshal and Unmarshal a 'caret:train' object
+Marshalling of 'caret:train' objects
 }
 \details{
 \code{\link[bundle:bundle]{bundle::bundle()}} is used to produce a marshalled version

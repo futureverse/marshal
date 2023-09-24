@@ -1,4 +1,4 @@
-#' Marshal and Unmarshal an 'XML' object
+#' Marshalling of 'XML' objects
 #'
 #' @param xml
 #' An \link[XML:XMLAbstractNode-class]{XML::XMLAbstractNode} or

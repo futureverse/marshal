@@ -1,4 +1,4 @@
-#' Marshal and Unmarshal a 'raster' object
+#' Marshalling of 'raster' objects
 #'
 #' @param x
 #' A \link[raster:raster]{raster:RasterLayer} object.

@@ -3,7 +3,7 @@
 \name{marshal.xgb.DMatrix}
 \alias{marshal.xgb.DMatrix}
 \alias{marshal.xgb.Booster}
-\title{Marshal and Unmarshal an 'xgboost' object}
+\title{Marshalling of 'xgboost' objects}
 \usage{
 \method{marshal}{xgb.DMatrix}(x, ...)
 
@@ -18,7 +18,7 @@
 A \code{marshalled} object as described in \code{\link[=marshal]{marshal()}}.
 }
 \description{
-Marshal and Unmarshal an 'xgboost' object
+Marshalling of 'xgboost' objects
 }
 \details{
 \code{\link[xgboost:xgb.DMatrix.save]{xgboost::xgb.DMatrix.save()}} is used to produce a marshalled version

@@ -1,4 +1,4 @@
-#' Marshal and Unmarshal an 'inline' object
+#' Marshalling of 'inline' objects
 #'
 #' _WARNING: This is very limited proof of concept!_
 #'

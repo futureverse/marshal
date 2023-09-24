@@ -1,4 +1,4 @@
-#' Marshal and Unmarshal a 'parsnip' object
+#' Marshalling of 'parsnip' objects
 #'
 #' @param x
 #' A `parnsip:model_fit` object.

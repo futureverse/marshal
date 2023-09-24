@@ -1,4 +1,4 @@
-#' Marshal and Unmarshal an 'xgboost' object
+#' Marshalling of 'xgboost' objects
 #'
 #' @param x
 #' An [xgboost::xgb.DMatrix] or an `xgboost:xgb.Booster` object.

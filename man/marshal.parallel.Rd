@@ -4,7 +4,7 @@
 \alias{marshal.SOCKcluster}
 \alias{marshal.SOCKnode}
 \alias{marshal.SOCK0node}
-\title{Marshal and Unmarshal a 'parallel' cluster object (not supported)}
+\title{Marshalling of 'parallel' objects (not supported)}
 \usage{
 \method{marshal}{SOCKcluster}(x, ...)
 

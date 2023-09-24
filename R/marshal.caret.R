@@ -1,4 +1,4 @@
-#' Marshal and Unmarshal a 'caret:train' object
+#' Marshalling of 'caret:train' objects
 #'
 #' @param train
 #' A [caret::train] object.

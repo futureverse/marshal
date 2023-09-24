@@ -2,7 +2,7 @@
 % Please edit documentation in R/marshal.magick.R
 \name{marshal.magick-image}
 \alias{marshal.magick-image}
-\title{Marshal and Unmarshal a 'magick' object (not supported)}
+\title{Marshalling of 'magick' objects (not supported)}
 \usage{
 \method{marshal}{`magick-image`}(x, ...)
 }

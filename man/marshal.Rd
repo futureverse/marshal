@@ -3,7 +3,7 @@
 \name{marshal}
 \alias{marshal}
 \alias{unmarshal}
-\title{Marshal and Unmarshal R Objects}
+\title{Marshalling of R objects}
 \usage{
 marshal(...)
 
@@ -25,5 +25,5 @@ input and returns an unmarshalled version of the original object.
 \code{unmarshal()} returns an unmarshaled version of the original object.
 }
 \description{
-Marshal and Unmarshal R Objects
+Marshalling of R objects
 }

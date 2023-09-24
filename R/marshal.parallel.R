@@ -1,4 +1,4 @@
-#' Marshal and Unmarshal a 'parallel' cluster object (not supported)
+#' Marshalling of 'parallel' objects (not supported)
 #'
 #' _Warning: Objects of this class are not possible to marshal.
 #'  If attempted, an error is produced._

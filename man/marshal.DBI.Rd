@@ -2,7 +2,7 @@
 % Please edit documentation in R/marshal.DBI.R
 \name{marshal.DBIConnection}
 \alias{marshal.DBIConnection}
-\title{Marshal and Unmarshal a 'DBI:DBIConnection' object (not supported)}
+\title{Marshalling of 'DBI:DBIConnection' objects (not supported)}
 \usage{
 \method{marshal}{DBIConnection}(x, ...)
 }

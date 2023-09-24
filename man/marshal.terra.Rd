@@ -3,7 +3,7 @@
 \name{marshal.SpatVector}
 \alias{marshal.SpatVector}
 \alias{marshal.terra}
-\title{Marshal and Unmarshal a 'terra' object}
+\title{Marshalling of 'terra' objects}
 \usage{
 \method{marshal}{SpatVector}(terra, ...)
 }
@@ -16,7 +16,7 @@
 A \code{marshalled} object as described in \code{\link[=marshal]{marshal()}}.
 }
 \description{
-Marshal and Unmarshal a 'terra' object
+Marshalling of 'terra' objects
 }
 \details{
 \code{\link[terra:wrap]{terra::wrap()}} is used to produce a marshalled version

@@ -4,7 +4,7 @@
 \alias{marshal.XMLAbstractNode}
 \alias{marshal.XML}
 \alias{marshal.XMLAbstractDocument}
-\title{Marshal and Unmarshal an 'XML' object}
+\title{Marshalling of 'XML' objects}
 \usage{
 \method{marshal}{XMLAbstractNode}(xml, ...)
 
@@ -20,7 +20,7 @@
 A \code{marshalled} object as described in \code{\link[=marshal]{marshal()}}.
 }
 \description{
-Marshal and Unmarshal an 'XML' object
+Marshalling of 'XML' objects
 }
 \details{
 \code{\link[XML:xmlSerializeHook]{XML::xmlSerializeHook()}} is used to produce a marshalled version

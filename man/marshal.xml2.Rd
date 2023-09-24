@@ -4,7 +4,7 @@
 \alias{marshal.xml_document}
 \alias{marshal.xml2}
 \alias{marshal.xml_nodeset}
-\title{Marshal and Unmarshal an 'xml2' object}
+\title{Marshalling of 'xml2' objects}
 \usage{
 \method{marshal}{xml_document}(xml2, ...)
 
@@ -19,7 +19,7 @@
 A \code{marshalled} object as described in \code{\link[=marshal]{marshal()}}.
 }
 \description{
-Marshal and Unmarshal an 'xml2' object
+Marshalling of 'xml2' objects
 }
 \details{
 \code{\link[xml2:xml_serialize]{xml2::xml_serialize()}} is used to produce a marshalled version

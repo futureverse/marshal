@@ -2,7 +2,7 @@
 % Please edit documentation in R/marshal.parsnip.R
 \name{marshal.model_fit}
 \alias{marshal.model_fit}
-\title{Marshal and Unmarshal a 'parsnip' object}
+\title{Marshalling of 'parsnip' objects}
 \usage{
 \method{marshal}{model_fit}(x, ...)
 }
@@ -15,7 +15,7 @@
 A \code{marshalled} object as described in \code{\link[=marshal]{marshal()}}.
 }
 \description{
-Marshal and Unmarshal a 'parsnip' object
+Marshalling of 'parsnip' objects
 }
 \details{
 The \code{fit} element of the \code{model_fit} object is marshalled.

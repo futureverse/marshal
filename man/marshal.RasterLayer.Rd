@@ -2,7 +2,7 @@
 % Please edit documentation in R/marshal.raster.R
 \name{marshal.RasterLayer}
 \alias{marshal.RasterLayer}
-\title{Marshal and Unmarshal a 'raster' object}
+\title{Marshalling of 'raster' objects}
 \usage{
 \method{marshal}{RasterLayer}(x, ...)
 }
@@ -15,7 +15,7 @@
 A \code{marshalled} object as described in \code{\link[=marshal]{marshal()}}.
 }
 \description{
-Marshal and Unmarshal a 'raster' object
+Marshalling of 'raster' objects
 }
 \details{
 \code{\link[raster:writeRaster]{raster::writeRaster()}} is used to produce a marshalled version

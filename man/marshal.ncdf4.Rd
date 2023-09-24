@@ -2,7 +2,7 @@
 % Please edit documentation in R/marshal.ncdf4.R
 \name{marshal.ncdf4}
 \alias{marshal.ncdf4}
-\title{Marshal and Unmarshal an 'ncdf4' object}
+\title{Marshalling of 'ncdf4' objects}
 \usage{
 \method{marshal}{ncdf4}(x, ...)
 }
@@ -15,7 +15,7 @@
 A \code{marshalled} object as described in \code{\link[=marshal]{marshal()}}.
 }
 \description{
-Marshal and Unmarshal an 'ncdf4' object
+Marshalling of 'ncdf4' objects
 }
 \details{
 \code{\link[base:readBin]{base::readBin()}} is used to produce a marshalled version

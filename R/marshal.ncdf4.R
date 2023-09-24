@@ -1,4 +1,4 @@
-#' Marshal and Unmarshal an 'ncdf4' object
+#' Marshalling of 'ncdf4' objects
 #'
 #' @param x
 #' A \link[ncdf4:nc_create]{ncdf4:ncdf4} object.

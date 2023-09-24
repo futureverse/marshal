@@ -1,4 +1,4 @@
-#' Marshal and Unmarshal an 'xml2' object
+#' Marshalling of 'xml2' objects
 #'
 #' @param xml2
 #' A \link[xml2:xml_document-class]{xml2::xml_document} or similar.

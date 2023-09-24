@@ -1,4 +1,4 @@
-#' Marshal and Unmarshal R Objects
+#' Marshalling of R objects
 #'
 #' @param \dots The object to be marshalled, or unmarshalled,
 #' followed by additional arguments passed to the specific S3 method.

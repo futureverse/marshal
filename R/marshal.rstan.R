@@ -1,4 +1,4 @@
-#' Marshal and Unmarshal a 'rstan' object
+#' Marshalling of 'rstan' objects
 #'
 #' @param x
 #' A `rstan:stanfit` object.

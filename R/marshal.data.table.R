@@ -1,4 +1,4 @@
-#' Marshal and Unmarshal a 'data.table' object
+#' Marshalling of 'data.table' objects
 #'
 #' @param x
 #' A [data.table::data.table] object.

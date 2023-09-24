@@ -2,7 +2,7 @@
 % Please edit documentation in R/marshal.data.table.R
 \name{marshal.data.table}
 \alias{marshal.data.table}
-\title{Marshal and Unmarshal a 'data.table' object}
+\title{Marshalling of 'data.table' objects}
 \usage{
 \method{marshal}{data.table}(x, ...)
 }
@@ -15,7 +15,7 @@
 A \code{marshalled} object as described in \code{\link[=marshal]{marshal()}}.
 }
 \description{
-Marshal and Unmarshal a 'data.table' object
+Marshalling of 'data.table' objects
 }
 \examples{
 if (requireNamespace("data.table", quietly = TRUE)) {

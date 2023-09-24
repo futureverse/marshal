@@ -1,4 +1,4 @@
-#' Marshal and Unmarshal an R Connection
+#' Marshalling of R connections
 #'
 #' @param con A \link[base:connection]{connection}.
 #'

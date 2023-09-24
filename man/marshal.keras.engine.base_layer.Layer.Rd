@@ -2,7 +2,7 @@
 % Please edit documentation in R/marshal.keras.R
 \name{marshal.keras.engine.base_layer.Layer}
 \alias{marshal.keras.engine.base_layer.Layer}
-\title{Marshal and Unmarshal a 'keras' object}
+\title{Marshalling of 'keras' objects}
 \usage{
 \method{marshal}{keras.engine.base_layer.Layer}(model, ...)
 }
@@ -15,7 +15,7 @@
 A \code{marshalled} object as described in \code{\link[=marshal]{marshal()}}.
 }
 \description{
-Marshal and Unmarshal a 'keras' object
+Marshalling of 'keras' objects
 }
 \details{
 \code{\link[keras:serialize_model]{keras::serialize_model()}} is used to produce a marshalled version

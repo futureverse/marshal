@@ -2,7 +2,7 @@
 % Please edit documentation in R/marshal.connection.R
 \name{marshal.connection}
 \alias{marshal.connection}
-\title{Marshal and Unmarshal an R Connection}
+\title{Marshalling of R connections}
 \usage{
 \method{marshal}{connection}(con, ...)
 }
@@ -15,7 +15,7 @@
 A \code{marshalled} object as described in \code{\link[=marshal]{marshal()}}.
 }
 \description{
-Marshal and Unmarshal an R Connection
+Marshalling of R connections
 }
 \section{Limitations}{
 

@@ -2,7 +2,7 @@
 % Please edit documentation in R/marshal.rstan.R
 \name{marshal.stanfit}
 \alias{marshal.stanfit}
-\title{Marshal and Unmarshal a 'rstan' object}
+\title{Marshalling of 'rstan' objects}
 \usage{
 \method{marshal}{stanfit}(x, ...)
 }
@@ -15,5 +15,5 @@
 A \code{marshalled} object as described in \code{\link[=marshal]{marshal()}}.
 }
 \description{
-Marshal and Unmarshal a 'rstan' object
+Marshalling of 'rstan' objects
 }
