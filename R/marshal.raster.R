@@ -21,7 +21,7 @@
 #'
 #' @example incl/marshal.raster.R
 #'
-#' @rdname marshal.RasterLayer
+#' @rdname marshal.raster
 #' @aliases marshal.RasterLayer
 #' @export
 marshal.RasterLayer <- function(x, ...) {

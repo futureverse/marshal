@@ -10,7 +10,7 @@
 #' @return
 #' A `marshalled` object as described in [marshal()].
 #'
-#' @rdname marshal.magick-image
+#' @rdname marshal.magick
 #' @aliases marshal.magick-image
 #' @export
 `marshal.magick-image` <- function(x, ...) {

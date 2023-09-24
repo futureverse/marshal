@@ -16,7 +16,7 @@
 #'
 #' @example incl/marshal.keras.R
 #'
-#' @rdname marshal.keras.engine.base_layer.Layer
+#' @rdname marshal.keras
 #' @aliases marshal.keras.engine.base_layer.Layer
 #' @export
 marshal.keras.engine.base_layer.Layer <- function(model, ...) {
