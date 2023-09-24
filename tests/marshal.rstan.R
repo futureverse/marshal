@@ -36,6 +36,11 @@ if (requireNamespace("BH", quietly = TRUE) && requireNamespace("RcppEigen", quie
   print(fit2)
   print(summary(fit2))
 
+  print(list(
+    print = identical(capture.output(print(fit2)), capture.output(print(fit))),
+    summary = identical(capture.output(summary(fit2)), capture.output(summary(fit)))
+  ))
+  
   stopifnot(
     identical(capture.output(print(fit2)), capture.output(print(fit))),
     identical(capture.output(summary(fit2)), capture.output(summary(fit)))

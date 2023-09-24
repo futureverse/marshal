@@ -20,12 +20,14 @@ marshal.SOCKcluster <- function(x, ...) {
 }
 
 
+#' @rdname marshal.parallel
 #' @export
 marshal.SOCKnode <- function(x, ...) {
   stop(MarshalNotSupportedError(object = x))
 }
 
 
+#' @rdname marshal.parallel
 #' @export
 marshal.SOCK0node <- function(x, ...) {
   stop(MarshalNotSupportedError(object = x))
