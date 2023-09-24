@@ -34,9 +34,6 @@
     <loc>https://marshal.futureverse.org/reference/marshal.DBI.html</loc>
   </url>
   <url>
-    <loc>https://marshal.futureverse.org/reference/marshal.RasterLayer.html</loc>
-  </url>
-  <url>
     <loc>https://marshal.futureverse.org/reference/marshal.XML.html</loc>
   </url>
   <url>
@@ -55,10 +52,10 @@
     <loc>https://marshal.futureverse.org/reference/marshal.inline.html</loc>
   </url>
   <url>
-    <loc>https://marshal.futureverse.org/reference/marshal.keras.engine.base_layer.Layer.html</loc>
+    <loc>https://marshal.futureverse.org/reference/marshal.keras.html</loc>
   </url>
   <url>
-    <loc>https://marshal.futureverse.org/reference/marshal.magick-image.html</loc>
+    <loc>https://marshal.futureverse.org/reference/marshal.magick.html</loc>
   </url>
   <url>
     <loc>https://marshal.futureverse.org/reference/marshal.ncdf4.html</loc>
@@ -68,6 +65,9 @@
   </url>
   <url>
     <loc>https://marshal.futureverse.org/reference/marshal.parsnip.html</loc>
+  </url>
+  <url>
+    <loc>https://marshal.futureverse.org/reference/marshal.raster.html</loc>
   </url>
   <url>
     <loc>https://marshal.futureverse.org/reference/marshal.stanfit.html</loc>
