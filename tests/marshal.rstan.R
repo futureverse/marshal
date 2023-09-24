@@ -1,6 +1,6 @@
 library(marshal)
 
-if (requireNamespace("rstan", quietly = TRUE)) {
+if (requireNamespace("BH", quietly = TRUE) && requireNamespace("rstan", quietly = TRUE)) {
   library(rstan)
 
   code <- "
