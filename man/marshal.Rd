@@ -22,7 +22,7 @@ components:
 input and returns an unmarshalled version of the original object.
 }
 
-\code{unmarshal()} returns an unmarshaled version of the original object.
+\code{unmarshal()} returns an unmarshalled version of the original object.
 }
 \description{
 Marshalling of R objects

@@ -41,3 +41,10 @@ unmarshal_train <- function(train, ...) {
   stopifnot(all.equal(class(res), marshal_unclass(train), check.attributes = FALSE))
   res
 }
+
+
+#' @rdname marshallable
+#' @export
+marshallable.train <- function(...) {
+  TRUE
+}

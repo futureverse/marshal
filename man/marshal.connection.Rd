@@ -2,9 +2,12 @@
 % Please edit documentation in R/marshal.connection.R
 \name{marshal.connection}
 \alias{marshal.connection}
+\alias{marshallable.connection}
 \title{Marshalling of R connections}
 \usage{
 \method{marshal}{connection}(con, ...)
+
+\method{marshallable}{connection}(con, ...)
 }
 \arguments{
 \item{con}{A \link[base:connection]{connection}.}

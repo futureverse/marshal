@@ -14,7 +14,7 @@
 marshal <- function(...) { UseMethod("marshal") }
 
 #' @return
-#' `unmarshal()` returns an unmarshaled version of the original object.
+#' `unmarshal()` returns an unmarshalled version of the original object.
 #'
 #' @rdname marshal
 #' @export
@@ -27,4 +27,3 @@ unmarshal.marshalled <- function(object, ...) {
   stopifnot(is.function(object[["unmarshal"]]))
   object[["unmarshal"]](object, ...)
 }
-

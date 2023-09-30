@@ -22,36 +22,16 @@
 #' @export
 marshal.connection <- function(con, ...) {
   con_ <- con
-  
-  ## Special cases (stdin, stdout, stderr)
-  if (con_ <= 2L) {
-    if (con_ == 0L) {
-      stop("Cannot marshal the standard input connection")
-    }
-  } else {
-    state <- summary(con_)
-    
-    ## Can only marshal read-only connections
-    if (! state[["mode"]] %in% c("r", "rt", "rb")) {
-      stop(sprintf("Can not marshal a writable connection: %s", state[["mode"]]))
-    }
 
-    ## Can only marshal unopened or seekable connections
-    if (state[["opened"]] == "opened") {
-      if (!isSeekable(con_)) {
-        stop("Can not marshal a non-seekable open connection")
-      }
-      ## Record current position
-      state[["position"]] <- seek(con_, where = NA, origin = "start", rw = "read")
-    }
-
-    ## Invalidate connection (prevent misuse)
-    con_[1] <- -1L
-    attr(con_, "state") <- state
+  possible <- marshallable_connection(con)
+  if (!possible) {
+    stop(attr(possible, "reason", exact = TRUE))
   }
-
-  ## Drop external pointer reference
+  
+  ## Invalidate connection (prevent misuse)
+  con_[1] <- -1L
   attr(con_, "conn_id") <- NULL
+  attr(con_, "state") <- attr(possible, "state", exact = TRUE)
 
   res <- list(
     marshalled = con_
@@ -104,4 +84,49 @@ unmarshal_connection <- function(con, ...) {
   stopifnot(identical(class(con2), marshal_unclass(con)))
   
   con2
+}
+
+
+#' @rdname marshal.connection
+#' @aliases marshallable.connection
+#' @export
+marshallable.connection <- function(con, ...) {
+  as.logical(marshallable_connection(con))
+}
+
+
+marshallable_connection <- function(con) {
+  ## Special cases (stdin, stdout, stderr)
+  if (con <= 2L) {
+    if (con == 0L) {
+      reason <- "Cannot marshal the standard input connection"
+      return(structure(FALSE, reason = reason))
+    }
+  } else {
+    state <- summary(con)
+    
+    ## Can only marshal read-only connections
+    if (! state[["mode"]] %in% c("r", "rt", "rb")) {
+      reason <- sprintf("Can not marshal a writable connection: %s", state[["mode"]])
+      return(structure(FALSE, reason = reason))
+    }
+
+    ## Can only marshal unopened or seekable connections
+    if (state[["opened"]] == "opened") {
+      if (!isSeekable(con)) {
+        reason <- "Can not marshal a non-seekable open connection"
+        return(structure(FALSE, reason = reason))
+      }
+      ## Record current position
+      state[["position"]] <- seek(con, where = NA, origin = "start", rw = "read")
+    }
+
+    ## Can only marshal file and URL connections
+    if (!grepl("(^url|file$)", state[["class"]])) {
+      reason <- sprintf("Don't know how to marshal connection of class %s", state[["class"]])
+      return(structure(FALSE, reason = reason))
+    }
+  }
+
+  structure(TRUE, state = state)
 }
