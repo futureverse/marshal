@@ -1,6 +1,8 @@
 Package: marshal
 Version: 0.0.0-9033
 Title: Framework to Marshal Objects to be Used in Another R Process
+Depends:
+    R (>= 3.2.0)
 Suggests:
     bundle,
     caret,
@@ -8,6 +10,7 @@ Suggests:
     DBI,
       RSQLite,
     digest,
+    h2o,
     inline,
     keras,
       tensorflow,
