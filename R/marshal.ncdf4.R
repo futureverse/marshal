@@ -48,3 +48,12 @@ unmarshal_ncdf4 <- function(x, ...) {
   stopifnot(all.equal(class(res), marshal_unclass(x), check.attributes = FALSE))
   res
 }
+
+
+
+#' @rdname marshal.ncdf4
+#' @aliases marshal.ncdf4
+#' @export
+marshallable.ncdf4 <- function(...) {
+  TRUE
+}

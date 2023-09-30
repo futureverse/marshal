@@ -20,6 +20,9 @@ if (requireNamespace("tensorflow", quietly = TRUE) && tensorflow::tf_config()$av
   ## Not needed anymore
   rm(list = c("inputs", "outputs"))
 
+  ## Assert marshallability
+  stopifnot(marshallable(model))
+
   ## Marshal
   model_ <- marshal(model)
   

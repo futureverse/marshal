@@ -4,11 +4,17 @@
 \alias{marshal.XMLAbstractNode}
 \alias{marshal.XML}
 \alias{marshal.XMLAbstractDocument}
+\alias{marshallable.XMLAbstractDocument}
+\alias{marshallable.XMLAbstractNode}
 \title{Marshalling of 'XML' objects}
 \usage{
 \method{marshal}{XMLAbstractNode}(xml, ...)
 
 \method{marshal}{XMLAbstractDocument}(xml, ...)
+
+\method{marshallable}{XMLAbstractDocument}(...)
+
+\method{marshallable}{XMLAbstractNode}(...)
 }
 \arguments{
 \item{xml}{An \link[XML:XMLAbstractNode-class]{XML::XMLAbstractNode} or

@@ -3,7 +3,10 @@ library(marshal)
 if (requireNamespace("terra", quietly = TRUE)) {
   file <- system.file("ex/lux.shp", package = "terra")
   v <- terra::vect(file)
-  
+
+  ## Assert marshallability
+  stopifnot(marshallable(v))
+
   ## Marshal SpatVector object
   v_ <- marshal(v)
   

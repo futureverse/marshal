@@ -40,3 +40,11 @@ unmarshal_keras.engine.base_layer.Layer <- function(model, ...) {
   stopifnot(all.equal(class(res), marshal_unclass(model), check.attributes = FALSE))
   res
 }
+
+
+#' @rdname marshal.keras
+#' @aliases marshallable.keras.engine.base_layer.Layer
+#' @export
+marshallable.keras.engine.base_layer.Layer <- function(...) {
+  TRUE
+}

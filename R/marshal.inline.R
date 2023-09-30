@@ -26,11 +26,14 @@ marshal.CFunc <- function(inline, ...) {
 
 marshal_CFunc <- function(inline, ...) {
   language <- "C"
+
+  res <- marshallable_CFunc(inline)
+  if (!res) {
+    stop(attr(res, "reason", exact = TRUE))
+  }
   
   ## Reconstruct convention
-  code <- deparse(as.list(body(inline))[[1]])
-  convention <- gsub('^[.]Primitive[(]"(.*)"[)]$', "\\1", code)
-  stopifnot(convention %in% c(".Call", ".C", ".Fortran"))
+  convention <- attr(res, "convention", exact = TRUE)
  
   ## Reconstruct signature
   args <- as.list(body(inline))[-(1:2)]
@@ -82,4 +85,27 @@ unmarshal_CFunc <- function(inline, ...) {
   )
   stopifnot(identical(class(res), marshal_unclass(inline)))
   res
+}
+
+
+
+#' @rdname marshal.inline
+#' @aliases marshallable.CFunc
+#' @export
+marshallable.CFunc <- function(...) {
+  as.logical(marshallable_CFunc(...))
+}
+
+
+marshallable_CFunc <- function(inline, ...) {
+  ## Reconstruct convention
+  code <- deparse(as.list(body(inline))[[1]])
+  
+  convention <- gsub('^[.]Primitive[(]"(.*)"[)]$', "\\1", code)
+  if (!convention %in% c(".Call", ".C", ".Fortran")) {
+    reason <- sprintf("Can not marshal 'inline' %s functions that call .Call(), .C(), or .Fortran()", class(inline)[1])
+    return(structure(FALSE, reason = reason))
+  }
+  
+  structure(TRUE, convention = convention)
 }

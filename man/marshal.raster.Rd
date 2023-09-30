@@ -2,9 +2,12 @@
 % Please edit documentation in R/marshal.raster.R
 \name{marshal.RasterLayer}
 \alias{marshal.RasterLayer}
+\alias{marshallable.RasterLayer}
 \title{Marshalling of 'raster' objects}
 \usage{
 \method{marshal}{RasterLayer}(x, ...)
+
+\method{marshallable}{RasterLayer}(x, ...)
 }
 \arguments{
 \item{x}{A \link[raster:raster]{raster:RasterLayer} object.}

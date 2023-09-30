@@ -4,6 +4,9 @@ if (requireNamespace("raster", quietly = TRUE)) {
   r <- raster::raster(system.file("external/test.grd", package = "raster"))
   print(r)
 
+  ## Assert marshallability
+  stopifnot(marshallable(r))
+
   ## Marshal
   r_ <- marshal(r)
 

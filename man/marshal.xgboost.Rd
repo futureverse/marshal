@@ -3,11 +3,17 @@
 \name{marshal.xgb.DMatrix}
 \alias{marshal.xgb.DMatrix}
 \alias{marshal.xgb.Booster}
+\alias{marshallable.xgb.Booster}
+\alias{marshallable.xgb.DMatrix}
 \title{Marshalling of 'xgboost' objects}
 \usage{
 \method{marshal}{xgb.DMatrix}(x, ...)
 
 \method{marshal}{xgb.Booster}(x, ...)
+
+\method{marshallable}{xgb.Booster}(...)
+
+\method{marshallable}{xgb.DMatrix}(...)
 }
 \arguments{
 \item{x}{An \link[xgboost:xgb.DMatrix]{xgboost::xgb.DMatrix} or an \code{xgboost:xgb.Booster} object.}

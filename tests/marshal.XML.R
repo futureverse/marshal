@@ -3,7 +3,10 @@ library(marshal)
 if (requireNamespace("XML", quietly = TRUE)) {
   node <- XML::xmlParseString("<a><b>c</b></a>")
   print(node)
-  
+
+  ## Assert marshallability
+  stopifnot(marshallable(node))
+
   ## Marshal XMLAbstractNode object
   node_ <- marshal(node)
   ## Unmarshal XMLAbstractNode object
@@ -14,7 +17,10 @@ if (requireNamespace("XML", quietly = TRUE)) {
   
   
   doc <- XML::xmlParse(system.file("exampleData", "tides.xml", package = "XML"))
-  
+
+  ## Assert marshallability
+  stopifnot(marshallable(doc))
+
   ## Marshal XMLAbstractDocument object
   doc_ <- marshal(doc)
   ## Unmarshal XMLAbstractDocument object

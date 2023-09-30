@@ -5,6 +5,9 @@ if (requireNamespace("data.table", quietly = TRUE)) {
 
   dt <- data.table(a = 1:3, b = letters[1:3])
 
+  ## Assert marshallability
+  stopifnot(marshallable(dt))
+
   ## Marshal
   dt_ <- marshal(dt)
   

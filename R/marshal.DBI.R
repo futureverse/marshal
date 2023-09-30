@@ -16,3 +16,11 @@
 marshal.DBIConnection <- function(x, ...) {
   stop(MarshalNotSupportedError(object = x))
 }
+
+
+#' @rdname marshal.DBI
+#' @aliases marshallable.DBIConnection
+#' @export
+marshallable.DBIConnection <- function(...) {
+  FALSE
+}

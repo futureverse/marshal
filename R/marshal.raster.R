@@ -65,3 +65,12 @@ unmarshal_RasterLayer <- function(x, ...) {
   stopifnot(all.equal(class(res), marshal_unclass(x), check.attributes = FALSE))
   res
 }
+
+
+
+#' @rdname marshal.raster
+#' @aliases marshallable.RasterLayer
+#' @export
+marshallable.RasterLayer <- function(x, ...) {
+  TRUE
+}

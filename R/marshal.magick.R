@@ -16,3 +16,11 @@
 `marshal.magick-image` <- function(x, ...) {
   stop(MarshalNotSupportedError(object = x))
 }
+
+
+#' @rdname marshal.magick
+#' @aliases marshallable.magick-image
+#' @export
+`marshallable.magick-image` <- function(...) {
+  FALSE
+}

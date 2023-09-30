@@ -4,11 +4,17 @@
 \alias{marshal.xml_document}
 \alias{marshal.xml2}
 \alias{marshal.xml_nodeset}
+\alias{marshallable.xml_document}
+\alias{marshallable.xml_nodeset}
 \title{Marshalling of 'xml2' objects}
 \usage{
 \method{marshal}{xml_document}(xml2, ...)
 
 \method{marshal}{xml_nodeset}(xml2, ...)
+
+\method{marshallable}{xml_document}(...)
+
+\method{marshallable}{xml_nodeset}(...)
 }
 \arguments{
 \item{xml2}{A \link[xml2:xml_document-class]{xml2::xml_document} or similar.}

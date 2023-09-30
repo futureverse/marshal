@@ -3,6 +3,9 @@ library(marshal)
 con <- url("https://www.r-project.org")
 print(con)
 
+## Assert marshallability
+stopifnot(marshallable(con))
+
 ## Marshal read-only connection, which records the
 ## current state, including the current file position.
 con_ <- marshal(con)

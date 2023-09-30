@@ -1,4 +1,5 @@
 Package: marshal
+Version: 0.0.0-9029
 Title: Framework to Marshal Objects to be Used in Another R Process
 Suggests:
     bundle,
@@ -22,7 +23,6 @@ Suggests:
     xgboost,
     XML,
     xml2
-Version: 0.0.0-9028
 Authors@R: 
     person(given = "Henrik", family = "Bengtsson",
            role = c("aut", "cre", "cph"),

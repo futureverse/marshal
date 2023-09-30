@@ -12,8 +12,6 @@
 #'
 #' @rdname marshal.parallel
 #' @aliases marshal.SOCKcluster
-#' @aliases marshal.SOCKnode
-#' @aliases marshal.SOCK0node
 #' @export
 marshal.SOCKcluster <- function(x, ...) {
   stop(MarshalNotSupportedError(object = x))
@@ -21,6 +19,7 @@ marshal.SOCKcluster <- function(x, ...) {
 
 
 #' @rdname marshal.parallel
+#' @aliases marshal.SOCKnode
 #' @export
 marshal.SOCKnode <- function(x, ...) {
   stop(MarshalNotSupportedError(object = x))
@@ -28,7 +27,33 @@ marshal.SOCKnode <- function(x, ...) {
 
 
 #' @rdname marshal.parallel
+#' @aliases marshal.SOCK0node
 #' @export
 marshal.SOCK0node <- function(x, ...) {
   stop(MarshalNotSupportedError(object = x))
+}
+
+
+
+#' @rdname marshal.parallel
+#' @aliases marshallable.SOCKcluster
+#' @export
+marshallable.SOCKcluster <- function(...) {
+  FALSE
+}
+
+
+#' @rdname marshal.parallel
+#' @aliases marshallable.SOCKnode
+#' @export
+marshallable.SOCKnode <- function(...) {
+  FALSE
+}
+
+
+#' @rdname marshal.parallel
+#' @aliases marshallable.SOCK0node
+#' @export
+marshallable.SOCK0node <- function(...) {
+  FALSE
 }

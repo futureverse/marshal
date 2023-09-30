@@ -2,9 +2,12 @@
 % Please edit documentation in R/marshal.parsnip.R
 \name{marshal.model_fit}
 \alias{marshal.model_fit}
+\alias{marshallable.model_fit}
 \title{Marshalling of 'parsnip' objects}
 \usage{
 \method{marshal}{model_fit}(x, ...)
+
+\method{marshallable}{model_fit}(...)
 }
 \arguments{
 \item{x}{A \code{parnsip:model_fit} object.}

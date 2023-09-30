@@ -40,3 +40,11 @@ unmarshal_SpatVector <- function(terra, ...) {
   stopifnot(all.equal(class(res), marshal_unclass(terra), check.attributes = FALSE))
   res
 }
+
+
+#' @rdname marshal.terra
+#' @aliases marshallable.SpatVector
+#' @export
+marshallable.SpatVector <- function(...) {
+  TRUE
+}

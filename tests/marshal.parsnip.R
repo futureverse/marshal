@@ -7,7 +7,10 @@ if (requireNamespace("parsnip", quietly = TRUE) && requireNamespace("xgboost", q
   model <- boost_tree(mode = "classification", trees = 20L, engine = "xgboost")  
   model <- set_mode(model, "regression")
   fit <- fit(model, mpg ~ ., data = datasets::mtcars)
-  
+
+  ## Assert marshallability
+  stopifnot(marshallable(fit))
+
   ## Marshal
   fit_ <- marshal(fit)
 

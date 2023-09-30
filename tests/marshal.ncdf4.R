@@ -32,6 +32,9 @@ if (requireNamespace("ncdf4", quietly = TRUE)) {
   y <- ncvar_get(nf, "x")
   stopifnot(identical(y, 42))
 
+  ## Assert marshallability
+  stopifnot(marshallable(nf))
+
   ## Marshal
   nf_ <- marshal(nf)
 
@@ -42,7 +45,7 @@ if (requireNamespace("ncdf4", quietly = TRUE)) {
   stopifnot(identical(y2, y))
 
   stopifnot(all.equal(prune(nf2), prune(nf)))
-  
+
   ## Marshal
   nf2_ <- marshal(nf2)
   stopifnot(identical(nf2_, nf_))

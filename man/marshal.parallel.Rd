@@ -4,6 +4,9 @@
 \alias{marshal.SOCKcluster}
 \alias{marshal.SOCKnode}
 \alias{marshal.SOCK0node}
+\alias{marshallable.SOCKcluster}
+\alias{marshallable.SOCKnode}
+\alias{marshallable.SOCK0node}
 \title{Marshalling of 'parallel' objects (not supported)}
 \usage{
 \method{marshal}{SOCKcluster}(x, ...)
@@ -11,6 +14,12 @@
 \method{marshal}{SOCKnode}(x, ...)
 
 \method{marshal}{SOCK0node}(x, ...)
+
+\method{marshallable}{SOCKcluster}(...)
+
+\method{marshallable}{SOCKnode}(...)
+
+\method{marshallable}{SOCK0node}(...)
 }
 \arguments{
 \item{x}{A \link[magick:magick]{magick:magick-image} object.}

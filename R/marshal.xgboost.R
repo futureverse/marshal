@@ -17,8 +17,8 @@
 # @example incl/marshal.xgb.DMatrix.R
 #'
 #' @rdname marshal.xgboost
-#' @aliases marshal.xgb.DMatrix
 #' @aliases marshal.xgb.Booster
+#' @aliases marshal.xgb.DMatrix
 #' @export
 marshal.xgb.DMatrix <- function(x, ...) {
   res <- list(
@@ -100,4 +100,22 @@ unmarshal_xgb.Booster <- function(x, ...) {
   for (name in names(extra)) res[name] <- extra[name]
   stopifnot(all.equal(class(res), marshal_unclass(x), check.attributes = FALSE))
   res
+}
+
+
+
+
+#' @rdname marshal.xgboost
+#' @aliases marshallable.xgb.Booster
+#' @export
+marshallable.xgb.Booster <- function(...) {
+  TRUE
+}
+
+
+#' @rdname marshal.xgboost
+#' @aliases marshallable.xgb.DMatrix
+#' @export
+marshallable.xgb.DMatrix <- function(...) {
+  TRUE
 }

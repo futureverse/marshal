@@ -2,9 +2,12 @@
 % Please edit documentation in R/marshal.DBI.R
 \name{marshal.DBIConnection}
 \alias{marshal.DBIConnection}
+\alias{marshallable.DBIConnection}
 \title{Marshalling of 'DBI:DBIConnection' objects (not supported)}
 \usage{
 \method{marshal}{DBIConnection}(x, ...)
+
+\method{marshallable}{DBIConnection}(...)
 }
 \arguments{
 \item{x}{A \link[DBI:DBIConnection-class]{DBI::DBIConnection} object.}

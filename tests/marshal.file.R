@@ -9,6 +9,9 @@ con <- file(tf, open = "rb")
 bfr <- readChar(con, nchars = 4L)
 print(bfr)  ## "abcd"
 
+## Assert marshallability
+stopifnot(marshallable(con))
+
 ## Marshal read-only connection, which records the
 ## current state, including the current file position.
 con_ <- marshal(con)

@@ -30,7 +30,10 @@ if (requireNamespace("BH", quietly = TRUE) && requireNamespace("RcppEigen", quie
   Sys.setenv(R_TESTS = ovalue)
   print(fit)
   print(summary(fit))
-  
+
+  ## Assert marshallability
+  stopifnot(marshallable(fit))
+
   fit_ <- marshal(fit)
   fit2 <- unmarshal(fit_)
   print(fit2)

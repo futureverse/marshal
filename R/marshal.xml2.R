@@ -51,3 +51,18 @@ unmarshal_xml2 <- function(xml2, ...) {
   stopifnot(identical(class(res), marshal_unclass(xml2)))
   res
 }
+
+
+#' @rdname marshal.xml2
+#' @aliases marshallable.xml_document
+#' @export
+marshallable.xml_document <- function(...) {
+  TRUE
+}
+
+#' @rdname marshal.xml2
+#' @aliases marshallable.xml_nodeset
+#' @export
+marshallable.xml_nodeset <- function(...) {
+  TRUE
+}

@@ -2,9 +2,12 @@
 % Please edit documentation in R/marshal.data.table.R
 \name{marshal.data.table}
 \alias{marshal.data.table}
+\alias{marshallable.data.table}
 \title{Marshalling of 'data.table' objects}
 \usage{
 \method{marshal}{data.table}(x, ...)
+
+\method{marshallable}{data.table}(...)
 }
 \arguments{
 \item{x}{A \link[data.table:data.table]{data.table::data.table} object.}

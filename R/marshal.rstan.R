@@ -8,7 +8,7 @@
 #' @return
 #' A `marshalled` object as described in [marshal()].
 #'
-#' @rdname marshal.stanfit
+#' @rdname marshal.rstan
 #' @aliases marshal.stanfit
 #' @export
 marshal.stanfit <- function(x, ...) {
@@ -33,4 +33,13 @@ unmarshal_stanfit <- function(x, ...) {
   res <- unserialize(object)
   stopifnot(all.equal(class(res), marshal_unclass(x), check.attributes = FALSE))
   res
+}
+
+
+
+#' @rdname marshal.rstan
+#' @aliases marshallable.stanfit
+#' @export
+marshallable.stanfit <- function(...) {
+  TRUE
 }

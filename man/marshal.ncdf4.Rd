@@ -2,9 +2,12 @@
 % Please edit documentation in R/marshal.ncdf4.R
 \name{marshal.ncdf4}
 \alias{marshal.ncdf4}
+\alias{marshallable.ncdf4}
 \title{Marshalling of 'ncdf4' objects}
 \usage{
 \method{marshal}{ncdf4}(x, ...)
+
+\method{marshallable}{ncdf4}(...)
 }
 \arguments{
 \item{x}{A \link[ncdf4:nc_create]{ncdf4:ncdf4} object.}

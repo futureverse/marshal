@@ -2,9 +2,12 @@
 % Please edit documentation in R/marshal.caret.R
 \name{marshal.train}
 \alias{marshal.train}
+\alias{marshallable.train}
 \title{Marshalling of 'caret:train' objects}
 \usage{
 \method{marshal}{train}(train, ...)
+
+\method{marshallable}{train}(...)
 }
 \arguments{
 \item{train}{A \link[caret:train]{caret::train} object.}

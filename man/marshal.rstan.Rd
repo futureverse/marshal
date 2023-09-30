@@ -2,9 +2,12 @@
 % Please edit documentation in R/marshal.rstan.R
 \name{marshal.stanfit}
 \alias{marshal.stanfit}
+\alias{marshallable.stanfit}
 \title{Marshalling of 'rstan' objects}
 \usage{
 \method{marshal}{stanfit}(x, ...)
+
+\method{marshallable}{stanfit}(...)
 }
 \arguments{
 \item{x}{A \code{rstan:stanfit} object.}

@@ -6,6 +6,9 @@ if (requireNamespace("xgboost", quietly = TRUE)) {
   data(agaricus.train, package = "xgboost")
   data <- xgb.DMatrix(agaricus.train$data, label = agaricus.train$label)
 
+  ## Assert marshallability
+  stopifnot(marshallable(data))
+
   ## Marshal 'xgb.DMatrix' object
   data_ <- marshal(data)
 

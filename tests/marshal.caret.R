@@ -15,6 +15,9 @@ if (requireNamespace("caret", quietly = TRUE)) {
     trControl = caret::trainControl(method = "cv")
   )
 
+  ## Assert marshallability
+  stopifnot(marshallable(fit))
+  
   ## Marshal 'train' object
   fit_ <- marshal(fit)
 

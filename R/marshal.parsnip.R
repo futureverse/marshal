@@ -39,3 +39,11 @@ unmarshal_model_fit <- function(x, ...) {
   stopifnot(all.equal(class(res), marshal_unclass(x), check.attributes = FALSE))
   res
 }
+
+
+#' @rdname marshal.parsnip
+#' @aliases marshallable.model_fit
+#' @export
+marshallable.model_fit <- function(...) {
+  TRUE
+}

@@ -2,9 +2,12 @@
 % Please edit documentation in R/marshal.keras.R
 \name{marshal.keras.engine.base_layer.Layer}
 \alias{marshal.keras.engine.base_layer.Layer}
+\alias{marshallable.keras.engine.base_layer.Layer}
 \title{Marshalling of 'keras' objects}
 \usage{
 \method{marshal}{keras.engine.base_layer.Layer}(model, ...)
+
+\method{marshallable}{keras.engine.base_layer.Layer}(...)
 }
 \arguments{
 \item{model}{A \link[keras:keras_model]{keras:keras.engine.base_layer.Layer} object.}

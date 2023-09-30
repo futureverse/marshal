@@ -43,7 +43,8 @@ unmarshal_train <- function(train, ...) {
 }
 
 
-#' @rdname marshallable
+#' @rdname marshal.caret
+#' @aliases marshallable.train
 #' @export
 marshallable.train <- function(...) {
   TRUE

@@ -3,9 +3,12 @@
 \name{marshal.SpatVector}
 \alias{marshal.SpatVector}
 \alias{marshal.terra}
+\alias{marshallable.SpatVector}
 \title{Marshalling of 'terra' objects}
 \usage{
 \method{marshal}{SpatVector}(terra, ...)
+
+\method{marshallable}{SpatVector}(...)
 }
 \arguments{
 \item{terra}{An \link[terra:SpatVector-class]{terra::SpatVector}.}

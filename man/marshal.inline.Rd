@@ -3,9 +3,12 @@
 \name{marshal.CFunc}
 \alias{marshal.CFunc}
 \alias{marshal.inline}
+\alias{marshallable.CFunc}
 \title{Marshalling of 'inline' objects}
 \usage{
 \method{marshal}{CFunc}(inline, ...)
+
+\method{marshallable}{CFunc}(...)
 }
 \arguments{
 \item{inline}{A \link[inline:cfunction]{CFunc} function.}

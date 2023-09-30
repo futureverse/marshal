@@ -37,3 +37,11 @@ unmarshal_data.table <- function(x, ...) {
   stopifnot(all.equal(class(res), marshal_unclass(x), check.attributes = FALSE))
   res
 }
+
+
+#' @rdname marshal.data.table
+#' @aliases marshallable.data.table
+#' @export
+marshallable.data.table <- function(...) {
+  TRUE
+}

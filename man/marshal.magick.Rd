@@ -2,9 +2,12 @@
 % Please edit documentation in R/marshal.magick.R
 \name{marshal.magick-image}
 \alias{marshal.magick-image}
+\alias{marshallable.magick-image}
 \title{Marshalling of 'magick' objects (not supported)}
 \usage{
 \method{marshal}{`magick-image`}(x, ...)
+
+\method{marshallable}{`magick-image`}(...)
 }
 \arguments{
 \item{x}{A \link[magick:magick]{magick:magick-image} object.}
