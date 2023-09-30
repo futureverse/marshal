@@ -23,7 +23,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">marshal</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0-9029</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0-9033</span>
       </span>
     </div>
 
@@ -157,6 +157,10 @@
         </td>
         <td><p>Marshalling of 'data.table' objects</p></td>
       </tr><tr><td>
+          <p><code><a href="marshal.h2o.html">marshal(<i>&lt;H2OAutoML&gt;</i>)</a></code> <code><a href="marshal.h2o.html">marshal(<i>&lt;H2OMultinomialModel&gt;</i>)</a></code> <code><a href="marshal.h2o.html">marshal(<i>&lt;H2OBinomialModel&gt;</i>)</a></code> <code><a href="marshal.h2o.html">marshal(<i>&lt;H2ORegressionModel&gt;</i>)</a></code> <code><a href="marshal.h2o.html">marshallable(<i>&lt;H2OAutoML&gt;</i>)</a></code> <code><a href="marshal.h2o.html">marshallable(<i>&lt;H2OMultinomialModel&gt;</i>)</a></code> <code><a href="marshal.h2o.html">marshallable(<i>&lt;H2OBinomialModel&gt;</i>)</a></code> <code><a href="marshal.h2o.html">marshallable(<i>&lt;H2ORegressionModel&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>Marshalling of 'h2o' objects</p></td>
+      </tr><tr><td>
           <p><code><a href="marshal.inline.html">marshal(<i>&lt;CFunc&gt;</i>)</a></code> <code><a href="marshal.inline.html">marshallable(<i>&lt;CFunc&gt;</i>)</a></code> </p>
         </td>
         <td><p>Marshalling of 'inline' objects</p></td>
@@ -181,17 +185,37 @@
         </td>
         <td><p>Marshalling of 'parsnip' objects</p></td>
       </tr><tr><td>
+          <p><code><a href="marshal.rJava.html">marshal(<i>&lt;jclassName&gt;</i>)</a></code> <code><a href="marshal.rJava.html">marshal(<i>&lt;jobjRef&gt;</i>)</a></code> <code><a href="marshal.rJava.html">marshallable(<i>&lt;jclassName&gt;</i>)</a></code> <code><a href="marshal.rJava.html">marshallable(<i>&lt;jobjRef&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>Marshalling of 'rJava' objects (not supported)</p></td>
+      </tr><tr><td>
           <p><code><a href="marshal.raster.html">marshal(<i>&lt;RasterLayer&gt;</i>)</a></code> <code><a href="marshal.raster.html">marshallable(<i>&lt;RasterLayer&gt;</i>)</a></code> </p>
         </td>
         <td><p>Marshalling of 'raster' objects</p></td>
+      </tr><tr><td>
+          <p><code><a href="marshal.reticulate.html">marshal(<i>&lt;python.builtin.object&gt;</i>)</a></code> <code><a href="marshal.reticulate.html">marshallable(<i>&lt;python.builtin.object&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>Marshalling of 'reticulate' objects (not supported)</p></td>
       </tr><tr><td>
           <p><code><a href="marshal.rstan.html">marshal(<i>&lt;stanfit&gt;</i>)</a></code> <code><a href="marshal.rstan.html">marshallable(<i>&lt;stanfit&gt;</i>)</a></code> </p>
         </td>
         <td><p>Marshalling of 'rstan' objects</p></td>
       </tr><tr><td>
+          <p><code><a href="marshal.sparklyr.html">marshal(<i>&lt;tbl_spark&gt;</i>)</a></code> <code><a href="marshal.sparklyr.html">marshallable(<i>&lt;tbl_spark&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>Marshalling of 'sparklyr' objects (not supported)</p></td>
+      </tr><tr><td>
           <p><code><a href="marshal.terra.html">marshal(<i>&lt;SpatVector&gt;</i>)</a></code> <code><a href="marshal.terra.html">marshallable(<i>&lt;SpatVector&gt;</i>)</a></code> </p>
         </td>
         <td><p>Marshalling of 'terra' objects</p></td>
+      </tr><tr><td>
+          <p><code><a href="marshal.torch.html">marshal(<i>&lt;luz_module_fitted&gt;</i>)</a></code> <code><a href="marshal.torch.html">marshallable(<i>&lt;luz_module_fitted&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>Marshalling of 'torch' objects</p></td>
+      </tr><tr><td>
+          <p><code><a href="marshal.udpipe.html">marshal(<i>&lt;udpipe_model&gt;</i>)</a></code> <code><a href="marshal.udpipe.html">marshallable(<i>&lt;udpipe_model&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>Marshalling of 'udpipe' objects (not supported)</p></td>
       </tr><tr><td>
           <p><code><a href="marshal.xgboost.html">marshal(<i>&lt;xgb.DMatrix&gt;</i>)</a></code> <code><a href="marshal.xgboost.html">marshal(<i>&lt;xgb.Booster&gt;</i>)</a></code> <code><a href="marshal.xgboost.html">marshallable(<i>&lt;xgb.Booster&gt;</i>)</a></code> <code><a href="marshal.xgboost.html">marshallable(<i>&lt;xgb.DMatrix&gt;</i>)</a></code> </p>
         </td>
