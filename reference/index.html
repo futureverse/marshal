@@ -23,7 +23,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">marshal</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0-9028</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0-9029</span>
       </span>
     </div>
 
@@ -133,7 +133,7 @@
         </td>
         <td><p>Package marshal - Marshal Objects to be Used in Another R Process</p></td>
       </tr><tr><td>
-          <p><code><a href="marshal.DBI.html">marshal(<i>&lt;DBIConnection&gt;</i>)</a></code> </p>
+          <p><code><a href="marshal.DBI.html">marshal(<i>&lt;DBIConnection&gt;</i>)</a></code> <code><a href="marshal.DBI.html">marshallable(<i>&lt;DBIConnection&gt;</i>)</a></code> </p>
         </td>
         <td><p>Marshalling of 'DBI:DBIConnection' objects (not supported)</p></td>
       </tr><tr><td>
@@ -141,65 +141,69 @@
         </td>
         <td><p>Marshalling of R objects</p></td>
       </tr><tr><td>
-          <p><code><a href="marshal.XML.html">marshal(<i>&lt;XMLAbstractNode&gt;</i>)</a></code> <code><a href="marshal.XML.html">marshal(<i>&lt;XMLAbstractDocument&gt;</i>)</a></code> </p>
+          <p><code><a href="marshal.XML.html">marshal(<i>&lt;XMLAbstractNode&gt;</i>)</a></code> <code><a href="marshal.XML.html">marshal(<i>&lt;XMLAbstractDocument&gt;</i>)</a></code> <code><a href="marshal.XML.html">marshallable(<i>&lt;XMLAbstractDocument&gt;</i>)</a></code> <code><a href="marshal.XML.html">marshallable(<i>&lt;XMLAbstractNode&gt;</i>)</a></code> </p>
         </td>
         <td><p>Marshalling of 'XML' objects</p></td>
       </tr><tr><td>
-          <p><code><a href="marshal.caret.html">marshal(<i>&lt;train&gt;</i>)</a></code> </p>
+          <p><code><a href="marshal.caret.html">marshal(<i>&lt;train&gt;</i>)</a></code> <code><a href="marshal.caret.html">marshallable(<i>&lt;train&gt;</i>)</a></code> </p>
         </td>
         <td><p>Marshalling of 'caret:train' objects</p></td>
       </tr><tr><td>
-          <p><code><a href="marshal.connection.html">marshal(<i>&lt;connection&gt;</i>)</a></code> </p>
+          <p><code><a href="marshal.connection.html">marshal(<i>&lt;connection&gt;</i>)</a></code> <code><a href="marshal.connection.html">marshallable(<i>&lt;connection&gt;</i>)</a></code> </p>
         </td>
         <td><p>Marshalling of R connections</p></td>
       </tr><tr><td>
-          <p><code><a href="marshal.data.table.html">marshal(<i>&lt;data.table&gt;</i>)</a></code> </p>
+          <p><code><a href="marshal.data.table.html">marshal(<i>&lt;data.table&gt;</i>)</a></code> <code><a href="marshal.data.table.html">marshallable(<i>&lt;data.table&gt;</i>)</a></code> </p>
         </td>
         <td><p>Marshalling of 'data.table' objects</p></td>
       </tr><tr><td>
-          <p><code><a href="marshal.inline.html">marshal(<i>&lt;CFunc&gt;</i>)</a></code> </p>
+          <p><code><a href="marshal.inline.html">marshal(<i>&lt;CFunc&gt;</i>)</a></code> <code><a href="marshal.inline.html">marshallable(<i>&lt;CFunc&gt;</i>)</a></code> </p>
         </td>
         <td><p>Marshalling of 'inline' objects</p></td>
       </tr><tr><td>
-          <p><code><a href="marshal.keras.html">marshal(<i>&lt;keras.engine.base_layer.Layer&gt;</i>)</a></code> </p>
+          <p><code><a href="marshal.keras.html">marshal(<i>&lt;keras.engine.base_layer.Layer&gt;</i>)</a></code> <code><a href="marshal.keras.html">marshallable(<i>&lt;keras.engine.base_layer.Layer&gt;</i>)</a></code> </p>
         </td>
         <td><p>Marshalling of 'keras' objects</p></td>
       </tr><tr><td>
-          <p><code><a href="marshal.magick.html">marshal.magick-image</a></code> </p>
+          <p><code><a href="marshal.magick.html">marshal.magick-image</a></code> <code><a href="marshal.magick.html">marshallable.magick-image</a></code> </p>
         </td>
         <td><p>Marshalling of 'magick' objects (not supported)</p></td>
       </tr><tr><td>
-          <p><code><a href="marshal.ncdf4.html">marshal(<i>&lt;ncdf4&gt;</i>)</a></code> </p>
+          <p><code><a href="marshal.ncdf4.html">marshal(<i>&lt;ncdf4&gt;</i>)</a></code> <code><a href="marshal.ncdf4.html">marshallable(<i>&lt;ncdf4&gt;</i>)</a></code> </p>
         </td>
         <td><p>Marshalling of 'ncdf4' objects</p></td>
       </tr><tr><td>
-          <p><code><a href="marshal.parallel.html">marshal(<i>&lt;SOCKcluster&gt;</i>)</a></code> <code><a href="marshal.parallel.html">marshal(<i>&lt;SOCKnode&gt;</i>)</a></code> <code><a href="marshal.parallel.html">marshal(<i>&lt;SOCK0node&gt;</i>)</a></code> </p>
+          <p><code><a href="marshal.parallel.html">marshal(<i>&lt;SOCKcluster&gt;</i>)</a></code> <code><a href="marshal.parallel.html">marshal(<i>&lt;SOCKnode&gt;</i>)</a></code> <code><a href="marshal.parallel.html">marshal(<i>&lt;SOCK0node&gt;</i>)</a></code> <code><a href="marshal.parallel.html">marshallable(<i>&lt;SOCKcluster&gt;</i>)</a></code> <code><a href="marshal.parallel.html">marshallable(<i>&lt;SOCKnode&gt;</i>)</a></code> <code><a href="marshal.parallel.html">marshallable(<i>&lt;SOCK0node&gt;</i>)</a></code> </p>
         </td>
         <td><p>Marshalling of 'parallel' objects (not supported)</p></td>
       </tr><tr><td>
-          <p><code><a href="marshal.parsnip.html">marshal(<i>&lt;model_fit&gt;</i>)</a></code> </p>
+          <p><code><a href="marshal.parsnip.html">marshal(<i>&lt;model_fit&gt;</i>)</a></code> <code><a href="marshal.parsnip.html">marshallable(<i>&lt;model_fit&gt;</i>)</a></code> </p>
         </td>
         <td><p>Marshalling of 'parsnip' objects</p></td>
       </tr><tr><td>
-          <p><code><a href="marshal.raster.html">marshal(<i>&lt;RasterLayer&gt;</i>)</a></code> </p>
+          <p><code><a href="marshal.raster.html">marshal(<i>&lt;RasterLayer&gt;</i>)</a></code> <code><a href="marshal.raster.html">marshallable(<i>&lt;RasterLayer&gt;</i>)</a></code> </p>
         </td>
         <td><p>Marshalling of 'raster' objects</p></td>
       </tr><tr><td>
-          <p><code><a href="marshal.stanfit.html">marshal(<i>&lt;stanfit&gt;</i>)</a></code> </p>
+          <p><code><a href="marshal.rstan.html">marshal(<i>&lt;stanfit&gt;</i>)</a></code> <code><a href="marshal.rstan.html">marshallable(<i>&lt;stanfit&gt;</i>)</a></code> </p>
         </td>
         <td><p>Marshalling of 'rstan' objects</p></td>
       </tr><tr><td>
-          <p><code><a href="marshal.terra.html">marshal(<i>&lt;SpatVector&gt;</i>)</a></code> </p>
+          <p><code><a href="marshal.terra.html">marshal(<i>&lt;SpatVector&gt;</i>)</a></code> <code><a href="marshal.terra.html">marshallable(<i>&lt;SpatVector&gt;</i>)</a></code> </p>
         </td>
         <td><p>Marshalling of 'terra' objects</p></td>
       </tr><tr><td>
-          <p><code><a href="marshal.xgboost.html">marshal(<i>&lt;xgb.DMatrix&gt;</i>)</a></code> <code><a href="marshal.xgboost.html">marshal(<i>&lt;xgb.Booster&gt;</i>)</a></code> </p>
+          <p><code><a href="marshal.xgboost.html">marshal(<i>&lt;xgb.DMatrix&gt;</i>)</a></code> <code><a href="marshal.xgboost.html">marshal(<i>&lt;xgb.Booster&gt;</i>)</a></code> <code><a href="marshal.xgboost.html">marshallable(<i>&lt;xgb.Booster&gt;</i>)</a></code> <code><a href="marshal.xgboost.html">marshallable(<i>&lt;xgb.DMatrix&gt;</i>)</a></code> </p>
         </td>
         <td><p>Marshalling of 'xgboost' objects</p></td>
       </tr><tr><td>
-          <p><code><a href="marshal.xml2.html">marshal(<i>&lt;xml_document&gt;</i>)</a></code> <code><a href="marshal.xml2.html">marshal(<i>&lt;xml_nodeset&gt;</i>)</a></code> </p>
+          <p><code><a href="marshal.xml2.html">marshal(<i>&lt;xml_document&gt;</i>)</a></code> <code><a href="marshal.xml2.html">marshal(<i>&lt;xml_nodeset&gt;</i>)</a></code> <code><a href="marshal.xml2.html">marshallable(<i>&lt;xml_document&gt;</i>)</a></code> <code><a href="marshal.xml2.html">marshallable(<i>&lt;xml_nodeset&gt;</i>)</a></code> </p>
         </td>
         <td><p>Marshalling of 'xml2' objects</p></td>
+      </tr><tr><td>
+          <p><code><a href="marshallable.html">marshallable()</a></code> </p>
+        </td>
+        <td><p>Check if R object can be marshalled</p></td>
       </tr></tbody></table></div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

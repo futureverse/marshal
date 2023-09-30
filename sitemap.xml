@@ -70,7 +70,7 @@
     <loc>https://marshal.futureverse.org/reference/marshal.raster.html</loc>
   </url>
   <url>
-    <loc>https://marshal.futureverse.org/reference/marshal.stanfit.html</loc>
+    <loc>https://marshal.futureverse.org/reference/marshal.rstan.html</loc>
   </url>
   <url>
     <loc>https://marshal.futureverse.org/reference/marshal.terra.html</loc>
@@ -80,5 +80,8 @@
   </url>
   <url>
     <loc>https://marshal.futureverse.org/reference/marshal.xml2.html</loc>
+  </url>
+  <url>
+    <loc>https://marshal.futureverse.org/reference/marshallable.html</loc>
   </url>
 </urlset>

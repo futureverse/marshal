@@ -23,7 +23,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">marshal</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0-9028</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0-9029</span>
       </span>
     </div>
 
@@ -132,7 +132,10 @@
 
     <div id="ref-usage">
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="co"># S3 method for ncdf4</span></span>
-<span><span class="fu"><a href="marshal.html">marshal</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="marshal.html">marshal</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S3 method for ncdf4</span></span>
+<span><span class="fu"><a href="marshallable.html">marshallable</a></span><span class="op">(</span><span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -188,7 +191,7 @@ marshalled object.</p>
 <span class="r-in"><span>  <span class="va">y2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/ncdf4/man/ncvar_get.html" class="external-link">ncvar_get</a></span><span class="op">(</span><span class="va">nf2</span>, <span class="st">"x"</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html" class="external-link">stopifnot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/identical.html" class="external-link">identical</a></span><span class="op">(</span><span class="va">y2</span>, <span class="va">y</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> File /tmp/henrik/RtmpYFJAKs/file9a2f83034f384.nc (NC_FORMAT_CLASSIC):</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> File /tmp/henrik/RtmpTWlx73/file1674cd7a4fea49.nc (NC_FORMAT_CLASSIC):</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      1 variables (excluding dimension variables):</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>         float x[]   </span>
