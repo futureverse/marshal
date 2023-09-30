@@ -1,5 +1,5 @@
 Package: marshal
-Version: 0.0.0-9029
+Version: 0.0.0-9030
 Title: Framework to Marshal Objects to be Used in Another R Process
 Suggests:
     bundle,
@@ -20,6 +20,8 @@ Suggests:
     stats,
     terra,
     tools,
+    torch,
+      luz,
     xgboost,
     XML,
     xml2
