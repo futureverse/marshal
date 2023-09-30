@@ -1,5 +1,5 @@
 Package: marshal
-Version: 0.0.0-9031
+Version: 0.0.0-9032
 Title: Framework to Marshal Objects to be Used in Another R Process
 Suggests:
     bundle,
@@ -19,6 +19,7 @@ Suggests:
     rJava,
     rstan,
       BH, RcppEigen,
+    sparklyr,
     stats,
     terra,
     tools,
