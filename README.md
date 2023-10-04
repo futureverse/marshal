@@ -80,9 +80,15 @@ does this for us.  For example,
 ```r
 pathname <- system.file(package = "base", "CITATION")
 con <- file(pathname, open = "rb")
+print(seek(con))
+#> [1] 0
+
 bfr <- readChar(con, nchars = 9)
 print(bfr)
 #> [1] "bibentry("
+
+print(seek(con))
+#> [1] 9
 
 saveRDS(marshal::marshal(con), "con.rds")
 
@@ -111,8 +117,7 @@ print(seek(con2))
 
 bfr2 <- readChar(con2, nchars = 10)
 print(bfr2)
-> bfr2
-[1] "\"Manual\",\n"
+#> [1] "\"Manual\",\n"
 ```
     
 
