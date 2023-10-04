@@ -157,89 +157,109 @@
 
 
 <div class="section level1">
-<div class="page-header"><h1 id="marshal-framework-to-marshal-objects-to-be-used-in-another-r-process">marshal: Framework to Marshal Objects to be Used in Another R Process<a class="anchor" aria-label="anchor" href="#marshal-framework-to-marshal-objects-to-be-used-in-another-r-process"></a>
+<div class="page-header"><h1 id="marshal-unified-api-for-marshalling-r-objects">marshal: Unified API for Marshalling R Objects<a class="anchor" aria-label="anchor" href="#marshal-unified-api-for-marshalling-r-objects"></a>
 </h1></div>
-<p>Some types of R objects can be used only in the R session they were created. If used as-is in another R process, such objects often result in an immediate error or in obscure and hard-to-troubleshoot outcomes. Because of this, they cannot be saved to file and re-used at a later time. They can also not be exported to a worker in parallel processing. These objects are sometimes referred to as non-exportable or non-serializable objects. One solution to this problem is to use “marshalling” to encode the R object into an exportable representation that then can be used to re-create a copy of that object in another R process. This package provides a framework for marshalling and unmarshalling R objects such that they can be transferred using functions such as <code><a href="https://rdrr.io/r/base/serialize.html" class="external-link">serialize()</a></code> and <code><a href="https://rdrr.io/r/base/serialize.html" class="external-link">unserialize()</a></code> of base R.</p>
-<p><em>WARNING: This package is currently just a skeleton. Please stay tuned.</em></p>
 <div class="section level2">
-<h2 id="outcome">Outcome<a class="anchor" aria-label="anchor" href="#outcome"></a>
+<h2 id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
 </h2>
-<p>When <code><a href="reference/marshal.html">marshal()</a></code> and <code><a href="reference/marshal.html">unmarshal()</a></code> methods have been implemented for some of the “non-exportable” object types, it will be possible to use also these objects in a later or another R session and in parallel R workers. Here are some example of functions that will be able to take advantage of marshalling:</p>
-<ul>
-<li>
-<code>raw &lt;- serialize(x, connection = NULL)</code> and <code>y &lt;- unserialize(raw)</code> - serialize object <code>x</code> to a raw byte sequence, from which then the original object can be reconstructed</li>
-<li>
-<code>save(x, y, file = "xy.RData")</code> and <code>load("xy.RData")</code> - save and reload R objects to a binary file by their names</li>
-<li>
-<code>saveRDS(x, "x.rds")</code> and <code>y &lt;- readRDS("x.rds")</code> - save and reload an R object to a binary file</li>
-<li>
-<code><a href="https://rdrr.io/r/base/save.html" class="external-link">save.image()</a></code>: saves the global environment to an ‘.RData’ file. Next time R is launched, this the global environment is recreated. This function is called by for instance <code>quit(save = "yes")</code>
-</li>
-<li>
-<code>parallel::clusterExport(cl, varlist = c("x", "y"))</code> - export variables <code>x</code> and <code>y</code> to a parallel workers</li>
-<li>
-<code>f &lt;- future::future(x * y)</code> - export variables <code>x</code> and <code>y</code> to a parallel workers and evaluate the expression</li>
-</ul>
+<p>Some types of R objects can be used only in the R session they were created. If used as-is in another R process, such objects often result in an immediate error or in obscure and hard-to-troubleshoot outcomes. Because of this, they cannot be saved to file and re-used at a later time. They may also not be exported to a parallel worker when doing parallel processing. These objects are sometimes referred to as non-exportable or non-serializable objects. For example, assume we open a read-only file connection and read a few character:</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">pathname</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span>package <span class="op">=</span> <span class="st">"base"</span>, <span class="st">"CITATION"</span><span class="op">)</span></span>
+<span><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/connections.html" class="external-link">file</a></span><span class="op">(</span><span class="va">pathname</span>, open <span class="op">=</span> <span class="st">"r"</span><span class="op">)</span></span>
+<span><span class="va">bfr</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/readChar.html" class="external-link">readChar</a></span><span class="op">(</span><span class="va">con</span>, nchars <span class="op">=</span> <span class="fl">9</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">bfr</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "bibentry("</span></span></code></pre></div>
+<p>Next, imagine that we would save the connection object <code>con</code> to file and quit R;</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/readRDS.html" class="external-link">saveRDS</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"con.rds"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/quit.html" class="external-link">quit</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<p>Then, if we try to use this saved connection in another R session, we’ll find that it will not work;</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">con2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/readRDS.html" class="external-link">readRDS</a></span><span class="op">(</span><span class="st">"con.rds"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">con2</span><span class="op">)</span></span>
+<span><span class="co">#&gt; A connection, specifically, 'file', but invalid.</span></span></code></pre></div>
+<p>This is because R connections are unique to the R process that created them. As we will see below, it is only in rare cases, they maybe used in another R process.</p>
+<p>One solution to this problem is to use “marshalling” to encode the R object into an exportable representation that then can be used to re-create a copy of that object in another R process that imitates the original object.</p>
+<p>This package provides generic functions <code><a href="reference/marshal.html">marshal()</a></code> and <code><a href="reference/marshal.html">unmarshal()</a></code> for marshalling and unmarshalling R objects of certain class. This makes it possible to save otherwise non-exportable objects to file and then be used in a future R session, or to transfer them to another R process to be used there.</p>
 </div>
 <div class="section level2">
-<h2 id="roadmap">Roadmap<a class="anchor" aria-label="anchor" href="#roadmap"></a>
+<h2 id="proposed-api">Proposed API<a class="anchor" aria-label="anchor" href="#proposed-api"></a>
 </h2>
+<p>The long-term goal with this package is for it to provide a de-facto standard and API for marshalling and unmarshalling objects in R. To achieve this, this package proposes three generic functions:</p>
 <ol style="list-style-type: decimal">
-<li>
-<p>Phase “Getting Started”</p>
-<ul class="task-list">
-<li><p><label><input type="checkbox">Start on a rudimentary “marshalling” protection framework based on the internal <strong>future</strong> functions <code><a href="reference/find_references.html">assert_no_references()</a></code>, <code><a href="reference/find_references.html">find_references()</a></code> and <code>reference_filters()</code></label></p></li>
-<li><p><label><input type="checkbox">Document common cases of packages with non-exportable objects as one or more vignettes. The <a href="https://cran.r-project.org/package=future/vignettes/future-4-non-exportable-objects.html" class="external-link">A Future for R: Non-Exportable Objects</a> vignette is a good start. For each package give at least one example that show the mistake, how to detect it with above protection functions, and when possible give workaround examples. Illustrate with both sequential use cases (e.g. <code><a href="https://rdrr.io/r/base/readRDS.html" class="external-link">saveRDS()</a></code> and <code><a href="https://rdrr.io/r/base/readRDS.html" class="external-link">readRDS()</a></code>) and with parallelization (e.g. <code><a href="https://rdrr.io/r/parallel/clusterApply.html" class="external-link">parallel::clusterEvalQ()</a></code>, <code>foreach::foreach() %dopar% { ... }</code>, and <code><a href="https://future.futureverse.org/reference/future.html" class="external-link">future::future()</a></code></label></p></li>
-<li><p><label><input type="checkbox">Invite R community to report on more cases to build up a knowledge base and make the <strong>marshal</strong> documentation a go-to reference for explaining the problem</label></p></li>
-</ul>
-</li>
-<li>
-<p>Phase “Detect &amp; Protection”</p>
-<ul class="task-list">
-<li>
-<p><label><input type="checkbox">Detect and report on non-exportable objects via the condition system</label></p>
-<ul class="task-list">
-<li><p><label><input type="checkbox">objects with external pointers</label></p></li>
-<li><p><label><input type="checkbox">connection objects</label></p></li>
-<li><p><label><input type="checkbox">…</label></p></li>
-</ul>
-</li>
-<li><p><label><input type="checkbox">Develop set of acceptance filters to handle false positives, e.g. <code><a href="https://Rdatatable.gitlab.io/data.table/reference/data.table.html" class="external-link">data.table::data.table</a></code> objects</label></p></li>
-<li><p><label><input type="checkbox">Develop set of reject filters to handle true positives with specific, more informative error messages, e.g. connection objects</label></p></li>
-</ul>
-</li>
-<li>
-<p>Phase “Marshalling”</p>
-<ul class="task-list">
-<li>
-<p><label><input type="checkbox">Add S3 generic <code><a href="reference/marshal.html">marshal()</a></code> to re-deconstruct non-exportable objects of certain classes so that they can be re-constructed using <code><a href="reference/marshal.html">unmarshal()</a></code> afterward, e.g.</label></p>
-<ul class="task-list">
-<li><p><label><input type="checkbox">‘XMLAbstractDocument’ of <strong>XML</strong>, cf. <code><a href="https://rdrr.io/pkg/XML/man/xmlSerializeHook.html" class="external-link">XML::xmlSerializeHook()</a></code> and <code><a href="https://rdrr.io/pkg/XML/man/xmlSerializeHook.html" class="external-link">XML::xmlDeserializeHook()</a></code></label></p></li>
-<li><p><label><input type="checkbox">base R URL and read-only file connections</label></p></li>
-<li><p><label><input type="checkbox">Identify packages whose non-exportable objects may be marshalled similarly, e.g. <strong>ShortRead</strong> and <strong>ncdf4</strong></label></p></li>
-</ul>
-</li>
-</ul>
-</li>
+<li><p><code><a href="reference/marshallable.html">marshallable()</a></code> - check whether an R object can be marshalled or not</p></li>
+<li><p><code><a href="reference/marshal.html">marshal()</a></code> - marshal an R object</p></li>
+<li><p><code><a href="reference/marshal.html">unmarshal()</a></code> - reconstruct a marshalled R object</p></li>
 </ol>
-<ul class="task-list">
-<li><p><label><input type="checkbox">Implement efficient, recursive <code><a href="reference/marshal.html">marshal()</a></code> for sets such as lists and environments</label></p></li>
-<li><p><label><input type="checkbox">After marshalling an object, or, say, a list of objects, investigate if we can leverage R’s serialization framework to automatically unmarshal objects via <code>base::unserialize(..., refhook = unmarshal)</code>. We might be able to do this by having <code><a href="reference/marshal.html">marshal()</a></code> appending a “trigger” reference to the marshalled object</label></p></li>
-<li><p><label><input type="checkbox">Support for marshalling directly to a connection. This may avoid a large memory footprint</label></p></li>
+<p>If we return to our file connection, we can marshal the object by recording the original filename and the current file position when we save it to file. This works as long as the connection is read-only and that the file does not change in-between. The <strong>marshal</strong> package implements an S3 <code>marhal()</code> method for the <code>connection</code> class that does this for us. For example,</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">pathname</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span>package <span class="op">=</span> <span class="st">"base"</span>, <span class="st">"CITATION"</span><span class="op">)</span></span>
+<span><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/connections.html" class="external-link">file</a></span><span class="op">(</span><span class="va">pathname</span>, open <span class="op">=</span> <span class="st">"rb"</span><span class="op">)</span></span>
+<span><span class="va">bfr</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/readChar.html" class="external-link">readChar</a></span><span class="op">(</span><span class="va">con</span>, nchars <span class="op">=</span> <span class="fl">9</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">bfr</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "bibentry("</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/readRDS.html" class="external-link">saveRDS</a></span><span class="op">(</span><span class="fu">marshal</span><span class="fu">::</span><span class="fu"><a href="reference/marshal.html">marshal</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span>, <span class="st">"con.rds"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/quit.html" class="external-link">quit</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<p>Later, in another R session, we can reconstruct this read-only file connection to the same file at the same file position as when it was saved to disk by using:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="ex">con2</span> <span class="op">&lt;</span>- marshal::unmarshal<span class="er">(</span><span class="ex">readRDS</span><span class="er">(</span><span class="st">"con.rds"</span><span class="kw">))</span></span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a><span class="ex">print</span><span class="er">(</span><span class="ex">con2</span><span class="kw">)</span></span>
+<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a><span class="co">#&gt; A connection with</span></span>
+<span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a><span class="co">#&gt; description "/path/to/R/lib/R/library/base/CITATION"</span></span>
+<span id="cb5-5"><a href="#cb5-5" tabindex="-1"></a><span class="co">#&gt; class       "file"</span></span>
+<span id="cb5-6"><a href="#cb5-6" tabindex="-1"></a><span class="co">#&gt; mode        "r"</span></span>
+<span id="cb5-7"><a href="#cb5-7" tabindex="-1"></a><span class="co">#&gt; text        "text"</span></span>
+<span id="cb5-8"><a href="#cb5-8" tabindex="-1"></a><span class="co">#&gt; opened      "opened"</span></span>
+<span id="cb5-9"><a href="#cb5-9" tabindex="-1"></a><span class="co">#&gt; can read    "yes"</span></span>
+<span id="cb5-10"><a href="#cb5-10" tabindex="-1"></a><span class="co">#&gt; can write   "no"</span></span>
+<span id="cb5-11"><a href="#cb5-11" tabindex="-1"></a></span>
+<span id="cb5-12"><a href="#cb5-12" tabindex="-1"></a><span class="ex">print</span><span class="er">(</span><span class="ex">seek</span><span class="er">(</span><span class="ex">con2</span><span class="kw">))</span></span>
+<span id="cb5-13"><a href="#cb5-13" tabindex="-1"></a><span class="co">#&gt; [1] 9</span></span>
+<span id="cb5-14"><a href="#cb5-14" tabindex="-1"></a></span>
+<span id="cb5-15"><a href="#cb5-15" tabindex="-1"></a><span class="ex">bfr2</span> <span class="op">&lt;</span>- readChar<span class="er">(</span><span class="ex">con2,</span> nchars = 10<span class="kw">)</span></span>
+<span id="cb5-16"><a href="#cb5-16" tabindex="-1"></a><span class="ex">print</span><span class="er">(</span><span class="ex">bfr2</span><span class="kw">)</span></span>
+<span id="cb5-17"><a href="#cb5-17" tabindex="-1"></a><span class="op">&gt;</span> bfr2</span>
+<span id="cb5-18"><a href="#cb5-18" tabindex="-1"></a><span class="ex">[1]</span> <span class="st">"</span><span class="dt">\"</span><span class="st">Manual</span><span class="dt">\"</span><span class="st">,\n"</span></span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="currently-supported-packages">Currently supported packages<a class="anchor" aria-label="anchor" href="#currently-supported-packages"></a>
+</h2>
+<p>In order to test the proposed solution and API, this package will implement S3 <code><a href="reference/marshal.html">marshal()</a></code> methods for some common R packages and their non-exportable classes. Note that the long-term goals is that these S3 methods should be implemented by these packages themselves, such that the <strong>marshal</strong> package will only provide a light-weight API.</p>
+<p>The [A Future for R: Non-Exportable Objects] vignette has a collection of packages and classes that cannot be exported out of the box. This package has marshalling prototypes for objects from the following packages:</p>
+<ul>
+<li><strong>caret</strong></li>
+<li><strong>data.table</strong></li>
+<li><strong>keras</strong></li>
+<li><strong>ncdf4</strong></li>
+<li><strong>parsnip</strong></li>
+<li><strong>raster</strong></li>
+<li><strong>rstan</strong></li>
+<li><strong>terra</strong></li>
+<li><strong>xgboost</strong></li>
+<li><strong>XML</strong></li>
+<li><strong>xml2</strong></li>
 </ul>
+<p>It also has implementations that will throw an error for objects from the following packages, because they cannot be marshalled, at least not at the moment:</p>
+<ul>
+<li><strong>DBI</strong></li>
+<li><strong>magick</strong></li>
+<li><strong>parallel</strong></li>
+</ul>
+<p>The plan is to improve on add support for more R packages and object classes.</p>
 </div>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
-<p>R package marshal is only available via <a href="https://github.com/HenrikBengtsson/marshal" class="external-link">GitHub</a> and can be installed in R as:</p>
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"HenrikBengtsson/marshal"</span>, ref<span class="op">=</span><span class="st">"master"</span><span class="op">)</span></span></code></pre></div>
+<p>The <strong>marshal</strong> package is only available via <a href="https://github.com/HenrikBengtsson/marshal" class="external-link">GitHub</a> and can be installed in R as:</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"HenrikBengtsson/marshal"</span>, ref <span class="op">=</span> <span class="st">"main"</span><span class="op">)</span></span></code></pre></div>
 <div class="section level3">
 <h3 id="pre-release-version">Pre-release version<a class="anchor" aria-label="anchor" href="#pre-release-version"></a>
 </h3>
 <p>To install the pre-release version that is available in Git branch <code>develop</code> on GitHub, use:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"HenrikBengtsson/marshal"</span>, ref<span class="op">=</span><span class="st">"develop"</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"HenrikBengtsson/marshal"</span>, ref <span class="op">=</span> <span class="st">"develop"</span><span class="op">)</span></span></code></pre></div>
 <p>This will install the package from source.</p>
 </div>
 </div>
