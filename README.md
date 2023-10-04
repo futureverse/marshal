@@ -2,82 +2,180 @@
  <a href="https://github.com/HenrikBengtsson/marshal/actions?query=workflow%3AR-CMD-check"><img border="0" src="https://github.com/HenrikBengtsson/marshal/actions/workflows/R-CMD-check.yaml/badge.svg?branch=develop" alt="R CMD check status"/></a>      
 </div>
 
-# marshal: Framework to Marshal Objects to be Used in Another R Process 
+# marshal: Unified API for Marshalling R Objects
 
-Some types of R objects can be used only in the R session they were created.  If used as-is in another R process, such objects often result in an immediate error or in obscure and hard-to-troubleshoot outcomes.  Because of this, they cannot be saved to file and re-used at a later time.  They can also not be exported to a worker in parallel processing.  These objects are sometimes referred to as non-exportable or non-serializable objects.  One solution to this problem is to use "marshalling" to encode the R object into an exportable representation that then can be used to re-create a copy of that object in another R process.  This package provides a framework for marshalling and unmarshalling R objects such that they can be transferred using functions such as `serialize()` and `unserialize()` of base R.
+## Introduction
 
-_WARNING: This package is currently just a skeleton.  Please stay tuned._
+Some types of R objects can be used only in the R session they were
+created.  If used as-is in another R process, such objects often
+result in an immediate error or in obscure and hard-to-troubleshoot
+outcomes.  Because of this, they cannot be saved to file and re-used
+at a later time.  They may also not be exported to a parallel worker
+when doing parallel processing.  These objects are sometimes referred
+to as non-exportable or non-serializable objects.  For example, assume
+we open a read-only file connection and read a few character:
+
+```r
+pathname <- system.file(package = "base", "CITATION")
+con <- file(pathname, open = "r")
+bfr <- readChar(con, nchars = 9)
+print(bfr)
+#> [1] "bibentry("
+```
+
+Next, imagine that we would save the connection object `con` to file
+and quit R;
+
+```r
+saveRDS(con, "con.rds")
+quit()
+```
+
+Then, if we try to use this saved connection in another R session,
+we'll find that it will not work;
+
+```r
+con2 <- readRDS("con.rds")
+print(con2)
+#> A connection, specifically, 'file', but invalid.
+```
+
+This is because R connections are unique to the R process that created
+them.  As we will see below, it is only in rare cases, they maybe used
+in another R process.
+
+One solution to this problem is to use "marshalling" to encode the R
+object into an exportable representation that then can be used to
+re-create a copy of that object in another R process that imitates the
+original object.
+
+This package provides generic functions `marshal()` and `unmarshal()`
+for marshalling and unmarshalling R objects of certain class.  This
+makes it possible to save otherwise non-exportable objects to file and
+then be used in a future R session, or to transfer them to another R
+process to be used there.
 
 
-## Outcome
+## Proposed API
 
-When `marshal()` and `unmarshal()` methods have been implemented for some of the "non-exportable" object types, it will be possible to use also these objects in a later or another R session and in parallel R workers.  Here are some example of functions that will be able to take advantage of marshalling:
+The long-term goal with this package is for it to provide a de-facto
+standard and API for marshalling and unmarshalling objects in R.  To
+achieve this, this package proposes three generic functions:
 
-  - `raw <- serialize(x, connection = NULL)` and `y <- unserialize(raw)` - serialize object `x` to a raw byte sequence, from which then the original object can be reconstructed
-  - `save(x, y, file = "xy.RData")` and `load("xy.RData")` - save and reload R objects to a binary file by their names
-  - `saveRDS(x, "x.rds")` and `y <- readRDS("x.rds")` - save and reload an R object to a binary file
-  - `save.image()`: saves the global environment to an '.RData' file. Next time R is launched, this the global environment is recreated. This function is called by for instance `quit(save = "yes")`
-  - `parallel::clusterExport(cl, varlist = c("x", "y"))` - export variables `x` and `y` to a parallel workers
-  - `f <- future::future(x * y)` - export variables `x` and `y` to a parallel workers and evaluate the expression
-
-
-
-## Roadmap
-
-1. Phase "Getting Started"
-
-   * [ ] Start on a rudimentary "marshalling" protection framework based on the internal **future** functions `assert_no_references()`, `find_references()` and `reference_filters()`
-   
-   * [ ] Document common cases of packages with non-exportable objects as one or more vignettes.  The [A Future for R: Non-Exportable Objects](https://cran.r-project.org/package=future/vignettes/future-4-non-exportable-objects.html) vignette is a good start.  For each package give at least one example that show the mistake, how to detect it with above protection functions, and when possible give workaround examples.  Illustrate with both sequential use cases (e.g. `saveRDS()` and `readRDS()`) and with parallelization (e.g. `parallel::clusterEvalQ()`, `foreach::foreach() %dopar% { ... }`, and `future::future()`
-
-   * [ ] Invite R community to report on more cases to build up a knowledge base and make the **marshal** documentation a go-to reference for explaining the problem
+ 1. `marshallable()` - check whether an R object can be marshalled or
+    not
+ 
+ 2. `marshal()` - marshal an R object
+ 
+ 3. `unmarshal()` - reconstruct a marshalled R object
 
 
-2. Phase "Detect & Protection"
+If we return to our file connection, we can marshal the object by
+recording the original filename and the current file position when we
+save it to file.  This works as long as the connection is read-only
+and that the file does not change in-between.  The **marshal** package
+implements an S3 `marhal()` method for the `connection` class that
+does this for us.  For example,
 
-   * [ ] Detect and report on non-exportable objects via the condition system
+```r
+pathname <- system.file(package = "base", "CITATION")
+con <- file(pathname, open = "rb")
+bfr <- readChar(con, nchars = 9)
+print(bfr)
+#> [1] "bibentry("
 
-      - [ ] objects with external pointers
+saveRDS(marshal::marshal(con), "con.rds")
 
-      - [ ] connection objects
-
-      - [ ] ...
-
-   * [ ] Develop set of acceptance filters to handle false positives, e.g. `data.table::data.table` objects
-
-   * [ ] Develop set of reject filters to handle true positives with specific, more informative error messages, e.g. connection objects
+quit()
+```
 
 
-3. Phase "Marshalling"
+Later, in another R session, we can reconstruct this read-only file
+connection to the same file at the same file position as when it was
+saved to disk by using:
 
-   * [ ] Add S3 generic `marshal()` to re-deconstruct non-exportable objects of certain classes so that they can be re-constructed using `unmarshal()` afterward, e.g.
-   
-      - [ ] 'XMLAbstractDocument' of **XML**, cf. `XML::xmlSerializeHook()` and `XML::xmlDeserializeHook()`
+```sh
+con2 <- marshal::unmarshal(readRDS("con.rds"))
+print(con2)
+#> A connection with
+#> description "/path/to/R/lib/R/library/base/CITATION"
+#> class       "file"
+#> mode        "r"
+#> text        "text"
+#> opened      "opened"
+#> can read    "yes"
+#> can write   "no"
 
-      - [ ] base R URL and read-only file connections
+print(seek(con2))
+#> [1] 9
 
-      - [ ] Identify packages whose non-exportable objects may be marshalled similarly, e.g. **ShortRead** and **ncdf4**
+bfr2 <- readChar(con2, nchars = 10)
+print(bfr2)
+> bfr2
+[1] "\"Manual\",\n"
+```
+    
 
-  * [ ] Implement efficient, recursive `marshal()` for sets such as lists and environments
-  
-  * [ ] After marshalling an object, or, say, a list of objects, investigate if we can leverage R's serialization framework to automatically unmarshal objects via `base::unserialize(..., refhook = unmarshal)`.  We might be able to do this by having `marshal()` appending a "trigger" reference to the marshalled object
+## Currently supported packages
 
-  * [ ] Support for marshalling directly to a connection. This may avoid a large memory footprint
+In order to test the proposed solution and API, this package will
+implement S3 `marshal()` methods for some common R packages and their
+non-exportable classes.  Note that the long-term goals is that these
+S3 methods should be implemented by these packages themselves, such
+that the **marshal** package will only provide a light-weight API.
+
+The [A Future for R: Non-Exportable Objects] vignette has a collection
+of packages and classes that cannot be exported out of the box.  This
+package has marshalling prototypes for objects from the following
+packages:
+
+* **caret**
+* **data.table**
+* **keras**
+* **ncdf4**
+* **parsnip**
+* **raster**
+* **rstan**
+* **terra**
+* **xgboost**
+* **XML**
+* **xml2**
+
+It also has implementations that will throw an error for objects from
+the following packages, because they cannot be marshalled, at least
+not at the moment:
+
+* **DBI**
+* **magick**
+* **parallel**
+
+The plan is to improve on add support for more R packages and object
+classes.
 
 
 ## Installation
-R package marshal is only available via [GitHub](https://github.com/HenrikBengtsson/marshal) and can be installed in R as:
+
+The **marshal** package is only available via
+[GitHub](https://github.com/HenrikBengtsson/marshal) and can be
+installed in R as:
+
 ```r
-remotes::install_github("HenrikBengtsson/marshal", ref="master")
+remotes::install_github("HenrikBengtsson/marshal", ref = "main")
 ```
 
 
 ### Pre-release version
 
-To install the pre-release version that is available in Git branch `develop` on GitHub, use:
+To install the pre-release version that is available in Git branch
+`develop` on GitHub, use:
+
 ```r
-remotes::install_github("HenrikBengtsson/marshal", ref="develop")
+remotes::install_github("HenrikBengtsson/marshal", ref = "develop")
 ```
-This will install the package from source.  
+
+This will install the package from source.
 
 <!-- pkgdown-drop-below -->
+
+
+[A Future for R: Non-Exportable Objects]: https://cran.r-project.org/package=future/vignettes/future-4-non-exportable-objects.html
