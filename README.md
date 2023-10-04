@@ -17,7 +17,7 @@ we open a read-only file connection and read a few character:
 
 ```r
 pathname <- system.file(package = "base", "CITATION")
-con <- file(pathname, open = "r")
+con <- file(pathname, open = "rb")
 bfr <- readChar(con, nchars = 9)
 print(bfr)
 #> [1] "bibentry("
