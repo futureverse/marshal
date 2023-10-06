@@ -175,7 +175,7 @@
 <code class="sourceCode R"><span><span class="va">doc2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/readRDS.html" class="external-link">readRDS</a></span><span class="op">(</span><span class="st">"html.rds"</span><span class="op">)</span></span>
 <span><span class="fu">xml2</span><span class="fu">::</span><span class="fu"><a href="http://xml2.r-lib.org/reference/xml_children.html" class="external-link">xml_length</a></span><span class="op">(</span><span class="va">doc2</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Error in xml_length.xml_node(doc2) : external pointer is not valid</span></span></code></pre></div>
-<p>This is because <strong>xml2</strong> objects only works in the R process that created them.</p>
+<p>This is because <strong>xml2</strong> objects only work in the R process that created them.</p>
 <p>One solution to this problem is to use “marshalling” to encode the R object into an exportable representation that then can be used to re-create a copy of that object in another R process that imitates the original object.</p>
 <p>The <strong>marshal</strong> package provides generic functions <code><a href="reference/marshal.html">marshal()</a></code> and <code><a href="reference/marshal.html">unmarshal()</a></code> for marshalling and unmarshalling R objects of certain class. This makes it possible to save otherwise non-exportable objects to file and then be used in a future R session, or to transfer them to another R process to be used there.</p>
 </div>
