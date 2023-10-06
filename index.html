@@ -47,7 +47,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">marshal</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0-9034</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.1-9000</span>
       </span>
     </div>
 
@@ -177,7 +177,7 @@
 <span><span class="co">#&gt; Error in xml_length.xml_node(doc2) : external pointer is not valid</span></span></code></pre></div>
 <p>This is because <strong>xml2</strong> objects only works in the R process that created them.</p>
 <p>One solution to this problem is to use “marshalling” to encode the R object into an exportable representation that then can be used to re-create a copy of that object in another R process that imitates the original object.</p>
-<p>The <strong>marshall</strong> package provides generic functions <code><a href="reference/marshal.html">marshal()</a></code> and <code><a href="reference/marshal.html">unmarshal()</a></code> for marshalling and unmarshalling R objects of certain class. This makes it possible to save otherwise non-exportable objects to file and then be used in a future R session, or to transfer them to another R process to be used there.</p>
+<p>The <strong>marshal</strong> package provides generic functions <code><a href="reference/marshal.html">marshal()</a></code> and <code><a href="reference/marshal.html">unmarshal()</a></code> for marshalling and unmarshalling R objects of certain class. This makes it possible to save otherwise non-exportable objects to file and then be used in a future R session, or to transfer them to another R process to be used there.</p>
 </div>
 <div class="section level2">
 <h2 id="proposed-api">Proposed API<a class="anchor" aria-label="anchor" href="#proposed-api"></a>
@@ -188,7 +188,7 @@
 <li><p><code><a href="reference/marshal.html">marshal()</a></code> - marshal an R object</p></li>
 <li><p><code><a href="reference/marshal.html">unmarshal()</a></code> - reconstruct a marshalled R object</p></li>
 </ol>
-<p>If we return to our <strong>xml2</strong> object, the <strong>marshal</strong> package implements an S3 <code>marhal()</code> method for different <strong>xml2</strong> classes that takes can of everything for us. We can use this when we save the object;</p>
+<p>If we return to our <strong>xml2</strong> object, the <strong>marshal</strong> package implements an S3 <code>marhal()</code> method for different <strong>xml2</strong> classes that takes care of everything for us. We can use this when we save the object;</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">file</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, <span class="st">"r-project.html"</span>, package <span class="op">=</span> <span class="st">"xml2"</span><span class="op">)</span></span>
 <span><span class="va">doc</span> <span class="op">&lt;-</span> <span class="fu">xml2</span><span class="fu">::</span><span class="fu"><a href="http://xml2.r-lib.org/reference/read_xml.html" class="external-link">read_html</a></span><span class="op">(</span><span class="va">file</span><span class="op">)</span></span>
@@ -230,9 +230,9 @@
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
-<p>The <strong>marshal</strong> package is only available via <a href="https://github.com/HenrikBengtsson/marshal" class="external-link">GitHub</a> and can be installed in R as:</p>
+<p>The <strong>marshal</strong> package is not, yet, on CRAN. In the meanwhile, it can be installed from the R Universe as:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"HenrikBengtsson/marshal"</span>, ref <span class="op">=</span> <span class="st">"main"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"marshal"</span>, repos <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"https://henrikbengtsson.r-universe.dev"</span>, <span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">getOption</a></span><span class="op">(</span><span class="st">"repos"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="section level3">
 <h3 id="pre-release-version">Pre-release version<a class="anchor" aria-label="anchor" href="#pre-release-version"></a>
 </h3>
