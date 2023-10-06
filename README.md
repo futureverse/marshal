@@ -45,7 +45,7 @@ object into an exportable representation that then can be used to
 re-create a copy of that object in another R process that imitates the
 original object.
 
-The **marshall** package provides generic functions `marshal()` and
+The **marshal** package provides generic functions `marshal()` and
 `unmarshal()` for marshalling and unmarshalling R objects of certain
 class.  This makes it possible to save otherwise non-exportable
 objects to file and then be used in a future R session, or to transfer
