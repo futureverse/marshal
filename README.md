@@ -13,36 +13,33 @@ outcomes.  Because of this, they cannot be saved to file and re-used
 at a later time.  They may also not be exported to a parallel worker
 when doing parallel processing.  These objects are sometimes referred
 to as non-exportable or non-serializable objects.  For example, assume
-we open a read-only file connection and read a few character:
+we load an HTML document using the **xml2** package:
 
 ```r
-pathname <- system.file(package = "base", "CITATION")
-con <- file(pathname, open = "rb")
-bfr <- readChar(con, nchars = 9)
-print(bfr)
-#> [1] "bibentry("
+file <- system.file("extdata", "r-project.html", package = "xml2")
+doc <- xml2::read_html(file)
 ```
 
-Next, imagine that we would save the connection object `con` to file
+Next, imagine that we would save this document object `doc` to file
 and quit R;
 
 ```r
-saveRDS(con, "con.rds")
+saveRDS(doc, "html.rds")
 quit()
 ```
 
-Then, if we try to use this saved connection in another R session,
-we'll find that it will not work;
+Then, if we try to use this saved **xml2** object in another R
+session, we'll find that it will not work;
 
 ```r
-con2 <- readRDS("con.rds")
-print(con2)
-#> A connection, specifically, 'file', but invalid.
+doc2 <- readRDS("html.rds")
+xml2::xml_length(doc2)
+#> Error in xml_length.xml_node(doc2) : external pointer is not valid
 ```
 
-This is because R connections are unique to the R process that created
-them.  As we will see below, it is only in rare cases, they maybe used
-in another R process.
+This is because **xml2** objects only works in the R process that
+created them.  As we will see below, it is only in rare cases, they
+maybe used in another R process.
 
 One solution to this problem is to use "marshalling" to encode the R
 object into an exportable representation that then can be used to
@@ -70,54 +67,27 @@ achieve this, this package proposes three generic functions:
  3. `unmarshal()` - reconstruct a marshalled R object
 
 
-If we return to our file connection, we can marshal the object by
-recording the original filename and the current file position when we
-save it to file.  This works as long as the connection is read-only
-and that the file does not change in-between.  The **marshal** package
-implements an S3 `marhal()` method for the `connection` class that
-does this for us.  For example,
+If we return to our **xml2** object, the **marshal** package
+implements an S3 `marhal()` method for different **xml2** classes that
+takes can of everything for us.  We can use this when we save the
+object;
 
 ```r
-pathname <- system.file(package = "base", "CITATION")
-con <- file(pathname, open = "rb")
-print(seek(con))
-#> [1] 0
+file <- system.file("extdata", "r-project.html", package = "xml2")
+doc <- xml2::read_html(file)
 
-bfr <- readChar(con, nchars = 9)
-print(bfr)
-#> [1] "bibentry("
-
-print(seek(con))
-#> [1] 9
-
-saveRDS(marshal::marshal(con), "con.rds")
+saveRDS(marshal::marshal(doc), "html.rds")
 
 quit()
 ```
 
-
-Later, in another R session, we can reconstruct this read-only file
-connection to the same file at the same file position as when it was
-saved to disk by using:
+Later, in another R session, we can reconstruct this **xml2** HTML
+document by using:
 
 ```sh
-con2 <- marshal::unmarshal(readRDS("con.rds"))
-print(con2)
-#> A connection with
-#> description "/path/to/R/lib/R/library/base/CITATION"
-#> class       "file"
-#> mode        "r"
-#> text        "text"
-#> opened      "opened"
-#> can read    "yes"
-#> can write   "no"
-
-print(seek(con2))
-#> [1] 9
-
-bfr2 <- readChar(con2, nchars = 10)
-print(bfr2)
-#> [1] "\"Manual\",\n"
+doc2 <- marshal::unmarshal(readRDS("html.rds"))
+xml2::xml_length(doc2)
+[1] 2
 ```
     
 
