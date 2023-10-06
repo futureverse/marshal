@@ -32,7 +32,7 @@ marshal.xml_nodeset <- function(xml2, ...) {
 marshal_xml2 <- function(xml2, ...) {
   res <- list(
     marshalled = list(
-      doctype = xml2:::doc_type(xml2),
+      doctype = xml2_doc_type(xml2),
       raw = xml2::xml_serialize(xml2, connection = NULL)
     )
   )
@@ -71,3 +71,23 @@ marshallable.xml_document <- function(...) {
 marshallable.xml_nodeset <- function(...) {
   TRUE
 }
+
+
+xml2_doc_type <- local({
+  doc_type <- NULL
+  
+  function(doc, ...) {
+    if (is.null(doc_type)) {
+      ns <- getNamespace("xml2")
+      if (exists("doc_type", mode = "function", envir = ns, inherits = FALSE)) {
+        doc_type <- get("doc_type", mode = "function", envir = ns, inherits = FALSE)
+      } else {
+        doc_type <- function(...) {
+          stop(MarshalNotSupportedError("xml2:::doc_type() does not exist", object = doc))
+        }
+      }
+    }
+    
+    doc_type(doc, ...)
+  }
+})
