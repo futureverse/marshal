@@ -38,7 +38,7 @@ xml2::xml_length(doc2)
 #> Error in xml_length.xml_node(doc2) : external pointer is not valid
 ```
 
-This is because **xml2** objects only works in the R process that
+This is because **xml2** objects only work in the R process that
 created them.
 
 One solution to this problem is to use "marshalling" to encode the R
