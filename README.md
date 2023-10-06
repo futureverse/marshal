@@ -129,12 +129,11 @@ classes.
 
 ## Installation
 
-The **marshal** package is only available via
-[GitHub](https://github.com/HenrikBengtsson/marshal) and can be
-installed in R as:
+The **marshal** package is not, yet, on CRAN.  In the meanwhile, it
+can be installed from the R Universe as:
 
 ```r
-remotes::install_github("HenrikBengtsson/marshal", ref = "main")
+install.packages("marshal", repos = c("https://henrikbengtsson.r-universe.dev", getOption("repos")))
 ```
 
 
