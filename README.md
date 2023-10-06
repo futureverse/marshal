@@ -1,5 +1,5 @@
-<div id="badges" markdown="1"><!-- pkgdown markup -->
-[![R-CMD-check](https://github.com/HenrikBengtsson/marshal/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/HenrikBengtsson/marshal/actions/workflows/R-CMD-check.yaml)
+<div id="badges"><!-- pkgdown markup -->
+<a href="https://github.com/HenrikBengtsson/marshal/actions/workflows/R-CMD-check.yaml"><img src="https://github.com/HenrikBengtsson/marshal/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R-CMD-check"/></a>
 [![port4me status badge](https://henrikbengtsson.r-universe.dev/badges/marshal)](https://henrikbengtsson.r-universe.dev/marshal)
 </div>
 
