@@ -47,7 +47,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">marshal</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0-9033</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0-9034</span>
       </span>
     </div>
 
@@ -162,23 +162,20 @@
 <div class="section level2">
 <h2 id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
 </h2>
-<p>Some types of R objects can be used only in the R session they were created. If used as-is in another R process, such objects often result in an immediate error or in obscure and hard-to-troubleshoot outcomes. Because of this, they cannot be saved to file and re-used at a later time. They may also not be exported to a parallel worker when doing parallel processing. These objects are sometimes referred to as non-exportable or non-serializable objects. For example, assume we open a read-only file connection and read a few character:</p>
+<p>Some types of R objects can be used only in the R session they were created. If used as-is in another R process, such objects often result in an immediate error or in obscure and hard-to-troubleshoot outcomes. Because of this, they cannot be saved to file and re-used at a later time. They may also not be exported to a parallel worker when doing parallel processing. These objects are sometimes referred to as non-exportable or non-serializable objects. For example, assume we load an HTML document using the <strong>xml2</strong> package:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">pathname</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span>package <span class="op">=</span> <span class="st">"base"</span>, <span class="st">"CITATION"</span><span class="op">)</span></span>
-<span><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/connections.html" class="external-link">file</a></span><span class="op">(</span><span class="va">pathname</span>, open <span class="op">=</span> <span class="st">"r"</span><span class="op">)</span></span>
-<span><span class="va">bfr</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/readChar.html" class="external-link">readChar</a></span><span class="op">(</span><span class="va">con</span>, nchars <span class="op">=</span> <span class="fl">9</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">bfr</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "bibentry("</span></span></code></pre></div>
-<p>Next, imagine that we would save the connection object <code>con</code> to file and quit R;</p>
+<code class="sourceCode R"><span><span class="va">file</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, <span class="st">"r-project.html"</span>, package <span class="op">=</span> <span class="st">"xml2"</span><span class="op">)</span></span>
+<span><span class="va">doc</span> <span class="op">&lt;-</span> <span class="fu">xml2</span><span class="fu">::</span><span class="fu"><a href="http://xml2.r-lib.org/reference/read_xml.html" class="external-link">read_html</a></span><span class="op">(</span><span class="va">file</span><span class="op">)</span></span></code></pre></div>
+<p>Next, imagine that we would save this document object <code>doc</code> to file and quit R;</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/readRDS.html" class="external-link">saveRDS</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"con.rds"</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/readRDS.html" class="external-link">saveRDS</a></span><span class="op">(</span><span class="va">doc</span>, <span class="st">"html.rds"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/quit.html" class="external-link">quit</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<p>Then, if we try to use this saved connection in another R session, we’ll find that it will not work;</p>
+<p>Then, if we try to use this saved <strong>xml2</strong> object in another R session, we’ll find that it will not work;</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">con2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/readRDS.html" class="external-link">readRDS</a></span><span class="op">(</span><span class="st">"con.rds"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">con2</span><span class="op">)</span></span>
-<span><span class="co">#&gt; A connection, specifically, 'file', but invalid.</span></span></code></pre></div>
-<p>This is because R connections are unique to the R process that created them. As we will see below, it is only in rare cases, they maybe used in another R process.</p>
+<code class="sourceCode R"><span><span class="va">doc2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/readRDS.html" class="external-link">readRDS</a></span><span class="op">(</span><span class="st">"html.rds"</span><span class="op">)</span></span>
+<span><span class="fu">xml2</span><span class="fu">::</span><span class="fu"><a href="http://xml2.r-lib.org/reference/xml_children.html" class="external-link">xml_length</a></span><span class="op">(</span><span class="va">doc2</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Error in xml_length.xml_node(doc2) : external pointer is not valid</span></span></code></pre></div>
+<p>This is because <strong>xml2</strong> objects only works in the R process that created them. As we will see below, it is only in rare cases, they maybe used in another R process.</p>
 <p>One solution to this problem is to use “marshalling” to encode the R object into an exportable representation that then can be used to re-create a copy of that object in another R process that imitates the original object.</p>
 <p>This package provides generic functions <code><a href="reference/marshal.html">marshal()</a></code> and <code><a href="reference/marshal.html">unmarshal()</a></code> for marshalling and unmarshalling R objects of certain class. This makes it possible to save otherwise non-exportable objects to file and then be used in a future R session, or to transfer them to another R process to be used there.</p>
 </div>
@@ -191,41 +188,18 @@
 <li><p><code><a href="reference/marshal.html">marshal()</a></code> - marshal an R object</p></li>
 <li><p><code><a href="reference/marshal.html">unmarshal()</a></code> - reconstruct a marshalled R object</p></li>
 </ol>
-<p>If we return to our file connection, we can marshal the object by recording the original filename and the current file position when we save it to file. This works as long as the connection is read-only and that the file does not change in-between. The <strong>marshal</strong> package implements an S3 <code>marhal()</code> method for the <code>connection</code> class that does this for us. For example,</p>
+<p>If we return to our <strong>xml2</strong> object, the <strong>marshal</strong> package implements an S3 <code>marhal()</code> method for different <strong>xml2</strong> classes that takes can of everything for us. We can use this when we save the object;</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">pathname</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span>package <span class="op">=</span> <span class="st">"base"</span>, <span class="st">"CITATION"</span><span class="op">)</span></span>
-<span><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/connections.html" class="external-link">file</a></span><span class="op">(</span><span class="va">pathname</span>, open <span class="op">=</span> <span class="st">"rb"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seek.html" class="external-link">seek</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] 0</span></span>
+<code class="sourceCode R"><span><span class="va">file</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, <span class="st">"r-project.html"</span>, package <span class="op">=</span> <span class="st">"xml2"</span><span class="op">)</span></span>
+<span><span class="va">doc</span> <span class="op">&lt;-</span> <span class="fu">xml2</span><span class="fu">::</span><span class="fu"><a href="http://xml2.r-lib.org/reference/read_xml.html" class="external-link">read_html</a></span><span class="op">(</span><span class="va">file</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">bfr</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/readChar.html" class="external-link">readChar</a></span><span class="op">(</span><span class="va">con</span>, nchars <span class="op">=</span> <span class="fl">9</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">bfr</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "bibentry("</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seek.html" class="external-link">seek</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] 9</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/readRDS.html" class="external-link">saveRDS</a></span><span class="op">(</span><span class="fu">marshal</span><span class="fu">::</span><span class="fu"><a href="reference/marshal.html">marshal</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span>, <span class="st">"con.rds"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/readRDS.html" class="external-link">saveRDS</a></span><span class="op">(</span><span class="fu">marshal</span><span class="fu">::</span><span class="fu"><a href="reference/marshal.html">marshal</a></span><span class="op">(</span><span class="va">doc</span><span class="op">)</span>, <span class="st">"html.rds"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/quit.html" class="external-link">quit</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<p>Later, in another R session, we can reconstruct this read-only file connection to the same file at the same file position as when it was saved to disk by using:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="ex">con2</span> <span class="op">&lt;</span>- marshal::unmarshal<span class="er">(</span><span class="ex">readRDS</span><span class="er">(</span><span class="st">"con.rds"</span><span class="kw">))</span></span>
-<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a><span class="ex">print</span><span class="er">(</span><span class="ex">con2</span><span class="kw">)</span></span>
-<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a><span class="co">#&gt; A connection with</span></span>
-<span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a><span class="co">#&gt; description "/path/to/R/lib/R/library/base/CITATION"</span></span>
-<span id="cb5-5"><a href="#cb5-5" tabindex="-1"></a><span class="co">#&gt; class       "file"</span></span>
-<span id="cb5-6"><a href="#cb5-6" tabindex="-1"></a><span class="co">#&gt; mode        "r"</span></span>
-<span id="cb5-7"><a href="#cb5-7" tabindex="-1"></a><span class="co">#&gt; text        "text"</span></span>
-<span id="cb5-8"><a href="#cb5-8" tabindex="-1"></a><span class="co">#&gt; opened      "opened"</span></span>
-<span id="cb5-9"><a href="#cb5-9" tabindex="-1"></a><span class="co">#&gt; can read    "yes"</span></span>
-<span id="cb5-10"><a href="#cb5-10" tabindex="-1"></a><span class="co">#&gt; can write   "no"</span></span>
-<span id="cb5-11"><a href="#cb5-11" tabindex="-1"></a></span>
-<span id="cb5-12"><a href="#cb5-12" tabindex="-1"></a><span class="ex">print</span><span class="er">(</span><span class="ex">seek</span><span class="er">(</span><span class="ex">con2</span><span class="kw">))</span></span>
-<span id="cb5-13"><a href="#cb5-13" tabindex="-1"></a><span class="co">#&gt; [1] 9</span></span>
-<span id="cb5-14"><a href="#cb5-14" tabindex="-1"></a></span>
-<span id="cb5-15"><a href="#cb5-15" tabindex="-1"></a><span class="ex">bfr2</span> <span class="op">&lt;</span>- readChar<span class="er">(</span><span class="ex">con2,</span> nchars = 10<span class="kw">)</span></span>
-<span id="cb5-16"><a href="#cb5-16" tabindex="-1"></a><span class="ex">print</span><span class="er">(</span><span class="ex">bfr2</span><span class="kw">)</span></span>
-<span id="cb5-17"><a href="#cb5-17" tabindex="-1"></a><span class="co">#&gt; [1] "\"Manual\",\n"</span></span></code></pre></div>
+<p>Later, in another R session, we can reconstruct this <strong>xml2</strong> HTML document by using:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="ex">doc2</span> <span class="op">&lt;</span>- marshal::unmarshal<span class="er">(</span><span class="ex">readRDS</span><span class="er">(</span><span class="st">"html.rds"</span><span class="kw">))</span></span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a><span class="ex">xml2::xml_length</span><span class="er">(</span><span class="ex">doc2</span><span class="kw">)</span></span>
+<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a><span class="ex">[1]</span> 2</span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="currently-supported-packages">Currently supported packages<a class="anchor" aria-label="anchor" href="#currently-supported-packages"></a>
