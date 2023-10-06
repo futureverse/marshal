@@ -31,7 +31,10 @@ marshal.xml_nodeset <- function(xml2, ...) {
 
 marshal_xml2 <- function(xml2, ...) {
   res <- list(
-    marshalled = xml2::xml_serialize(xml2, connection = NULL)
+    marshalled = list(
+      doctype = xml2:::doc_type(xml2),
+      raw = xml2::xml_serialize(xml2, connection = NULL)
+    )
   )
   class(res) <- marshal_class(xml2)
 
@@ -47,7 +50,9 @@ marshal_xml2 <- function(xml2, ...) {
 
 unmarshal_xml2 <- function(xml2, ...) {
   object <- xml2[["marshalled"]]
-  res <- xml2::xml_unserialize(object)
+  args <- list(object[["raw"]])
+  if (object[["doctype"]] == "html") args$as_html <- TRUE
+  res <- do.call(xml2::xml_unserialize, args = args)
   stopifnot(identical(class(res), marshal_unclass(xml2)))
   res
 }
