@@ -38,19 +38,18 @@ xml2::xml_length(doc2)
 ```
 
 This is because **xml2** objects only works in the R process that
-created them.  As we will see below, it is only in rare cases, they
-maybe used in another R process.
+created them.
 
 One solution to this problem is to use "marshalling" to encode the R
 object into an exportable representation that then can be used to
 re-create a copy of that object in another R process that imitates the
 original object.
 
-This package provides generic functions `marshal()` and `unmarshal()`
-for marshalling and unmarshalling R objects of certain class.  This
-makes it possible to save otherwise non-exportable objects to file and
-then be used in a future R session, or to transfer them to another R
-process to be used there.
+The **marshall** package provides generic functions `marshal()` and
+`unmarshal()` for marshalling and unmarshalling R objects of certain
+class.  This makes it possible to save otherwise non-exportable
+objects to file and then be used in a future R session, or to transfer
+them to another R process to be used there.
 
 
 ## Proposed API
@@ -69,7 +68,7 @@ achieve this, this package proposes three generic functions:
 
 If we return to our **xml2** object, the **marshal** package
 implements an S3 `marhal()` method for different **xml2** classes that
-takes can of everything for us.  We can use this when we save the
+takes care of everything for us.  We can use this when we save the
 object;
 
 ```r
