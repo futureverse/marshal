@@ -1,6 +1,12 @@
 library(marshal)
 
-if (requireNamespace("BH", quietly = TRUE) && requireNamespace("RcppEigen", quietly = TRUE) && requireNamespace("rstan", quietly = TRUE)) {
+if (
+  ## 'rstan' seems unstable on MS Windows (at least on GitHub Actions)
+  .Platform[["OS.type"]] != "windows" &&
+  requireNamespace("BH", quietly = TRUE) &&
+  requireNamespace("RcppEigen", quietly = TRUE) &&
+  requireNamespace("rstan", quietly = TRUE))
+{
   library(rstan)
   rstan_options(threads_per_chain = 1L)  ## avoid using too many cores
 
