@@ -1,5 +1,6 @@
 <div id="badges"><!-- pkgdown markup -->
- <a href="https://github.com/HenrikBengtsson/marshal/actions?query=workflow%3AR-CMD-check"><img border="0" src="https://github.com/HenrikBengtsson/marshal/actions/workflows/R-CMD-check.yaml/badge.svg?branch=develop" alt="R CMD check status"/></a>      
+[![R-CMD-check](https://github.com/HenrikBengtsson/marshal/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/HenrikBengtsson/marshal/actions/workflows/R-CMD-check.yaml)
+[![port4me status badge](https://henrikbengtsson.r-universe.dev/badges/marshal)](https://henrikbengtsson.r-universe.dev/marshal)
 </div>
 
 # marshal: Unified API for Marshalling R Objects
