@@ -1,13 +1,13 @@
 library(marshal)
 
+## WORKAROUND: tensorflow::tf_config() triggers the 'reticulate' package
+## to create temporary folders under the 'TMPDIR' folder, not tempdir(),
+## which then R CMD check --as-cran will complain about.
+otd <- Sys.getenv("TMPDIR", NA_character_)
+Sys.setenv(TMPDIR = tempdir())
+
 if (requireNamespace("tensorflow", quietly = TRUE) && tensorflow::tf_config()$available && requireNamespace("keras", quietly = TRUE)) {
   library(keras)
-
-  ## WORKAROUND: {keras}, or {reticulate}, or both, creates temporary
-  ## folders under the 'TMPDIR' folder - not tempdir() - which then
-  ## R CMD check --as-cran will complain about.
-  otd <- Sys.getenv("TMPDIR", NA_character_)
-  Sys.setenv(TMPDIR = tempdir())
 
   ## Create a keras model (adopted from {keras} vignette)
   inputs <- layer_input(shape = shape(32))
@@ -56,7 +56,6 @@ if (requireNamespace("tensorflow", quietly = TRUE) && tensorflow::tf_config()$av
     identical(summary(model2), summary(model)),
     identical(stats::predict(model2, test_input), stats::predict(model, test_input))
   )
-
-  if (is.na(otd)) Sys.unsetenv("TMPDIR") else Sys.setenv(TMPDIR = otd)
 }
 
+if (is.na(otd)) Sys.unsetenv("TMPDIR") else Sys.setenv(TMPDIR = otd)
