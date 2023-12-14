@@ -13,6 +13,7 @@
 #' @export
 marshal <- function(...) { UseMethod("marshal") }
 
+
 #' @return
 #' `unmarshal()` returns an unmarshalled version of the original object.
 #'
