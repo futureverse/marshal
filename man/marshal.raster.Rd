@@ -31,6 +31,7 @@ original object from the marshalled object.
 Marshalling of \code{RasterLayer} objects is \emph{leaky}.  More precisely,
 the method \emph{cannot} guarantee that multiple rounds of marshalling
 and unmarshalling produce numerically identical objects.
+For further information, see (1).
 }
 
 \examples{
@@ -44,5 +45,12 @@ if (requireNamespace("raster", quietly = TRUE)) {
   ## Unmarshal
   r2 <- unmarshal(r_)
   print(r2)
+}
+}
+\references{
+\enumerate{
+\item Issue #311 - 'Incorrect large values saved to disk with writeRaster()',
+\strong{raster} GitHub repostory, 2023-05-17,
+\url{https://github.com/rspatial/raster/issues/311}.
 }
 }

@@ -18,8 +18,14 @@
 #' Marshalling of `RasterLayer` objects is _leaky_.  More precisely,
 #' the method _cannot_ guarantee that multiple rounds of marshalling
 #' and unmarshalling produce numerically identical objects.
+#' For further information, see (1).
 #'
 #' @example incl/marshal.raster.R
+#'
+#' @references
+#' 1. Issue #311 - 'Incorrect large values saved to disk with writeRaster()',
+#'    **raster** GitHub repostory, 2023-05-17,
+#'    <https://github.com/rspatial/raster/issues/311>.
 #'
 #' @rdname marshal.raster
 #' @aliases marshal.RasterLayer
