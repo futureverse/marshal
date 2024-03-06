@@ -13,6 +13,12 @@
     <loc>https://marshal.futureverse.org/LICENSE.html</loc>
   </url>
   <url>
+    <loc>https://marshal.futureverse.org/articles/index.html</loc>
+  </url>
+  <url>
+    <loc>https://marshal.futureverse.org/articles/known_cases.html</loc>
+  </url>
+  <url>
     <loc>https://marshal.futureverse.org/authors.html</loc>
   </url>
   <url>
@@ -44,6 +50,9 @@
   </url>
   <url>
     <loc>https://marshal.futureverse.org/reference/marshal.data.table.html</loc>
+  </url>
+  <url>
+    <loc>https://marshal.futureverse.org/reference/marshal.default.html</loc>
   </url>
   <url>
     <loc>https://marshal.futureverse.org/reference/marshal.h2o.html</loc>
