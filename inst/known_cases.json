@@ -1,0 +1,175 @@
+[
+  {
+    "package": "base",
+    "type": "connection",
+    "if_not_marshalled": "error, incorrect result, file corruption",
+    "can_be_marshalled": false,
+    "must_be_marshalled": true
+  },
+  {
+    "package": "parallel",
+    "type": "SOCKnode, SOCK0node",
+    "if_not_marshalled": "error",
+    "can_be_marshalled": false,
+    "must_be_marshalled": true
+  },
+  {
+    "package": "arrow",
+    "type": "Array, Table",
+    "if_not_marshalled": "error",
+    "can_be_marshalled": true,
+    "must_be_marshalled": true
+  },
+  {
+    "package": "caret",
+    "type": "train",
+    "if_not_marshalled": "",
+    "can_be_marshalled": true,
+    "must_be_marshalled": true
+  },
+  {
+    "package": "cpp11",
+    "type": "function",
+    "if_not_marshalled": "error",
+    "can_be_marshalled": false,
+    "must_be_marshalled": true
+  },
+  {
+    "package": "data.table",
+    "type": "data.table",
+    "if_not_marshalled": "",
+    "can_be_marshalled": true,
+    "must_be_marshalled": false
+  },
+  {
+    "package": "DBI",
+    "type": "DBIConnection",
+    "if_not_marshalled": "error",
+    "can_be_marshalled": false,
+    "must_be_marshalled": true
+  },
+  {
+    "package": "inline",
+    "type": "CFunc, et al.",
+    "if_not_marshalled": "error",
+    "can_be_marshalled": false,
+    "must_be_marshalled": true
+  },
+  {
+    "package": "keras",
+    "type": "keras.engine.training.Model",
+    "if_not_marshalled": "error",
+    "can_be_marshalled": true,
+    "must_be_marshalled": true
+  },
+  {
+    "package": "magick",
+    "type": "magick-image",
+    "if_not_marshalled": "error",
+    "can_be_marshalled": false,
+    "must_be_marshalled": true
+  },
+  {
+    "package": "ncdf4",
+    "type": "ncdf4",
+    "if_not_marshalled": "",
+    "can_be_marshalled": false,
+    "must_be_marshalled": true
+  },
+  {
+    "package": "parsnip",
+    "if_not_marshalled": "",
+    "can_be_marshalled": true,
+    "must_be_marshalled": true
+  },
+  {
+    "package": "raster",
+    "type": "RasterLayer",
+    "if_not_marshalled": "???",
+    "can_be_marshalled": false
+  },
+  {
+    "package": "Rcpp",
+    "type": "function",
+    "if_not_marshalled": "error",
+    "can_be_marshalled": false,
+    "must_be_marshalled": true
+  },
+  {
+    "package": "reticulate",
+    "type": "python.builtin.object",
+    "if_not_marshalled": "error",
+    "can_be_marshalled": false,
+    "must_be_marshalled": true
+  },
+  {
+    "package": "rJava",
+    "type": "jclassName, jobjRef",
+    "if_not_marshalled": "error",
+    "can_be_marshalled": false,
+    "must_be_marshalled": true
+  },
+  {
+    "package": "rstan",
+    "type": "stanfit",
+    "if_not_marshalled": "",
+    "can_be_marshalled": true,
+    "must_be_marshalled": false
+  },
+  {
+    "package": "sparklyr",
+    "type": "tbl_spark",
+    "if_not_marshalled": "error",
+    "can_be_marshalled": false,
+    "must_be_marshalled": true
+  },
+  {
+    "package": "terra",
+    "type": "SpatVectortype, SpatRaster",
+    "if_not_marshalled": "error",
+    "can_be_marshalled": true,
+    "must_be_marshalled": true
+  },
+  {
+    "package": "udpipe",
+    "type": "udpipe_model",
+    "if_not_marshalled": "error",
+    "can_be_marshalled": false,
+    "must_be_marshalled": true
+  },
+  {
+    "package": "xgboost",
+    "type": "xgb.DMatrix",
+    "if_not_marshalled": "incorrect result",
+    "can_be_marshalled": false,
+    "must_be_marshalled": true
+  },
+  {
+    "package": "XML",
+    "type": "XMLInternalDocument, XMLInternalNode",
+    "if_not_marshalled": "segmentation fault",
+    "can_be_marshalled": true,
+    "must_be_marshalled": true
+  },
+  {
+    "package": "xml2",
+    "type": "xml_document, xml_nodesettype, xml_node",
+    "if_not_marshalled": "error",
+    "can_be_marshalled": true,
+    "must_be_marshalled": true
+  },
+  {
+    "package": "ShortRead",
+    "type": "FastqStreamer",
+    "if_not_marshalled": "error",
+    "can_be_marshalled": false,
+    "must_be_marshalled": true
+  },
+  {
+    "package": "polars",
+    "type": "RPolarsDataFrame, et al.",
+    "if_not_marshalled": "error",
+    "can_be_marshalled": false,
+    "must_be_marshalled": true
+  }
+]

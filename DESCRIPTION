@@ -1,9 +1,12 @@
 Package: marshal
-Version: 0.0.1-9003
+Version: 0.0.1-9004
 Title: Framework to Marshal Objects to be Used in Another R Process
 Depends:
     R (>= 3.2.0)
 Suggests:
+    knitr,
+      DT,
+      jsonlite,
     bundle,
     caret,
     data.table,
@@ -32,6 +35,8 @@ Suggests:
     xgboost,
     XML,
     xml2
+VignetteBuilder:
+    knitr
 Authors@R: 
     person(given = "Henrik", family = "Bengtsson",
            role = c("aut", "cre", "cph"),
@@ -44,4 +49,4 @@ ByteCompile: TRUE
 URL: https://marshal.futureverse.org, https://github.com/HenrikBengtsson/marshal
 BugReports: https://github.com/HenrikBengtsson/marshal/issues
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.1

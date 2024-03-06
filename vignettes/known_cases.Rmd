@@ -1,0 +1,24 @@
+---
+title: "Known Cases where Marshalling is Needed and not"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteIndexEntry{Known Cases where Marshalling is Needed and not}
+  %\VignetteEncoding{UTF-8}
+---
+
+
+```{r, echo = FALSE}
+known_cases <- system.file("known_cases.json", package = "marshal")
+support <- jsonlite::read_json(known_cases, simplifyVector = TRUE)
+support <- lapply(support, FUN = function(x) {
+  if (is.logical(x)) c("no", "yes")[x+1] else x
+})
+support <- as.data.frame(support)
+names <- colnames(support)
+names <- gsub("_marshalled", "_marshalled?", names)
+names <- gsub("_", " ", names)
+names <- gsub("_", " ", names)
+colnames(support) <- names
+DT::datatable(support, options = list(pageLength = 50))
+```
