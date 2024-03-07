@@ -7,6 +7,13 @@
     "must_be_marshalled": true
   },
   {
+    "package": "base",
+    "type": "read-only url connection",
+    "if_not_marshalled": "",
+    "can_be_marshalled": true,
+    "must_be_marshalled": true
+  },
+  {
     "package": "parallel",
     "type": "SOCKnode, SOCK0node",
     "if_not_marshalled": "error",
@@ -63,6 +70,13 @@
     "must_be_marshalled": true
   },
   {
+    "package": "lightgbm",
+    "type": "lgb.Dataset",
+    "if_not_marshalled": "error",
+    "can_be_marshalled": true,
+    "must_be_marshalled": true
+  },
+  {
     "package": "magick",
     "type": "magick-image",
     "if_not_marshalled": "error",
@@ -72,7 +86,7 @@
   {
     "package": "ncdf4",
     "type": "ncdf4",
-    "if_not_marshalled": "",
+    "if_not_marshalled": "error",
     "can_be_marshalled": false,
     "must_be_marshalled": true
   },
@@ -129,6 +143,13 @@
     "if_not_marshalled": "error",
     "can_be_marshalled": true,
     "must_be_marshalled": true
+  },
+  {
+    "package": "readr",
+    "type": "data.frame, tbl_df with 'problems' attribute",
+    "if_not_marshalled": "",
+    "can_be_marshalled": true,
+    "must_be_marshalled": false
   },
   {
     "package": "udpipe",
