@@ -21,5 +21,6 @@ names <- gsub("_", " ", names)
 names <- gsub("_", " ", names)
 colnames(support) <- names
 support <- with(support, support[order(tolower(package)), ])
+rownames(support) <- NULL
 DT::datatable(support, options = list(pageLength = 50))
 ```
