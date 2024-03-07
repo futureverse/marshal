@@ -9,7 +9,7 @@
   {
     "package": "base",
     "type": "read-only url connection",
-    "if_not_marshalled": "",
+    "if_not_marshalled": "error, incorrect result",
     "can_be_marshalled": true,
     "must_be_marshalled": true
   },
@@ -30,7 +30,7 @@
   {
     "package": "caret",
     "type": "train",
-    "if_not_marshalled": "",
+    "if_not_marshalled": "???",
     "can_be_marshalled": true,
     "must_be_marshalled": true
   },
@@ -44,7 +44,7 @@
   {
     "package": "data.table",
     "type": "data.table",
-    "if_not_marshalled": "",
+    "if_not_marshalled": "okay",
     "can_be_marshalled": true,
     "must_be_marshalled": false
   },
@@ -92,7 +92,7 @@
   },
   {
     "package": "parsnip",
-    "if_not_marshalled": "",
+    "if_not_marshalled": "???",
     "can_be_marshalled": true,
     "must_be_marshalled": true
   },
@@ -126,7 +126,7 @@
   {
     "package": "rstan",
     "type": "stanfit",
-    "if_not_marshalled": "",
+    "if_not_marshalled": "okay",
     "can_be_marshalled": true,
     "must_be_marshalled": false
   },
@@ -147,7 +147,7 @@
   {
     "package": "readr",
     "type": "data.frame, tbl_df with 'problems' attribute",
-    "if_not_marshalled": "",
+    "if_not_marshalled": "???",
     "can_be_marshalled": true,
     "must_be_marshalled": false
   },

@@ -20,5 +20,6 @@ names <- gsub("_marshalled", "_marshalled?", names)
 names <- gsub("_", " ", names)
 names <- gsub("_", " ", names)
 colnames(support) <- names
+support <- with(support, support[order(tolower(package)), ])
 DT::datatable(support, options = list(pageLength = 50))
 ```
