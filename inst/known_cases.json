@@ -28,6 +28,13 @@
     "must_be_marshalled": true
   },
   {
+    "package": "bigmemory",
+    "type": "big.matrix",
+    "if_not_marshalled": "segmentation fault",
+    "can_be_marshalled": true,
+    "must_be_marshalled": true
+  },
+  {
     "package": "caret",
     "type": "train",
     "if_not_marshalled": "???",
