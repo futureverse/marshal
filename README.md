@@ -5,6 +5,14 @@
 
 # marshal: Unified API for Marshalling R Objects
 
+## News
+
+* May 2024: We have launched the R Consortium ISC Working Group
+  ['Marshaling and Serialization in
+  R'](https://github.com/RConsortium/marshalling-wg) to work on this
+  problem.
+
+
 ## Introduction
 
 Some types of R objects can be used only in the R session they were
