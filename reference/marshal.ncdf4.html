@@ -151,7 +151,7 @@
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>x</dt>
-<dd><p>A <a href="https://rdrr.io/pkg/ncdf4/man/nc_create.html" class="external-link">ncdf4:ncdf4</a> object.</p></dd>
+<dd><p>A ncdf4:ncdf4 object.</p></dd>
 
 
 <dt>...</dt>
@@ -168,7 +168,7 @@
     <h2>Details</h2>
     <p><code><a href="https://rdrr.io/r/base/readBin.html" class="external-link">base::readBin()</a></code> is used to produce a marshalled version
 of the original object.
-<code><a href="https://rdrr.io/r/base/readBin.html" class="external-link">base::writeBin()</a></code> and <code><a href="https://rdrr.io/pkg/ncdf4/man/nc_open.html" class="external-link">ncdf4::nc_open()</a></code> are used to
+<code><a href="https://rdrr.io/r/base/readBin.html" class="external-link">base::writeBin()</a></code> and <code>ncdf4::nc_open()</code> are used to
 reconstruct a version of the original object from the
 marshalled object.</p>
     </div>
@@ -181,16 +181,16 @@ marshalled object.</p>
 <span class="r-in"><span>  <span class="co">## Create a temporary NCDF file</span></span></span>
 <span class="r-in"><span>  <span class="va">tf</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempfile</a></span><span class="op">(</span>fileext <span class="op">=</span> <span class="st">".nc"</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  </span></span>
-<span class="r-in"><span>  <span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/ncdf4/man/ncvar_def.html" class="external-link">ncvar_def</a></span><span class="op">(</span><span class="st">"x"</span>, units <span class="op">=</span> <span class="st">"count"</span>, dim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-in"><span>  <span class="va">nf</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/ncdf4/man/nc_create.html" class="external-link">nc_create</a></span><span class="op">(</span><span class="va">tf</span>, <span class="va">x</span><span class="op">)</span></span></span>
-<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/pkg/ncdf4/man/ancvar_put.html" class="external-link">ncvar_put</a></span><span class="op">(</span><span class="va">nf</span>, <span class="va">x</span>, <span class="fl">42</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">x</span> <span class="op">&lt;-</span> <span class="fu">ncvar_def</span><span class="op">(</span><span class="st">"x"</span>, units <span class="op">=</span> <span class="st">"count"</span>, dim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">nf</span> <span class="op">&lt;-</span> <span class="fu">nc_create</span><span class="op">(</span><span class="va">tf</span>, <span class="va">x</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="fu">ncvar_put</span><span class="op">(</span><span class="va">nf</span>, <span class="va">x</span>, <span class="fl">42</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">nf</span><span class="op">)</span></span></span>
-<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/pkg/ncdf4/man/nc_close.html" class="external-link">nc_close</a></span><span class="op">(</span><span class="va">nf</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="fu">nc_close</span><span class="op">(</span><span class="va">nf</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/base/rm.html" class="external-link">rm</a></span><span class="op">(</span>list <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"nf"</span>, <span class="st">"x"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span>  <span class="co">## Open NCDF file</span></span></span>
-<span class="r-in"><span>  <span class="va">nf</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/ncdf4/man/nc_open.html" class="external-link">nc_open</a></span><span class="op">(</span><span class="va">tf</span><span class="op">)</span></span></span>
-<span class="r-in"><span>  <span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/ncdf4/man/ncvar_get.html" class="external-link">ncvar_get</a></span><span class="op">(</span><span class="va">nf</span>, <span class="st">"x"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">nf</span> <span class="op">&lt;-</span> <span class="fu">nc_open</span><span class="op">(</span><span class="va">tf</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">y</span> <span class="op">&lt;-</span> <span class="fu">ncvar_get</span><span class="op">(</span><span class="va">nf</span>, <span class="st">"x"</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span>  <span class="co">## Marshal</span></span></span>
 <span class="r-in"><span>  <span class="va">nf_</span> <span class="op">&lt;-</span> <span class="fu"><a href="marshal.html">marshal</a></span><span class="op">(</span><span class="va">nf</span><span class="op">)</span></span></span>
@@ -198,16 +198,9 @@ marshalled object.</p>
 <span class="r-in"><span>  <span class="co">## Unmarshal</span></span></span>
 <span class="r-in"><span>  <span class="va">nf2</span> <span class="op">&lt;-</span> <span class="fu"><a href="marshal.html">unmarshal</a></span><span class="op">(</span><span class="va">nf_</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span>  <span class="va">y2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/ncdf4/man/ncvar_get.html" class="external-link">ncvar_get</a></span><span class="op">(</span><span class="va">nf2</span>, <span class="st">"x"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">y2</span> <span class="op">&lt;-</span> <span class="fu">ncvar_get</span><span class="op">(</span><span class="va">nf2</span>, <span class="st">"x"</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html" class="external-link">stopifnot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/identical.html" class="external-link">identical</a></span><span class="op">(</span><span class="va">y2</span>, <span class="va">y</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> File /tmp/henrik/RtmpsiqPZl/file725b87bc1a9b.nc (NC_FORMAT_CLASSIC):</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      1 variables (excluding dimension variables):</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         float x[]   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>             units: count</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      0 dimensions:</span>
 </code></pre></div>
     </div>
   </div>
@@ -222,7 +215,7 @@ marshalled object.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7</p> and <a href="https://github.com/HenrikBengtsson/pkgdown.extras/">pkgdown.extras</a> 0.0.0.9005.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7</p> and <a href="https://github.com/HenrikBengtsson/pkgdown.extras/">pkgdown.extras</a> 0.0.0.9006.</p>
 </div>
 
       </footer></div>

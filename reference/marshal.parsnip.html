@@ -175,9 +175,9 @@
 <span class="r-in"><span>  <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/tidymodels/parsnip" class="external-link">parsnip</a></span><span class="op">)</span></span></span>
 <span class="r-in"><span>  </span></span>
 <span class="r-in"><span>  <span class="co">## Adopted from example("boost_tree", package = "parsnip")</span></span></span>
-<span class="r-in"><span>  <span class="va">model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://parsnip.tidymodels.org/reference/boost_tree.html" class="external-link">boost_tree</a></span><span class="op">(</span>mode <span class="op">=</span> <span class="st">"classification"</span>, trees <span class="op">=</span> <span class="fl">20L</span>, engine <span class="op">=</span> <span class="st">"xgboost"</span><span class="op">)</span>  </span></span>
-<span class="r-in"><span>  <span class="va">model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://parsnip.tidymodels.org/reference/set_args.html" class="external-link">set_mode</a></span><span class="op">(</span><span class="va">model</span>, <span class="st">"regression"</span><span class="op">)</span></span></span>
-<span class="r-in"><span>  <span class="va">fit</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://generics.r-lib.org/reference/fit.html" class="external-link">fit</a></span><span class="op">(</span><span class="va">model</span>, <span class="va">mpg</span> <span class="op">~</span> <span class="va">.</span>, data <span class="op">=</span> <span class="fu">datasets</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/r/datasets/mtcars.html" class="external-link">mtcars</a></span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">model</span> <span class="op">&lt;-</span> <span class="fu">boost_tree</span><span class="op">(</span>mode <span class="op">=</span> <span class="st">"classification"</span>, trees <span class="op">=</span> <span class="fl">20L</span>, engine <span class="op">=</span> <span class="st">"xgboost"</span><span class="op">)</span>  </span></span>
+<span class="r-in"><span>  <span class="va">model</span> <span class="op">&lt;-</span> <span class="fu">set_mode</span><span class="op">(</span><span class="va">model</span>, <span class="st">"regression"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">fit</span> <span class="op">&lt;-</span> <span class="fu">fit</span><span class="op">(</span><span class="va">model</span>, <span class="va">mpg</span> <span class="op">~</span> <span class="va">.</span>, data <span class="op">=</span> <span class="fu">datasets</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/r/datasets/mtcars.html" class="external-link">mtcars</a></span><span class="op">)</span></span></span>
 <span class="r-in"><span>  </span></span>
 <span class="r-in"><span>  <span class="co">## Marshal</span></span></span>
 <span class="r-in"><span>  <span class="va">fit_</span> <span class="op">&lt;-</span> <span class="fu"><a href="marshal.html">marshal</a></span><span class="op">(</span><span class="va">fit</span><span class="op">)</span></span></span>
@@ -200,7 +200,6 @@
 <span class="r-in"><span>    <span class="fu"><a href="https://rdrr.io/r/base/all.equal.html" class="external-link">all.equal</a></span><span class="op">(</span><span class="va">fit3</span>, <span class="va">fit2</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span>  </span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in assert_no_references(res):</span> Detected a non-exportable reference (‘externalptr’ of class ‘xgb.Booster.handle’) in one of the globals (‘marshalled’ of class ‘_xgb.Booster’) used in the future expression</span>
 </code></pre></div>
     </div>
   </div>
@@ -215,7 +214,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7</p> and <a href="https://github.com/HenrikBengtsson/pkgdown.extras/">pkgdown.extras</a> 0.0.0.9005.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7</p> and <a href="https://github.com/HenrikBengtsson/pkgdown.extras/">pkgdown.extras</a> 0.0.0.9006.</p>
 </div>
 
       </footer></div>
