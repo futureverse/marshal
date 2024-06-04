@@ -11,8 +11,8 @@ Some types of R objects can be used only in the R session they were created.  If
 Useful links:
 \itemize{
   \item \url{https://marshal.futureverse.org}
-  \item \url{https://github.com/HenrikBengtsson/marshal}
-  \item Report bugs at \url{https://github.com/HenrikBengtsson/marshal/issues}
+  \item \url{https://github.com/futureverse/marshal}
+  \item Report bugs at \url{https://github.com/futureverse/marshal/issues}
 }
 
 }

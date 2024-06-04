@@ -23,7 +23,7 @@ Marshalling of 'keras' objects
 \details{
 \code{\link[keras:serialize_model]{keras::serialize_model()}} is used to produce a marshalled version
 of the original object.
-\code{\link[keras:serialize_model]{keras::unserialize_model()}} is used to reconstruct a version of the
+\code{\link[keras:unserialize_model]{keras::unserialize_model()}} is used to reconstruct a version of the
 original object from the marshalled object.
 }
 \examples{

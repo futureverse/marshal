@@ -1,5 +1,5 @@
 <div id="badges"><!-- pkgdown markup -->
-<a href="https://github.com/HenrikBengtsson/marshal/actions/workflows/R-CMD-check.yaml"><img src="https://github.com/HenrikBengtsson/marshal/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R-CMD-check"/></a>
+<a href="https://github.com/futureverse/marshal/actions/workflows/R-CMD-check.yaml"><img src="https://github.com/futureverse/marshal/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R-CMD-check"/></a>
 <a href="https://henrikbengtsson.r-universe.dev/marshal"><img src="https://henrikbengtsson.r-universe.dev/badges/marshal" alt="port4me status badge"/></a>
 </div>
 
@@ -142,7 +142,8 @@ The **marshal** package is not, yet, on CRAN.  In the meanwhile, it
 can be installed from the R Universe as:
 
 ```r
-install.packages("marshal", repos = c("https://henrikbengtsson.r-universe.dev", getOption("repos")))
+options(repos = c("https://futureverse.r-universe.dev", getOption("repos")))
+install.packages("marshal")
 ```
 
 
@@ -152,7 +153,7 @@ To install the pre-release version that is available in Git branch
 `develop` on GitHub, use:
 
 ```r
-remotes::install_github("HenrikBengtsson/marshal", ref = "develop")
+remotes::install_github("futureverse/marshal", ref = "develop")
 ```
 
 This will install the package from source.

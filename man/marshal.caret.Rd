@@ -23,6 +23,6 @@ Marshalling of 'caret:train' objects
 \details{
 \code{\link[bundle:bundle]{bundle::bundle()}} is used to produce a marshalled version
 of the original object.
-\code{\link[bundle:bundle]{bundle::unbundle()}} is used to reconstruct a version of the
+\code{\link[bundle:unbundle]{bundle::unbundle()}} is used to reconstruct a version of the
 original object from the marshalled object.
 }

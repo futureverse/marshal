@@ -24,7 +24,7 @@ Marshalling of 'bigmemory' objects
 \details{
 \code{\link[bigmemory:write.big.matrix]{bigmemory::write.big.matrix()}} is used to produce a marshalled version
 of the original object.
-\code{\link[bigmemory:write.big.matrix]{bigmemory::read.big.matrix()}} is used to reconstruct a version of the
+\code{\link[bigmemory:read.big.matrix]{bigmemory::read.big.matrix()}} is used to reconstruct a version of the
 original object from the marshalled object.
 }
 \examples{
