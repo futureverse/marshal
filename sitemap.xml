@@ -1,117 +1,41 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://marshal.futureverse.org/404.html</loc>
-  </url>
-  <url>
-    <loc>https://marshal.futureverse.org/CONTRIBUTING.html</loc>
-  </url>
-  <url>
-    <loc>https://marshal.futureverse.org/LICENSE-text.html</loc>
-  </url>
-  <url>
-    <loc>https://marshal.futureverse.org/LICENSE.html</loc>
-  </url>
-  <url>
-    <loc>https://marshal.futureverse.org/articles/index.html</loc>
-  </url>
-  <url>
-    <loc>https://marshal.futureverse.org/articles/known_cases.html</loc>
-  </url>
-  <url>
-    <loc>https://marshal.futureverse.org/authors.html</loc>
-  </url>
-  <url>
-    <loc>https://marshal.futureverse.org/index.html</loc>
-  </url>
-  <url>
-    <loc>https://marshal.futureverse.org/news/index.html</loc>
-  </url>
-  <url>
-    <loc>https://marshal.futureverse.org/reference/find_references.html</loc>
-  </url>
-  <url>
-    <loc>https://marshal.futureverse.org/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>https://marshal.futureverse.org/reference/marshal-package.html</loc>
-  </url>
-  <url>
-    <loc>https://marshal.futureverse.org/reference/marshal.DBI.html</loc>
-  </url>
-  <url>
-    <loc>https://marshal.futureverse.org/reference/marshal.XML.html</loc>
-  </url>
-  <url>
-    <loc>https://marshal.futureverse.org/reference/marshal.bigmemory.html</loc>
-  </url>
-  <url>
-    <loc>https://marshal.futureverse.org/reference/marshal.caret.html</loc>
-  </url>
-  <url>
-    <loc>https://marshal.futureverse.org/reference/marshal.connection.html</loc>
-  </url>
-  <url>
-    <loc>https://marshal.futureverse.org/reference/marshal.data.table.html</loc>
-  </url>
-  <url>
-    <loc>https://marshal.futureverse.org/reference/marshal.default.html</loc>
-  </url>
-  <url>
-    <loc>https://marshal.futureverse.org/reference/marshal.h2o.html</loc>
-  </url>
-  <url>
-    <loc>https://marshal.futureverse.org/reference/marshal.html</loc>
-  </url>
-  <url>
-    <loc>https://marshal.futureverse.org/reference/marshal.inline.html</loc>
-  </url>
-  <url>
-    <loc>https://marshal.futureverse.org/reference/marshal.keras.html</loc>
-  </url>
-  <url>
-    <loc>https://marshal.futureverse.org/reference/marshal.magick.html</loc>
-  </url>
-  <url>
-    <loc>https://marshal.futureverse.org/reference/marshal.ncdf4.html</loc>
-  </url>
-  <url>
-    <loc>https://marshal.futureverse.org/reference/marshal.parallel.html</loc>
-  </url>
-  <url>
-    <loc>https://marshal.futureverse.org/reference/marshal.parsnip.html</loc>
-  </url>
-  <url>
-    <loc>https://marshal.futureverse.org/reference/marshal.rJava.html</loc>
-  </url>
-  <url>
-    <loc>https://marshal.futureverse.org/reference/marshal.raster.html</loc>
-  </url>
-  <url>
-    <loc>https://marshal.futureverse.org/reference/marshal.reticulate.html</loc>
-  </url>
-  <url>
-    <loc>https://marshal.futureverse.org/reference/marshal.rstan.html</loc>
-  </url>
-  <url>
-    <loc>https://marshal.futureverse.org/reference/marshal.sparklyr.html</loc>
-  </url>
-  <url>
-    <loc>https://marshal.futureverse.org/reference/marshal.terra.html</loc>
-  </url>
-  <url>
-    <loc>https://marshal.futureverse.org/reference/marshal.torch.html</loc>
-  </url>
-  <url>
-    <loc>https://marshal.futureverse.org/reference/marshal.udpipe.html</loc>
-  </url>
-  <url>
-    <loc>https://marshal.futureverse.org/reference/marshal.xgboost.html</loc>
-  </url>
-  <url>
-    <loc>https://marshal.futureverse.org/reference/marshal.xml2.html</loc>
-  </url>
-  <url>
-    <loc>https://marshal.futureverse.org/reference/marshallable.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>https://marshal.futureverse.org/404.html</loc></url>
+<url><loc>https://marshal.futureverse.org/CONTRIBUTING.html</loc></url>
+<url><loc>https://marshal.futureverse.org/LICENSE-text.html</loc></url>
+<url><loc>https://marshal.futureverse.org/LICENSE.html</loc></url>
+<url><loc>https://marshal.futureverse.org/articles/index.html</loc></url>
+<url><loc>https://marshal.futureverse.org/articles/known_cases.html</loc></url>
+<url><loc>https://marshal.futureverse.org/authors.html</loc></url>
+<url><loc>https://marshal.futureverse.org/index.html</loc></url>
+<url><loc>https://marshal.futureverse.org/news/index.html</loc></url>
+<url><loc>https://marshal.futureverse.org/reference/find_references.html</loc></url>
+<url><loc>https://marshal.futureverse.org/reference/index.html</loc></url>
+<url><loc>https://marshal.futureverse.org/reference/marshal-package.html</loc></url>
+<url><loc>https://marshal.futureverse.org/reference/marshal.DBI.html</loc></url>
+<url><loc>https://marshal.futureverse.org/reference/marshal.XML.html</loc></url>
+<url><loc>https://marshal.futureverse.org/reference/marshal.bigmemory.html</loc></url>
+<url><loc>https://marshal.futureverse.org/reference/marshal.caret.html</loc></url>
+<url><loc>https://marshal.futureverse.org/reference/marshal.connection.html</loc></url>
+<url><loc>https://marshal.futureverse.org/reference/marshal.data.table.html</loc></url>
+<url><loc>https://marshal.futureverse.org/reference/marshal.default.html</loc></url>
+<url><loc>https://marshal.futureverse.org/reference/marshal.h2o.html</loc></url>
+<url><loc>https://marshal.futureverse.org/reference/marshal.html</loc></url>
+<url><loc>https://marshal.futureverse.org/reference/marshal.inline.html</loc></url>
+<url><loc>https://marshal.futureverse.org/reference/marshal.keras.html</loc></url>
+<url><loc>https://marshal.futureverse.org/reference/marshal.magick.html</loc></url>
+<url><loc>https://marshal.futureverse.org/reference/marshal.ncdf4.html</loc></url>
+<url><loc>https://marshal.futureverse.org/reference/marshal.parallel.html</loc></url>
+<url><loc>https://marshal.futureverse.org/reference/marshal.parsnip.html</loc></url>
+<url><loc>https://marshal.futureverse.org/reference/marshal.rJava.html</loc></url>
+<url><loc>https://marshal.futureverse.org/reference/marshal.raster.html</loc></url>
+<url><loc>https://marshal.futureverse.org/reference/marshal.reticulate.html</loc></url>
+<url><loc>https://marshal.futureverse.org/reference/marshal.rstan.html</loc></url>
+<url><loc>https://marshal.futureverse.org/reference/marshal.sparklyr.html</loc></url>
+<url><loc>https://marshal.futureverse.org/reference/marshal.terra.html</loc></url>
+<url><loc>https://marshal.futureverse.org/reference/marshal.torch.html</loc></url>
+<url><loc>https://marshal.futureverse.org/reference/marshal.udpipe.html</loc></url>
+<url><loc>https://marshal.futureverse.org/reference/marshal.xgboost.html</loc></url>
+<url><loc>https://marshal.futureverse.org/reference/marshal.xml2.html</loc></url>
+<url><loc>https://marshal.futureverse.org/reference/marshallable.html</loc></url>
 </urlset>
+
