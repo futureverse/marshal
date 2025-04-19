@@ -3,7 +3,7 @@ pkgdown: 2.1.1
 pkgdown_sha: ~
 articles:
   known_cases: known_cases.html
-last_built: 2025-03-29T05:07Z
+last_built: 2025-04-19T17:09Z
 urls:
   reference: https://marshal.futureverse.org/reference
   article: https://marshal.futureverse.org/articles
